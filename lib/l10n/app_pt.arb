@@ -1,0 +1,11 @@
+{
+  "@@locale": "pt",
+  "selectLanguage": "Selecione o idioma",
+  "portuguese": "Português",
+  "english": "Inglês",
+  "home":"Ínicio",
+  "projects":"Projetos",
+  "skills":"Habilidades",
+  "contact":"Contato",
+  "resume":"Currículo"
+}
