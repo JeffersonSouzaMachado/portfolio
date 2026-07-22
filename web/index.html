@@ -1,46 +1,144 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
+    <!--
+      If you are serving your web app in a path other than the root, change the
+      href value below to reflect the base path you are serving from.
 
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
+      The path provided below has to start and end with a slash "/" in order for
+      it to work correctly.
 
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+      For more details:
+      * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
 
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="$FLUTTER_BASE_HREF">
+      This is a placeholder for base href that will be replaced by the value of
+      the `--base-href` argument provided to `flutter build`.
+    -->
+    <base href="$FLUTTER_BASE_HREF">
 
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="Portfolio de exibição dos projetos de Jefferson Machado">
+    <meta charset="UTF-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="description"
+          content="Portfolio de exibição dos projetos de Jefferson Machado">
 
-  <!-- iOS meta tags & icons -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="portfolio">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+    <!-- iOS meta tags & icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="theDevJeff">
+    <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="icon.png"/>
 
-  <title>portfolio</title>
-  <link rel="manifest" href="manifest.json">
+    <title>theDevJeff</title>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        html,
+        body {
+          margin: 0;
+          width: 100%;
+          height: 100%;
+          background-color: #0F172A;
+        }
+
+        #loading-screen {
+          position: fixed;
+          inset: 0;
+
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          background-color: #0F172A;
+        }
+
+        .loading-title {
+          font-family: 'Outfit', sans-serif;
+          font-size: 40px;
+          font-weight: 500;
+          color: #BEC6E0;
+
+          animation: opacity-animation 1.5s ease-in-out infinite;
+        }
+
+        @keyframes opacity-animation {
+          0% {
+            opacity: 0.2;
+          }
+
+          50% {
+            opacity: 1;
+          }
+
+          100% {
+            opacity: 0.2;
+          }
+
+
+        }
+        .loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.loading-bar {
+  width: 180px;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 999px;
+  background-color: rgba(190, 198, 224, 0.15);
+}
+
+.loading-progress {
+  width: 40%;
+  height: 100%;
+  border-radius: 999px;
+  background-color: #BEC6E0;
+
+  animation: loading-bar-animation 1.2s ease-in-out infinite;
+}
+
+@keyframes loading-bar-animation {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  100% {
+    transform: translateX(350%);
+  }
+}
+
+
+
+        @font-face {
+      font-family: 'Outfit';
+      src: url('fonts/Outfit-VariableFont_wght.ttf') format('truetype');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+    </style>
 </head>
 <body>
-  <!--
-    You can customize the "flutter_bootstrap.js" script.
-    This is useful to provide a custom configuration to the Flutter loader
-    or to give the user feedback during the initialization process.
+<!--
+  You can customize the "flutter_bootstrap.js" script.
+  This is useful to provide a custom configuration to the Flutter loader
+  or to give the user feedback during the initialization process.
 
-    For more details:
-    * https://docs.flutter.dev/platform-integration/web/initialization
-  -->
-  <script src="flutter_bootstrap.js" async></script>
+  For more details:
+  * https://docs.flutter.dev/platform-integration/web/initialization
+-->
+<div id="loading-screen">
+    <div class="loading-content">
+        <span class="loading-title">theDevJeff</span>
+
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+</div>
+<script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
