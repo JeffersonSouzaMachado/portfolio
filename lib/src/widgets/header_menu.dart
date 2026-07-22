@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:portfolio/core/theme/app_colors.dart';
 import 'package:portfolio/core/theme/app_text.dart';
 import 'package:portfolio/src/widgets/header_menu_model.dart';
@@ -31,54 +32,6 @@ class _HeaderMenuState extends State<HeaderMenu> {
     final selectedIndex = hoveredIndex ?? currentIndex;
 
     if (widget.screenSize <= 647) {
-      // return Stack(
-      //   alignment: Alignment.bottomLeft,
-      //   children: [
-      //     Row(
-      //       mainAxisSize: MainAxisSize.min,
-      //       children: List.generate(widget.menuItems.length, (index) {
-      //         final item = widget.menuItems[index];
-      //
-      //         return MouseRegion(
-      //           onEnter: (_) {
-      //             setState(() => hoveredIndex = index);
-      //           },
-      //           onExit: (_) {
-      //             setState(() => hoveredIndex = null);
-      //           },
-      //           child: SizedBox(
-      //             width: 50,
-      //             child: TextButton(
-      //               onPressed: () {
-      //                 setState(() => currentIndex = index);
-      //               },
-      //               child:
-      //             ),
-      //           ),
-      //         );
-      //       }),
-      //     ),
-      //     AnimatedPositioned(
-      //       duration: const Duration(milliseconds: 200),
-      //       curve: Curves.easeInCubic,
-      //       left:
-      //           (selectedIndex * iconWidth) +
-      //           ((iconWidth - underlineIconWidth) / 2),
-      //       bottom: 0,
-      //       child: Container(
-      //         width: underlineIconWidth,
-      //         height: 2,
-      //         decoration: BoxDecoration(
-      //           color: selectedIndex == currentIndex
-      //               ? AppColors.secondary
-      //               : AppColors.inversePrimary,
-      //           borderRadius: BorderRadius.circular(10),
-      //         ),
-      //       ),
-      //     ),
-      //   ],
-      // );
-
       return menuItem(
         selectedIndex: selectedIndex,
         width: iconWidth,
@@ -120,6 +73,7 @@ class _HeaderMenuState extends State<HeaderMenu> {
                 child: TextButton(
                   onPressed: () {
                     setState(() => currentIndex = index);
+                    context.go(item.route);
                   },
                   child: showIcon
                       ? Icon(item.icon, color: AppColors.inversePrimary)

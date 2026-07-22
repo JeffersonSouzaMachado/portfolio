@@ -18,7 +18,7 @@ class AppLocalizationsPt extends AppLocalizations {
   String get english => 'Inglês';
 
   @override
-  String get home => 'Ínicio';
+  String get home => 'Início';
 
   @override
   String get projects => 'Projetos';

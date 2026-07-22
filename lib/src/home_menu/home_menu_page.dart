@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:portfolio/core/router/routes.dart';
 import 'package:portfolio/core/theme/app_colors.dart';
 import 'package:portfolio/core/theme/app_spacings.dart';
 import 'package:portfolio/core/theme/app_text.dart';
@@ -7,14 +8,16 @@ import 'package:portfolio/l10n/app_localizations.dart';
 import 'package:portfolio/src/widgets/header_menu.dart';
 import 'package:portfolio/src/widgets/header_menu_model.dart';
 
-class Homepage extends StatefulWidget {
-  const Homepage({super.key});
+class HomeMenuPage extends StatefulWidget {
+  const HomeMenuPage({super.key, required this.child});
+
+  final Widget child;
 
   @override
-  State<Homepage> createState() => _HomepageState();
+  State<HomeMenuPage> createState() => _HomeMenuPageState();
 }
 
-class _HomepageState extends State<Homepage> {
+class _HomeMenuPageState extends State<HomeMenuPage> {
   @override
   Widget build(BuildContext context) {
     final appText = AppLocalizations.of(context)!;
@@ -65,18 +68,22 @@ class _HomepageState extends State<Homepage> {
                             HeaderMenuModel(
                               title: appText.home,
                               icon: LucideIcons.home,
+                              route: Routes.home,
                             ),
                             HeaderMenuModel(
                               title: appText.projects,
                               icon: LucideIcons.briefcaseBusiness,
+                              route: Routes.projects,
                             ),
                             HeaderMenuModel(
                               title: appText.skills,
                               icon: LucideIcons.crown,
+                              route: Routes.skills,
                             ),
                             HeaderMenuModel(
                               title: appText.contact,
                               icon: LucideIcons.userSearch,
+                              route: Routes.contact,
                             ),
                           ],
                         ),
@@ -85,7 +92,7 @@ class _HomepageState extends State<Homepage> {
                   },
                 ),
               ),
-              // Divider(color: AppColors.secondary.withValues(alpha: 0.2)),
+              Expanded(child: widget.child),
             ],
           ),
         ),

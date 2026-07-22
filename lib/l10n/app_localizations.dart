@@ -119,7 +119,7 @@ abstract class AppLocalizations {
   /// No description provided for @home.
   ///
   /// In pt, this message translates to:
-  /// **'Ínicio'**
+  /// **'Início'**
   String get home;
 
   /// No description provided for @projects.
