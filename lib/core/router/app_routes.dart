@@ -26,10 +26,10 @@ final GoRouter appRouter = GoRouter(
         return HomeMenuPage(child: child);
       },
       routes: [
-        GoRoute(path: Routes.home , builder: (context, state) => HomePage()),
-        GoRoute(path: Routes.projects, builder: (context, state) => ProjectsPage()),
-        GoRoute(path: Routes.skills, builder: (context, state) => SkillsPage()),
-        GoRoute(path: Routes.contact, builder: (context, state) => ContactsPage()),
+        GoRoute(path: Routes.home, builder: (_, __) => HomePage()),
+        GoRoute(path: Routes.projects, builder: (_, __) => ProjectsPage()),
+        GoRoute(path: Routes.skills, builder: (_, __) => SkillsPage()),
+        GoRoute(path: Routes.contact, builder: (_, __) => ContactsPage()),
       ],
     ),
   ],
