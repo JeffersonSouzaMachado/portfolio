@@ -28,7 +28,7 @@ class _HomeMenuPageState extends State<HomeMenuPage> {
       backgroundColor: AppColors.primary,
       body: Center(
         child: Container(
-          width: 1000,
+          width: 1100,
           height: size.height,
           decoration: BoxDecoration(
             color: AppColors.primary,
