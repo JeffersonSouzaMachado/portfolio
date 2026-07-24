@@ -21,7 +21,6 @@ class HeaderMenu extends ConsumerStatefulWidget {
 }
 
 class _HeaderMenuState extends ConsumerState<HeaderMenu> {
-  int currentIndex = 0;
   int? hoveredIndex;
   double buttonWidth = 120;
   double underlineWidth = 60;
@@ -31,7 +30,19 @@ class _HeaderMenuState extends ConsumerState<HeaderMenu> {
 
   @override
   Widget build(BuildContext context) {
-    final selectedIndex = hoveredIndex ?? currentIndex;
+    final currentRoute = GoRouterState.of(context).uri.path;
+
+    final currentIndex = widget.menuItems.indexWhere(
+      (item) => item.route == currentRoute,
+    );
+
+    final selectedIndex =
+        hoveredIndex ?? (currentIndex == -1 ? 0 : currentIndex);
+    final routeIndex = widget.menuItems.indexWhere(
+      (item) => item.route == currentRoute,
+    );
+
+    final activeIndex = routeIndex == -1 ? 0 : routeIndex;
 
     return Row(
       children: [
@@ -40,6 +51,7 @@ class _HeaderMenuState extends ConsumerState<HeaderMenu> {
             selectedIndex: selectedIndex,
             width: iconWidth,
             underline: underlineIconWidth,
+            activeIndex: activeIndex,
             showIcon: true,
           )
         else
@@ -47,6 +59,7 @@ class _HeaderMenuState extends ConsumerState<HeaderMenu> {
             selectedIndex: selectedIndex,
             width: buttonWidth,
             underline: underlineWidth,
+            activeIndex: activeIndex,
           ),
       ],
     );
@@ -56,6 +69,7 @@ class _HeaderMenuState extends ConsumerState<HeaderMenu> {
     required int selectedIndex,
     required double width,
     required double underline,
+    required int activeIndex,
     bool showIcon = false,
   }) {
     return Stack(
@@ -77,7 +91,6 @@ class _HeaderMenuState extends ConsumerState<HeaderMenu> {
                 width: width,
                 child: TextButton(
                   onPressed: () {
-                    setState(() => currentIndex = index);
                     context.go(item.route);
                   },
                   child: showIcon
@@ -97,7 +110,7 @@ class _HeaderMenuState extends ConsumerState<HeaderMenu> {
             width: underline,
             height: 2,
             decoration: BoxDecoration(
-              color: selectedIndex == currentIndex
+              color: selectedIndex == activeIndex
                   ? AppColors.secondary
                   : AppColors.inversePrimary,
               borderRadius: BorderRadius.circular(10),

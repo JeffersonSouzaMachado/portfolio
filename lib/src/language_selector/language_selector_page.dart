@@ -13,9 +13,7 @@ import '../../core/localization/locale_enum.dart';
 import '../../core/localization/locale_provider.dart';
 
 class LanguageSelectorPage extends ConsumerStatefulWidget {
-  const LanguageSelectorPage({super.key, required this.languageList});
-
-  final List<String> languageList;
+  const LanguageSelectorPage({super.key});
 
   @override
   ConsumerState<LanguageSelectorPage> createState() =>
@@ -24,13 +22,20 @@ class LanguageSelectorPage extends ConsumerStatefulWidget {
 
 class _LanguageSelectorPageState extends ConsumerState<LanguageSelectorPage> {
   int? hoveredIndex;
+  final languageLocales = const [Locale('pt'), Locale('en')];
 
   void setAppLanguage(int index) {
-    final locale = index == 0
-        ? Locale(AppLocale.pt.name)
-        : Locale(AppLocale.en.name);
+    final locale = languageLocales[index];
 
     ref.read(localeProvider.notifier).state = locale;
+  }
+
+  String languageTextByLocale(Locale locale) {
+    final localizations = lookupAppLocalizations(locale);
+
+    return locale.languageCode == AppLocale.pt.name
+        ? localizations.portuguese
+        : localizations.english;
   }
 
   @override
@@ -59,8 +64,8 @@ class _LanguageSelectorPageState extends ConsumerState<LanguageSelectorPage> {
           Center(
             child: Row(
               mainAxisSize: MainAxisSize.min,
-              children: List.generate(widget.languageList.length, (index) {
-                final item = widget.languageList[index];
+              children: List.generate(languageLocales.length, (index) {
+                final item = languageTextByLocale(languageLocales[index]);
                 final isHovered = hoveredIndex == index;
 
                 return Padding(

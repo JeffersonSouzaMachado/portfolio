@@ -17,7 +17,7 @@ abstract final class AppColors {
   static const onSecondaryContainer = Color(0xFFFEFCFF);
 
   static const tertiary = Color(0xFF0B1C30);
-  static const onTertiary = Color(0xFFFFFFFF);
+  static const onTertiary = Color(0xFF172434);
   static const tertiaryContainer = Color(0xFFD3E4FE);
   static const onTertiaryContainer = Color(0xFF0B1C30);
 

@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:portfolio/core/const/external_urls_const.dart';
 import 'package:portfolio/core/design/icons/images_app.dart';
 import 'package:portfolio/core/design/theme/app_colors.dart';
+import 'package:portfolio/core/design/theme/app_radius.dart';
 import 'package:portfolio/core/design/theme/app_spacings.dart';
 import 'package:portfolio/core/design/theme/app_text.dart';
 import 'package:portfolio/core/design/theme/app_typography.dart';
+import 'package:portfolio/core/router/routes.dart';
 import 'package:portfolio/l10n/app_localizations.dart';
+import 'package:portfolio/src/widgets/metric_resume.dart';
+import 'package:portfolio/src/widgets/metric_resume_model.dart';
+import 'package:portfolio/src/widgets/open_external_url.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -24,7 +31,7 @@ class HomePage extends StatelessWidget {
               children: [
                 Positioned(
                   right: 0,
-                  top: 60,
+                  top: 10,
                   child: Container(
                     width: gradientCircleSize,
                     height: gradientCircleSize,
@@ -44,9 +51,11 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: AppSpacing.xl,
-                    vertical: AppSpacing.xxl * 2,
+                  padding: const EdgeInsets.fromLTRB(
+                    AppSpacing.xl,
+                    AppSpacing.xxl,
+                    AppSpacing.xl,
+                    0,
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -84,9 +93,11 @@ class HomePage extends StatelessWidget {
                                       ),
                                     ),
                                     SizedBox(width: 10),
-                                    AppText(
-                                      appText.availableForProjects,
-                                      color: AppColors.accent,
+                                    Flexible(
+                                      child: AppText(
+                                        appText.availableForProjects,
+                                        color: AppColors.accent,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -124,7 +135,7 @@ class HomePage extends StatelessWidget {
                             ),
 
                             Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 30),
+                              padding: EdgeInsets.symmetric(vertical: 30),
                               child: Row(
                                 children: [
                                   Expanded(
@@ -136,7 +147,9 @@ class HomePage extends StatelessWidget {
                                               .onPrimaryContainer
                                               .withValues(alpha: 0.2),
                                         ),
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          context.go(Routes.projects);
+                                        },
                                         child: Row(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.center,
@@ -175,7 +188,8 @@ class HomePage extends StatelessWidget {
                                                 ),
                                           ),
                                         ),
-                                        onPressed: () {},
+                                        onPressed: () =>
+                                            openExternalURL(githubProfileURL),
                                         child: AppText(
                                           appText.github,
                                           maxLines: 1,
@@ -193,7 +207,7 @@ class HomePage extends StatelessWidget {
                       Expanded(
                         flex: 5,
                         child: Padding(
-                          padding: const EdgeInsets.all(15),
+                          padding: const EdgeInsets.all(AppSpacing.md),
                           child: Image.asset(ImagesApp.code),
                         ),
                       ),
@@ -201,6 +215,15 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(
+                AppSpacing.lg,
+                AppSpacing.xxl,
+                AppSpacing.lg,
+                AppSpacing.xl,
+              ),
+              child: MetricResume(),
             ),
           ],
         ),
