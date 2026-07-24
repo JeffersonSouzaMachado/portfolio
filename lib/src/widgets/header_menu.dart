@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:portfolio/core/theme/app_colors.dart';
-import 'package:portfolio/core/theme/app_text.dart';
+import 'package:portfolio/core/design/theme/app_colors.dart';
+import 'package:portfolio/core/design/theme/app_text.dart';
+
 import 'package:portfolio/src/widgets/header_menu_model.dart';
 
-class HeaderMenu extends StatefulWidget {
+class HeaderMenu extends ConsumerStatefulWidget {
   const HeaderMenu({
     super.key,
     required this.menuItems,
@@ -15,10 +17,10 @@ class HeaderMenu extends StatefulWidget {
   final double screenSize;
 
   @override
-  State<HeaderMenu> createState() => _HeaderMenuState();
+  ConsumerState<HeaderMenu> createState() => _HeaderMenuState();
 }
 
-class _HeaderMenuState extends State<HeaderMenu> {
+class _HeaderMenuState extends ConsumerState<HeaderMenu> {
   int currentIndex = 0;
   int? hoveredIndex;
   double buttonWidth = 120;
@@ -31,19 +33,22 @@ class _HeaderMenuState extends State<HeaderMenu> {
   Widget build(BuildContext context) {
     final selectedIndex = hoveredIndex ?? currentIndex;
 
-    if (widget.screenSize <= 647) {
-      return menuItem(
-        selectedIndex: selectedIndex,
-        width: iconWidth,
-        underline: underlineIconWidth,
-        showIcon: true,
-      );
-    }
-
-    return menuItem(
-      selectedIndex: selectedIndex,
-      width: buttonWidth,
-      underline: underlineWidth,
+    return Row(
+      children: [
+        if (widget.screenSize <= 647)
+          menuItem(
+            selectedIndex: selectedIndex,
+            width: iconWidth,
+            underline: underlineIconWidth,
+            showIcon: true,
+          )
+        else
+          menuItem(
+            selectedIndex: selectedIndex,
+            width: buttonWidth,
+            underline: underlineWidth,
+          ),
+      ],
     );
   }
 

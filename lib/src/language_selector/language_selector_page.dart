@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:portfolio/core/theme/app_colors.dart';
-import 'package:portfolio/core/theme/app_spacings.dart';
-import 'package:portfolio/core/theme/app_text.dart';
-import 'package:portfolio/core/theme/app_typography.dart';
+import 'package:portfolio/core/design/theme/app_colors.dart';
+import 'package:portfolio/core/design/theme/app_spacings.dart';
+import 'package:portfolio/core/design/theme/app_text.dart';
+import 'package:portfolio/core/design/theme/app_typography.dart';
+import 'package:portfolio/core/router/routes.dart';
+
 import 'package:portfolio/l10n/app_localizations.dart';
 
 import '../../core/localization/locale_enum.dart';
@@ -77,7 +79,7 @@ class _LanguageSelectorPageState extends ConsumerState<LanguageSelectorPage> {
                       },
                       onPressed: () {
                         setAppLanguage(index);
-                        context.go('/home');
+                        context.go(Routes.home);
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.secondary.withValues(

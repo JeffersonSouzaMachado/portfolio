@@ -7,5 +7,12 @@
   "projects":"Projects",
   "skills":"Skills",
   "contact":"Contact",
-  "resume":"Resume"
+  "resume":"Resume",
+  "availableForProjects": "Available for new projects",
+  "architecting": "Architecting",
+  "highPerformance": "High-Performance",
+  "mobileEcosystems": "Mobile Ecosystems",
+  "aboutDescription": "Mobile Developer specializing in Flutter and Dart, with a focus on performance, fluid interfaces, and robust software architecture. I build responsive and well-structured experiences for mobile and web applications.",
+  "viewWorks" : "View Works",
+  "github" : "Github"
 }

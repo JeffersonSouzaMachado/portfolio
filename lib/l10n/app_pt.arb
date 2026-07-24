@@ -7,5 +7,12 @@
   "projects":"Projetos",
   "skills":"Habilidades",
   "contact":"Contato",
-  "resume":"Currículo"
+  "resume":"Currículo",
+  "availableForProjects": "Disponível para novos projetos",
+  "architecting": "Criando",
+  "highPerformance": "Ecossistemas Mobile",
+  "mobileEcosystems": "de Alto Desempenho",
+  "aboutDescription": "Desenvolvedor Mobile especializado em Flutter e Dart, com foco em desempenho, interfaces fluidas e arquitetura de software robusta. Desenvolvo experiências responsivas e bem estruturadas para aplicações mobile e web.",
+  "viewWorks" : "Ver Projetos",
+  "github" : "Github"
 }

@@ -77,42 +77,41 @@
 
         }
         .loading-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-}
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 24px;
+        }
 
-.loading-bar {
-  width: 180px;
-  height: 3px;
-  overflow: hidden;
-  border-radius: 999px;
-  background-color: rgba(190, 198, 224, 0.15);
-}
+        .loading-bar {
+          width: 180px;
+          height: 3px;
+          overflow: hidden;
+          border-radius: 999px;
+          background-color: rgba(190, 198, 224, 0.15);
+        }
 
-.loading-progress {
-  width: 40%;
-  height: 100%;
-  border-radius: 999px;
-  background-color: #BEC6E0;
+        .loading-progress {
+          width: 40%;
+          height: 100%;
+          border-radius: 999px;
+          background-color: #BEC6E0;
 
-  animation: loading-bar-animation 1.2s ease-in-out infinite;
-}
+          animation: loading-bar-animation 1.2s ease-in-out infinite;
+        }
 
-@keyframes loading-bar-animation {
-  0% {
-    transform: translateX(-120%);
-  }
+        @keyframes loading-bar-animation {
+          0% {
+            transform: translateX(-120%);
+          }
 
-  100% {
-    transform: translateX(350%);
-  }
-}
+          100% {
+            transform: translateX(350%);
+          }
+        }
 
 
-
-        @font-face {
+      @font-face {
       font-family: 'Outfit';
       src: url('fonts/Outfit-VariableFont_wght.ttf') format('truetype');
       font-weight: 100 900;
