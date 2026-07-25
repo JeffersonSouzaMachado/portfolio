@@ -4,11 +4,12 @@ import 'package:portfolio/core/shared/design/theme/app_colors.dart';
 import 'package:portfolio/core/shared/design/theme/app_spacings.dart';
 import 'package:portfolio/core/shared/design/theme/app_text.dart';
 import 'package:portfolio/l10n/app_localizations.dart';
-import 'package:portfolio/src/home/widgets/available_header_tag.dart';
-import 'package:portfolio/src/home/widgets/central_buttons_row.dart';
-import 'package:portfolio/src/home/widgets/gradient_circle_background.dart';
-import 'package:portfolio/src/home/widgets/metric_resume.dart';
-import 'package:portfolio/src/home/widgets/page_main_text.dart';
+import 'package:portfolio/src/home/presentation/widgets/available_header_tag.dart';
+import 'package:portfolio/src/home/presentation/widgets/central_buttons_row.dart';
+import 'package:portfolio/src/home/presentation/widgets/gradient_circle_background.dart';
+import 'package:portfolio/src/home/presentation/widgets/metric_resume.dart';
+import 'package:portfolio/src/home/presentation/widgets/page_main_text.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
