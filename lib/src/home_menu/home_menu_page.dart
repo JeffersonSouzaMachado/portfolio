@@ -6,8 +6,8 @@ import 'package:portfolio/core/design/theme/app_text.dart';
 import 'package:portfolio/core/router/routes.dart';
 
 import 'package:portfolio/l10n/app_localizations.dart';
-import 'package:portfolio/src/widgets/header_menu.dart';
-import 'package:portfolio/src/widgets/header_menu_model.dart';
+import 'package:portfolio/src/home_menu/widgets/header_menu.dart';
+import 'package:portfolio/src/home_menu/widgets/header_menu_model.dart';
 
 class HomeMenuPage extends StatefulWidget {
   const HomeMenuPage({super.key, required this.child});

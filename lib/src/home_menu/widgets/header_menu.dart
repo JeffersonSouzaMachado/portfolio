@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:portfolio/core/design/theme/app_colors.dart';
 import 'package:portfolio/core/design/theme/app_text.dart';
 
-import 'package:portfolio/src/widgets/header_menu_model.dart';
+import 'package:portfolio/src/home_menu/widgets/header_menu_model.dart';
 
 class HeaderMenu extends ConsumerStatefulWidget {
   const HeaderMenu({
