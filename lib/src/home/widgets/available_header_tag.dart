@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/design/theme/app_colors.dart';
-import 'package:portfolio/core/design/theme/app_text.dart';
+import 'package:portfolio/core/shared/design/theme/app_colors.dart';
+import 'package:portfolio/core/shared/design/theme/app_text.dart';
 import 'package:portfolio/l10n/app_localizations.dart';
 
 class AvailableHeaderTag extends StatelessWidget {

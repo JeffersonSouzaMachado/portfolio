@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:portfolio/core/design/theme/app_colors.dart';
-import 'package:portfolio/core/design/theme/app_spacings.dart';
-import 'package:portfolio/core/design/theme/app_text.dart';
-import 'package:portfolio/core/design/theme/app_typography.dart';
+import 'package:portfolio/core/shared/design/theme/app_colors.dart';
+import 'package:portfolio/core/shared/design/theme/app_spacings.dart';
+import 'package:portfolio/core/shared/design/theme/app_text.dart';
+import 'package:portfolio/core/shared/design/theme/app_typography.dart';
 import 'package:portfolio/core/router/routes.dart';
-
 import 'package:portfolio/l10n/app_localizations.dart';
-
-import '../../core/localization/locale_enum.dart';
-import '../../core/localization/locale_provider.dart';
+import '../../core/shared/localization/locale_enum.dart';
+import '../../core/shared/localization/locale_provider.dart';
 
 class LanguageSelectorPage extends ConsumerStatefulWidget {
   const LanguageSelectorPage({super.key});

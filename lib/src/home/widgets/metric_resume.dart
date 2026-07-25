@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/design/theme/app_colors.dart';
-import 'package:portfolio/core/design/theme/app_radius.dart';
-import 'package:portfolio/core/design/theme/app_spacings.dart';
-import 'package:portfolio/core/design/theme/app_typography.dart';
+import 'package:portfolio/core/shared/design/theme/app_colors.dart';
+import 'package:portfolio/core/shared/design/theme/app_radius.dart';
+import 'package:portfolio/core/shared/design/theme/app_spacings.dart';
+import 'package:portfolio/core/shared/design/theme/app_typography.dart';
 import 'package:portfolio/src/home/widgets/metric_resume_model.dart';
 
 class MetricResume extends StatelessWidget {

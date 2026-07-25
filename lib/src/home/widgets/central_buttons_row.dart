@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:portfolio/core/const/external_urls_const.dart';
-import 'package:portfolio/core/design/theme/app_colors.dart';
-import 'package:portfolio/core/design/theme/app_text.dart';
+import 'package:portfolio/core/shared/const/external_urls_const.dart';
+import 'package:portfolio/core/shared/design/theme/app_colors.dart';
+import 'package:portfolio/core/shared/design/theme/app_text.dart';
 import 'package:portfolio/core/router/routes.dart';
 import 'package:portfolio/l10n/app_localizations.dart';
 import 'package:portfolio/src/shared/open_external_url.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
-import 'package:portfolio/core/design/theme/app_theme.dart';
-import 'package:portfolio/core/localization/locale_provider.dart';
+import 'package:portfolio/core/shared/design/theme/app_theme.dart';
+import 'package:portfolio/core/shared/localization/locale_provider.dart';
 import 'package:portfolio/core/router/app_routes.dart';
 import 'package:portfolio/l10n/app_localizations.dart';
 

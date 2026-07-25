@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/design/theme/app_colors.dart';
+import 'package:portfolio/core/shared/design/theme/app_colors.dart';
 
 class GradientCircleBackground extends StatelessWidget {
   const GradientCircleBackground({super.key});

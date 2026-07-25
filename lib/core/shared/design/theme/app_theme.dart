@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/design/theme/app_spacings.dart';
-import 'package:portfolio/core/design/theme/app_theme_extension.dart';
+import 'package:portfolio/core/shared/design/theme/app_spacings.dart';
+import 'package:portfolio/core/shared/design/theme/app_theme_extension.dart';
 
 import 'app_colors.dart';
 import 'app_radius.dart';
