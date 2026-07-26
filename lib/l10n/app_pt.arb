@@ -14,5 +14,14 @@
   "mobileEcosystems": "de Alto Desempenho",
   "aboutDescription": "Desenvolvedor Mobile especializado em Flutter e Dart, com foco em desempenho, interfaces fluidas e arquitetura de software robusta. Desenvolvo experiências responsivas e bem estruturadas para aplicações mobile e web.",
   "viewWorks" : "Ver Projetos",
-  "github" : "Github"
+  "github" : "Github",
+  "labelName": "Nome",
+  "labelLastName":"Sobrenome",
+  "labelEmail": "Seu melhor e-mail",
+  "labelSubject": "Assunto",
+  "subjectText": "Tenho uma ideia para um app",
+  "labelProjectDetails":"Detalhes do Projeto",
+  "projectsDetailsText" : "Conte-me sobre seu projeto, requisitos técnicos, e o que mais desejar...",
+  "sendMessage" : "Enviar Solicitação",
+  "agreeText" : "Ao continuar você concorda com os termos de uso e o processamento dos dados de forma profissional e responsável."
 }

@@ -14,5 +14,14 @@
   "mobileEcosystems": "Mobile Ecosystems",
   "aboutDescription": "Mobile Developer specializing in Flutter and Dart, with a focus on performance, fluid interfaces, and robust software architecture. I build responsive and well-structured experiences for mobile and web applications.",
   "viewWorks" : "View Works",
-  "github" : "Github"
+  "github" : "Github",
+  "labelName": "Name",
+  "labelLastName":"Last Name",
+  "labelEmail": "Your best e-mail",
+  "labelSubject": "Subject",
+  "subjectText": "I've idea to app",
+  "labelProjectDetails":"Project details",
+  "projectsDetailsText" : "Tell me about your vision, technical requirements, and timeline...",
+  "sendMessage" : "Submit request",
+  "agreeText" : "By continuing, you agree to the terms of use and to the professional and responsible processing of your data."
 }
