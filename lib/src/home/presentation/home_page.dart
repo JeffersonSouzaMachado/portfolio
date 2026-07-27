@@ -9,6 +9,7 @@ import 'package:portfolio/src/home/presentation/widgets/central_buttons_row.dart
 import 'package:portfolio/src/home/presentation/widgets/gradient_circle_background.dart';
 import 'package:portfolio/src/home/presentation/widgets/metric_resume.dart';
 import 'package:portfolio/src/home/presentation/widgets/page_main_text.dart';
+import 'package:portfolio/src/shared/footer.dart';
 
 
 class HomePage extends StatelessWidget {
@@ -86,6 +87,8 @@ class HomePage extends StatelessWidget {
               ),
               child: MetricResume(),
             ),
+
+            Footer()
           ],
         ),
       ),

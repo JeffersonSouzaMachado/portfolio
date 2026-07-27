@@ -9,3 +9,20 @@ Future<void> openExternalURL(String url) async {
     throw Exception('Não foi possível abrir o GitHub');
   }
 }
+
+
+
+Future<void> sendEmail({required String email}) async {
+  final uri = Uri(
+    scheme: 'mailto',
+    path: email,
+    queryParameters: {
+      'subject': 'Contato pelo portfólio',
+      'body': 'Olá, gostaria de conversar sobre...',
+    },
+  );
+
+  if (!await launchUrl(uri)) {
+    throw Exception('Não foi possível abrir o aplicativo de e-mail');
+  }
+}
