@@ -60,7 +60,10 @@ class CentralButtonsRow extends StatelessWidget {
                   borderRadius: BorderRadiusGeometry.all(Radius.circular(10)),
                 ),
               ),
-              onPressed: () => openExternalURL(githubProfileURL),
+              onPressed: () => openExternalURL(
+                url: githubProfileURL,
+                error: appText.cannotOpenExternalUrl,
+              ),
               child: AppText(
                 appText.github,
                 maxLines: 1,

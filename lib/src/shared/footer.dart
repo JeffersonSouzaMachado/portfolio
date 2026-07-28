@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/shared/const/external_urls_const.dart';
 import 'package:portfolio/core/shared/design/theme/app_typography.dart';
+import 'package:portfolio/l10n/app_localizations.dart';
 import 'package:portfolio/src/shared/open_external_url.dart';
 
 import '../../core/shared/design/theme/app_colors.dart';
@@ -13,6 +14,8 @@ class Footer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appText = AppLocalizations.of(context)!;
+
     return Padding(
       padding: EdgeInsets.only(top: AppSpacing.xl),
       child: Container(
@@ -40,7 +43,10 @@ class Footer extends StatelessWidget {
                 children: [
                   TextButton(
                     onPressed: () {
-                      openExternalURL(githubProfileURL);
+                      openExternalURL(
+                        url: githubProfileURL,
+                        error: appText.cannotOpenExternalUrl,
+                      );
                     },
                     child: Text(
                       'Github',
@@ -51,7 +57,10 @@ class Footer extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      openExternalURL(linkedInProfile);
+                      openExternalURL(
+                        url: linkedInProfile,
+                        error: appText.cannotOpenExternalUrl,
+                      );
                     },
                     child: Text(
                       'LinkedIn',
@@ -62,7 +71,7 @@ class Footer extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {
-                      openExternalURL(email);
+                      sendEmail(email: email, error: appText.sendEmailError);
                     },
                     child: Text(
                       'E-mail',

@@ -23,5 +23,7 @@
   "labelProjectDetails":"Detalhes do Projeto",
   "projectsDetailsText" : "Conte-me sobre seu projeto, requisitos técnicos, e o que mais desejar...",
   "sendMessage" : "Enviar Solicitação",
-  "agreeText" : "Ao continuar você concorda com os termos de uso e o processamento dos dados de forma profissional e responsável."
+  "agreeText" : "Ao continuar você concorda com os termos de uso e o processamento dos dados de forma profissional e responsável.",
+  "cannotOpenExternalUrl" : "Não foi possível abrir o link",
+  "sendEmailError" : "Não foi possível abrir o aplicativo de e-mail"
 }

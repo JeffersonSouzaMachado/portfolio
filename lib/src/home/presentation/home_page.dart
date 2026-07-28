@@ -8,7 +8,7 @@ import 'package:portfolio/src/home/presentation/widgets/available_header_tag.dar
 import 'package:portfolio/src/home/presentation/widgets/central_buttons_row.dart';
 import 'package:portfolio/src/home/presentation/widgets/gradient_circle_background.dart';
 import 'package:portfolio/src/home/presentation/widgets/metric_resume.dart';
-import 'package:portfolio/src/home/presentation/widgets/page_main_text.dart';
+import 'package:portfolio/src/shared/page_main_text.dart';
 import 'package:portfolio/src/shared/footer.dart';
 
 
