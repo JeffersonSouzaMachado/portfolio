@@ -11,6 +11,7 @@ import 'package:portfolio/l10n/app_localizations.dart';
 import 'package:portfolio/src/contacts/widgets/contact_form.dart';
 import 'package:portfolio/src/shared/footer.dart';
 import 'package:portfolio/src/shared/gradient_container.dart';
+import 'package:portfolio/src/shared/open_external_url.dart';
 
 import 'widgets/connectivity_widget.dart';
 
@@ -37,7 +38,6 @@ class ContactsPage extends StatelessWidget {
                         builder: (context, constraints) {
                           final size = constraints.maxWidth;
 
-                          print(size);
 
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,6 +73,9 @@ class ContactsPage extends StatelessWidget {
                                 child: Column(
                                   spacing: 30,
                                   children: [
+
+                                    //TODO Melhorar esse cara aqui
+
                                     ConnectivityWidget(
                                       icon: Icons.mail_outline,
                                       label: size < 344
@@ -95,35 +98,7 @@ class ContactsPage extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                              // Row(
-                              //   children: [
-                              //     Tooltip(
-                              //       message: appText.shareMyPortfolio,
-                              //       waitDuration: const Duration(
-                              //         milliseconds: 100,
-                              //       ),
-                              //       showDuration: const Duration(seconds: 3),
-                              //       child: ConnectivityWidget(
-                              //         isCircle: true,
-                              //         icon: Icons.share_outlined,
-                              //         iconColor: AppColors.inversePrimary,
-                              //       ),
-                              //     ),
-                              //
-                              //     Tooltip(
-                              //       message: appText.callMeOnWhatsapp,
-                              //       waitDuration: const Duration(
-                              //         milliseconds: 100,
-                              //       ),
-                              //       showDuration: const Duration(seconds: 3),
-                              //       child: ConnectivityWidget(
-                              //         isCircle: true,
-                              //         icon: Icons.settings_cell_rounded,
-                              //         iconColor: AppColors.inversePrimary,
-                              //       ),
-                              //     ),
-                              //   ],
-                              // ),
+
                               GradientContainer(
                                 width: double.infinity,
                                 height: 87,
@@ -134,22 +109,22 @@ class ContactsPage extends StatelessWidget {
                                   ),
                                   child: Row(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                    MainAxisAlignment.spaceBetween,
                                     children: [
                                       Expanded(
                                         flex: 2,
                                         child: Column(
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                          CrossAxisAlignment.start,
                                           children: [
                                             Text(
                                               appText.readyToJumpIn,
                                               maxLines: 1,
                                               style: AppTypography.headlineMd
                                                   .copyWith(
-                                                    color: AppColors
-                                                        .inversePrimary,
-                                                  ),
+                                                color: AppColors
+                                                    .inversePrimary,
+                                              ),
                                             ),
                                             SizedBox(height: 6),
                                             Text(
@@ -157,23 +132,26 @@ class ContactsPage extends StatelessWidget {
                                               maxLines: 1,
                                               style: AppTypography.labelSm
                                                   .copyWith(
-                                                    color: AppColors
-                                                        .inversePrimary,
-                                                  ),
+                                                color: AppColors
+                                                    .inversePrimary,
+                                              ),
                                             ),
                                           ],
                                         ),
                                       ),
                                       Expanded(
                                         child: ElevatedButton(
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            openExternalURL(url: calendly, error: 'Não foi possivel abrir sua agenda');
+                                          },
                                           style: ElevatedButton.styleFrom(
                                             backgroundColor: AppColors.accent,
                                             padding: EdgeInsets.zero,
                                           ),
                                           child: Row(
+                                            crossAxisAlignment: CrossAxisAlignment.center,
                                             mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                            MainAxisAlignment.center,
                                             children: [
                                               Flexible(
                                                 flex: 2,

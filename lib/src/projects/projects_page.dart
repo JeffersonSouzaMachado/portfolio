@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/shared/design/theme/app_colors.dart';
+import 'package:portfolio/src/shared/under_construction_warning.dart';
 
 class ProjectsPage extends StatelessWidget {
   const ProjectsPage({super.key});
@@ -6,7 +8,11 @@ class ProjectsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.purple,
+      backgroundColor: AppColors.primary,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [Center(child: UnderConstructionWarning())],
+      ),
     );
   }
 }

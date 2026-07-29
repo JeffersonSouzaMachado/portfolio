@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/core/shared/const/external_urls_const.dart';
 import 'package:portfolio/core/shared/design/theme/app_typography.dart';
+import 'package:portfolio/core/validators/form_validator.dart';
 import 'package:portfolio/src/contacts/widgets/form_contact_field.dart';
+import 'package:portfolio/src/contacts/widgets/prepare_whatsapp_messge.dart';
 import 'package:portfolio/src/shared/gradient_container.dart';
+import 'package:portfolio/src/shared/open_external_url.dart';
 
 import '../../../core/shared/design/theme/app_colors.dart';
 import '../../../core/shared/design/theme/app_spacings.dart';
@@ -9,7 +13,15 @@ import '../../../core/shared/design/theme/app_text.dart';
 import '../../../l10n/app_localizations.dart';
 
 class ContactForm extends StatelessWidget {
-  const ContactForm({super.key});
+  ContactForm({super.key});
+
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _subjectController = TextEditingController();
+  final TextEditingController _messageController = TextEditingController();
+
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +29,16 @@ class ContactForm extends StatelessWidget {
 
     return GradientContainer(
       width: double.infinity,
-      height: 670,
+      height: 720,
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: AppSpacing.gutter,
           vertical: AppSpacing.xl,
         ),
-        child: Form(
-          child: SingleChildScrollView(
+        child: FocusTraversalGroup(
+          policy: OrderedTraversalPolicy(),
+          child: Form(
+            key: formKey,
             child: Column(
               spacing: AppSpacing.lg,
               children: [
@@ -35,12 +49,16 @@ class ContactForm extends StatelessWidget {
                       child: FormContactField(
                         label: appText.labelName,
                         hintText: "John",
+                        controller: _nameController,
+                        validator: validateName,
                       ),
                     ),
                     Flexible(
                       child: FormContactField(
                         label: appText.labelLastName,
                         hintText: "Doe",
+                        controller: _lastNameController,
+                        validator: validateLastName,
                       ),
                     ),
                   ],
@@ -48,26 +66,55 @@ class ContactForm extends StatelessWidget {
                 FormContactField(
                   label: appText.labelEmail,
                   hintText: "john@company.com",
+                  controller: _emailController,
+                  validator: validateEmail,
                 ),
                 FormContactField(
                   label: appText.labelSubject,
                   hintText: appText.subjectText,
+                  controller: _subjectController,
+                  validator: validateSubject,
                 ),
                 FormContactField(
                   label: appText.labelProjectDetails,
                   hintText: appText.projectsDetailsText,
                   height: 150,
+                  controller: _messageController,
+                  validator: validateMessage,
                 ),
 
                 SizedBox(
                   height: 50,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.onPrimaryContainer.withValues(
-                        alpha: 0.2,
-                      ),
+                      backgroundColor: AppColors.onPrimaryContainer
+                          .withValues(alpha: 0.2),
                     ),
-                    onPressed: () {},
+                    onPressed: () async {
+                      final isValid =
+                          formKey.currentState?.validate() ?? false;
+
+                      if (!isValid) {
+                        return;
+                      }
+
+                      final whatsappMessage = await prepareWhatsappMessage(
+                        name: _nameController.text,
+                        lastName: _lastNameController.text,
+                        subject: _subjectController.text,
+                        email: _emailController.text,
+                        message: _messageController.text,
+                      );
+
+                      final whatsappUrl =
+                          '$whatsAppUrl$phone$whatsappText$whatsappMessage';
+
+                      openExternalURL(
+                        url: whatsappUrl,
+                        error:
+                            'Não foi possivel enviar a mensagem pelo whatsapp',
+                      );
+                    },
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,

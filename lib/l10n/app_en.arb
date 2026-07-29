@@ -35,5 +35,6 @@
   "callMeOnWhatsapp" : "Call me on WhatsApp",
   "readyToJumpIn" : "Ready to jump in?",
   "scheduleAnCall" : "Schedule a 15-min discovery call.",
-  "schedule" : "Book"
+  "schedule" : "Book",
+  "underConstruction" : "Under Construction"
 }
