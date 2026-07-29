@@ -48,3 +48,6 @@ app.*.map.json
 /lib/l10n/app_localizations_pt.dart
 /.env
 /pubspec.lock
+/.firebaserc
+/firebase.json
+/.firebase/hosting.cHVibGlj.cache
