@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:portfolio/core/shared/const/external_urls_const.dart';
+import 'package:portfolio/core/shared/const/local_text_const.dart';
 import 'package:portfolio/core/shared/design/theme/app_colors.dart';
 import 'package:portfolio/core/shared/design/theme/app_radius.dart';
 import 'package:portfolio/core/shared/design/theme/app_spacings.dart';
@@ -9,6 +10,9 @@ import 'package:portfolio/core/shared/design/theme/app_typography.dart';
 import 'package:portfolio/l10n/app_localizations.dart';
 import 'package:portfolio/src/contacts/widgets/contact_form.dart';
 import 'package:portfolio/src/shared/footer.dart';
+import 'package:portfolio/src/shared/gradient_container.dart';
+
+import 'widgets/connectivity_widget.dart';
 
 class ContactsPage extends StatelessWidget {
   const ContactsPage({super.key});
@@ -29,158 +33,176 @@ class ContactsPage extends StatelessWidget {
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.only(right: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          AppText(
-                            'connectivity'.toUpperCase(),
-                            color: AppColors.accent,
-                            fontSize: 14,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                              vertical: AppSpacing.xl,
-                            ),
-                            child: MarkdownBody(
-                              data:
-                                  'Let\'s build the **next generation** of tech.',
-                              softLineBreak: true,
-                              styleSheet: MarkdownStyleSheet(
-                                p: AppTypography.headlineXl.copyWith(
-                                  color: AppColors.inversePrimary,
-                                ),
-                                strong: AppTypography.headlineXl.copyWith(
-                                  color: AppColors.accent,
-                                ),
-                              ),
-                            ),
-                          ),
-                          AppText(
-                            'I specialize in high-performance mobile architectures and scalable cloud solutions.'
-                            ' Reach out to discuss a collaboration, a project, or just to talk tech.',
-                            color: AppColors.inversePrimary,
-                          ),
+                      child: LayoutBuilder(
+                        builder: (context, constraints) {
+                          final size = constraints.maxWidth;
 
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                              vertical: AppSpacing.xl,
-                            ),
-                            child: Column(
-                              spacing: 30,
-                              children: [
-                                ConnectivityWidget(
-                                  icon: Icons.mail_outline,
-                                  label: 'Email me',
-                                  text: email,
-                                ),
+                          print(size);
 
-                                ConnectivityWidget(
-                                  icon: Icons.location_on_sharp,
-                                  label: 'Base de Operações',
-                                  text: 'São José dos Campos, SP - BR',
-                                ),
-                              ],
-                            ),
-                          ),
-                          Row(
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Tooltip(
-                                message: "Compartilhe meu Portfolio",
-                                waitDuration: const Duration(milliseconds: 100),
-                                showDuration: const Duration(seconds: 3),
-                                child: ConnectivityWidget(
-                                  isCircle: true,
-                                  icon: Icons.share_outlined,
-                                  iconColor: AppColors.inversePrimary,
-                                ),
+                              AppText(
+                                appText.connectivity.toUpperCase(),
+                                color: AppColors.accent,
+                                fontSize: 14,
                               ),
-
-                              Tooltip(
-                                message: "Me chama no WhatsApp",
-                                waitDuration: const Duration(milliseconds: 100),
-                                showDuration: const Duration(seconds: 3),
-                                child: ConnectivityWidget(
-                                  isCircle: true,
-                                  icon: Icons.settings_cell_rounded,
-                                  iconColor: AppColors.inversePrimary,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                              vertical: AppSpacing.xl,
-                            ),
-                            child: Container(
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: AppColors.onTertiary,
-                                gradient: RadialGradient(
-                                  center: Alignment.topRight,
-                                  colors: [
-                                    AppColors.onTertiary,
-                                    AppColors.onTertiaryContainer.withValues(
-                                      alpha: 0.5,
-                                    ),
-                                  ],
-                                ),
-                                borderRadius: AppRadius.borderRegular,
-                                border: Border.all(
-                                  color: AppColors.onPrimary.withValues(
-                                    alpha: 0.05,
+                              SizedBox(height: AppSpacing.lg),
+                              MarkdownBody(
+                                data: appText.letsBuildNextGenerationOfTech,
+                                softLineBreak: true,
+                                styleSheet: MarkdownStyleSheet(
+                                  p: AppTypography.headlineXl.copyWith(
+                                    color: AppColors.inversePrimary,
+                                  ),
+                                  strong: AppTypography.headlineXl.copyWith(
+                                    color: AppColors.accent,
                                   ),
                                 ),
                               ),
-                              child: Padding(
+                              SizedBox(height: AppSpacing.md),
+                              AppText(
+                                appText.specializedText,
+                                color: AppColors.inversePrimary,
+                              ),
+
+                              Padding(
                                 padding: EdgeInsets.symmetric(
-                                  vertical: AppSpacing.md,
-                                  horizontal: AppSpacing.xl
+                                  vertical: AppSpacing.xl,
                                 ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                child: Column(
+                                  spacing: 30,
                                   children: [
-                                    Column(
-                                      children: [
-                                        Text(
-                                          'Ready to jump in?',
-                                          style: AppTypography.headlineMd
-                                              .copyWith(
-                                                color: AppColors.inversePrimary,
-                                              ),
-                                        ),
-                                        Text(
-                                          'Schedule a 15-min discovery call.',
-                                          style: AppTypography.labelSm.copyWith(
-                                            color: AppColors.inversePrimary,
-                                          ),
-                                        ),
-                                      ],
+                                    ConnectivityWidget(
+                                      icon: Icons.mail_outline,
+                                      label: size < 344
+                                          ? null
+                                          : appText.writeToMe,
+                                      text: size < 344 ? null : email,
+                                      isCircle: size < 344 ? true : false,
                                     ),
-                                    ElevatedButton(
-                                      onPressed: () {},
-                                      child: Row(
-                                        children: [
-                                          Text(
-                                            'Book a Call',
-                                            style: AppTypography.bodyLg,
-                                          ),
-                                          Icon(Icons.arrow_forward),
-                                        ],
-                                      ),
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: AppColors.accent,
-                                      ),
+
+                                    ConnectivityWidget(
+                                      icon: Icons.location_on_sharp,
+                                      label: size < 344
+                                          ? null
+                                          : appText.operationBase,
+                                      text: size < 344
+                                          ? null
+                                          : localOperationBase,
+                                      isCircle: size < 344 ? true : false,
                                     ),
                                   ],
                                 ),
                               ),
-                            ),
-                          ),
-                        ],
+                              // Row(
+                              //   children: [
+                              //     Tooltip(
+                              //       message: appText.shareMyPortfolio,
+                              //       waitDuration: const Duration(
+                              //         milliseconds: 100,
+                              //       ),
+                              //       showDuration: const Duration(seconds: 3),
+                              //       child: ConnectivityWidget(
+                              //         isCircle: true,
+                              //         icon: Icons.share_outlined,
+                              //         iconColor: AppColors.inversePrimary,
+                              //       ),
+                              //     ),
+                              //
+                              //     Tooltip(
+                              //       message: appText.callMeOnWhatsapp,
+                              //       waitDuration: const Duration(
+                              //         milliseconds: 100,
+                              //       ),
+                              //       showDuration: const Duration(seconds: 3),
+                              //       child: ConnectivityWidget(
+                              //         isCircle: true,
+                              //         icon: Icons.settings_cell_rounded,
+                              //         iconColor: AppColors.inversePrimary,
+                              //       ),
+                              //     ),
+                              //   ],
+                              // ),
+                              GradientContainer(
+                                width: double.infinity,
+                                height: 87,
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: AppSpacing.md,
+                                    horizontal: AppSpacing.xl,
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Expanded(
+                                        flex: 2,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              appText.readyToJumpIn,
+                                              maxLines: 1,
+                                              style: AppTypography.headlineMd
+                                                  .copyWith(
+                                                    color: AppColors
+                                                        .inversePrimary,
+                                                  ),
+                                            ),
+                                            SizedBox(height: 6),
+                                            Text(
+                                              appText.scheduleAnCall,
+                                              maxLines: 1,
+                                              style: AppTypography.labelSm
+                                                  .copyWith(
+                                                    color: AppColors
+                                                        .inversePrimary,
+                                                  ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: ElevatedButton(
+                                          onPressed: () {},
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: AppColors.accent,
+                                            padding: EdgeInsets.zero,
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Flexible(
+                                                flex: 2,
+                                                child: Text(
+                                                  appText.schedule,
+                                                  maxLines: 1,
+                                                  style: AppTypography.bodyLg,
+                                                ),
+                                              ),
+                                              Flexible(
+                                                child: Icon(
+                                                  Icons.arrow_forward,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          );
+                        },
                       ),
                     ),
                   ),
+                  SizedBox(width: 50),
                   Expanded(child: ContactForm()),
                 ],
               ),
@@ -189,76 +211,6 @@ class ContactsPage extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class ConnectivityWidget extends StatelessWidget {
-  const ConnectivityWidget({
-    this.icon,
-    this.label,
-    this.text,
-    this.isCircle = false,
-    this.iconColor = AppColors.accent,
-    super.key,
-  });
-
-  final IconData? icon;
-  final Color? iconColor;
-  final String? label;
-  final String? text;
-  final bool isCircle;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        icon != null
-            ? Container(
-                width: 50,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: AppColors.onTertiary,
-                  gradient: RadialGradient(
-                    center: Alignment.topRight,
-                    colors: [
-                      AppColors.onTertiary,
-                      AppColors.onTertiaryContainer.withValues(alpha: 0.5),
-                    ],
-                  ),
-                  shape: isCircle ? BoxShape.circle : BoxShape.rectangle,
-                  borderRadius: isCircle ? null : AppRadius.borderRegular,
-                  border: Border.all(
-                    color: AppColors.onPrimary.withValues(alpha: 0.05),
-                  ),
-                ),
-                child: Icon(icon, color: iconColor),
-              )
-            : SizedBox.shrink(),
-        SizedBox(width: 20),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            label != null
-                ? AppText(label!, color: AppColors.inversePrimary, fontSize: 12)
-                : SizedBox.shrink(),
-            text != null
-                ? DefaultSelectionStyle(
-                    selectionColor: AppColors.inversePrimary.withValues(
-                      alpha: 0.1,
-                    ),
-                    child: SelectionArea(
-                      child: AppText(
-                        text!,
-                        color: AppColors.inversePrimary,
-                        fontSize: 20,
-                      ),
-                    ),
-                  )
-                : SizedBox.shrink(),
-          ],
-        ),
-      ],
     );
   }
 }

@@ -26,16 +26,21 @@ class Footer extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              AppText(
-                'theDevJeff',
-                color: AppColors.inversePrimary,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-              Text(
-                '©1989 - 2027 theDevJeff  -  Built for High-Performance',
-                style: AppTypography.bodySm.copyWith(
+              Flexible(
+                child: AppText(
+                  'theDevJeff',
                   color: AppColors.inversePrimary,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Flexible(
+                child: Text(
+                  '©1989 - 2027 theDevJeff  -  Built for High-Performance',
+                  maxLines: 1,
+                  style: AppTypography.bodySm.copyWith(
+                    color: AppColors.inversePrimary,
+                  ),
                 ),
               ),
 
@@ -50,6 +55,7 @@ class Footer extends StatelessWidget {
                     },
                     child: Text(
                       'Github',
+                      maxLines: 1,
                       style: AppTypography.bodySm.copyWith(
                         color: AppColors.inversePrimary,
                       ),

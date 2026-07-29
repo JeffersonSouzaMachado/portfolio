@@ -25,5 +25,15 @@
   "sendMessage" : "Enviar Solicitação",
   "agreeText" : "Ao continuar você concorda com os termos de uso e o processamento dos dados de forma profissional e responsável.",
   "cannotOpenExternalUrl" : "Não foi possível abrir o link",
-  "sendEmailError" : "Não foi possível abrir o aplicativo de e-mail"
+  "sendEmailError" : "Não foi possível abrir o aplicativo de e-mail",
+  "connectivity" : "Conectividade",
+  "letsBuildNextGenerationOfTech" : "Vamos construir a **próxima geração** de tecnologia?",
+  "specializedText": "Sou especializado em arquiteturas mobile de alta performance e soluções em nuvem escaláveis. Entre em contato para conversarmos sobre uma colaboração, um projeto ou simplesmente sobre tecnologia.",
+  "writeToMe" : "Escreva para mim",
+  "operationBase" : "Base de operações",
+  "shareMyPortfolio" : "Compartilhe meu Portfolio",
+  "callMeOnWhatsapp" : "Me chame no WhatsApp",
+  "readyToJumpIn" : "Vamos conversar?",
+  "scheduleAnCall" : "Agende uma chamada de 15 minutos.",
+  "schedule" : "Agendar"
 }

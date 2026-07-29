@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/shared/design/theme/app_typography.dart';
 import 'package:portfolio/src/contacts/widgets/form_contact_field.dart';
+import 'package:portfolio/src/shared/gradient_container.dart';
 
 import '../../../core/shared/design/theme/app_colors.dart';
-import '../../../core/shared/design/theme/app_radius.dart';
 import '../../../core/shared/design/theme/app_spacings.dart';
 import '../../../core/shared/design/theme/app_text.dart';
 import '../../../l10n/app_localizations.dart';
@@ -15,19 +15,9 @@ class ContactForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final appText = AppLocalizations.of(context)!;
 
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.onTertiary,
-        gradient: RadialGradient(
-          center: Alignment.topRight,
-          colors: [
-            AppColors.onTertiary,
-            AppColors.onTertiaryContainer.withValues(alpha: 0.5),
-          ],
-        ),
-        borderRadius: AppRadius.borderXl,
-        border: Border.all(color: AppColors.onPrimary.withValues(alpha: 0.05)),
-      ),
+    return GradientContainer(
+      width: double.infinity,
+      height: 670,
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: AppSpacing.gutter,

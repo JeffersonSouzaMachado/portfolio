@@ -25,5 +25,15 @@
   "sendMessage" : "Submit request",
   "agreeText" : "By continuing, you agree to the terms of use and to the professional and responsible processing of your data.",
   "cannotOpenExternalUrl" : "Cannot open external URL",
-  "sendEmailError" : "Cannot open email provider"
+  "sendEmailError" : "Cannot open email provider",
+  "connectivity" : "Connectivity",
+  "letsBuildNextGenerationOfTech" : "Let's build the **next generation** of tech.",
+  "specializedText" : "I specialize in high-performance mobile architectures and scalable cloud solutions. Reach out to discuss a collaboration, a project, or just to talk tech.",
+  "writeToMe" : "E-mail me",
+  "operationBase" : "Base of Operations",
+  "shareMyPortfolio" : "Share my Portfolio",
+  "callMeOnWhatsapp" : "Call me on WhatsApp",
+  "readyToJumpIn" : "Ready to jump in?",
+  "scheduleAnCall" : "Schedule a 15-min discovery call.",
+  "schedule" : "Book"
 }
