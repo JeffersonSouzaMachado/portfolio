@@ -202,6 +202,17 @@
         </div>
     </div>
 </div>
+<script>
+    window.addEventListener('flutter-first-frame', function () {
+      const loadingScreen = document.getElementById('loading-screen');
+
+      if (loadingScreen) {
+        loadingScreen.remove();
+      }
+    });
+</script>
+
+
 <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>

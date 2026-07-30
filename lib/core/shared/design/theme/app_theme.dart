@@ -100,7 +100,7 @@ abstract final class AppTheme {
       useMaterial3: true,
       brightness: Brightness.light,
       colorScheme: colorScheme,
-      scaffoldBackgroundColor: AppColors.surface,
+      scaffoldBackgroundColor: AppColors.primary,
       fontFamily: AppTypography.fontFamily,
       textTheme: textTheme,
 

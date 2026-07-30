@@ -8,12 +8,9 @@ class SkillsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.primary,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [Center(child: UnderConstructionWarning())],
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [Center(child: UnderConstructionWarning())],
     );
   }
 }

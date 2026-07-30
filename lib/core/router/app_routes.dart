@@ -19,10 +19,30 @@ final GoRouter appRouter = GoRouter(
         return HomeMenuPage(child: child);
       },
       routes: [
-        GoRoute(path: Routes.home, builder: (_, __) => HomePage()),
-        GoRoute(path: Routes.projects, builder: (_, __) => ProjectsPage()),
-        GoRoute(path: Routes.skills, builder: (_, __) => SkillsPage()),
-        GoRoute(path: Routes.contact, builder: (_, __) => ContactsPage()),
+        GoRoute(
+          path: Routes.home,
+          pageBuilder: (_, __) => const NoTransitionPage(
+            child: HomePage(),
+          ),
+        ),
+        GoRoute(
+          path: Routes.projects,
+          pageBuilder: (_, __) => const NoTransitionPage(
+            child: ProjectsPage(),
+          ),
+        ),
+        GoRoute(
+          path: Routes.skills,
+          pageBuilder: (_, __) => const NoTransitionPage(
+            child: SkillsPage(),
+          ),
+        ),
+        GoRoute(
+          path: Routes.contact,
+          pageBuilder: (_, __) => const NoTransitionPage(
+            child: ContactsPage(),
+          ),
+        ),
       ],
     ),
   ],
