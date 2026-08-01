@@ -3,7 +3,6 @@ import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:portfolio/core/shared/const/external_urls_const.dart';
 import 'package:portfolio/core/shared/const/local_text_const.dart';
 import 'package:portfolio/core/shared/design/theme/app_colors.dart';
-import 'package:portfolio/core/shared/design/theme/app_radius.dart';
 import 'package:portfolio/core/shared/design/theme/app_spacings.dart';
 import 'package:portfolio/core/shared/design/theme/app_text.dart';
 import 'package:portfolio/core/shared/design/theme/app_typography.dart';

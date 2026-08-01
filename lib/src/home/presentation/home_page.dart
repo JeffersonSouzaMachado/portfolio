@@ -18,6 +18,81 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final appText = AppLocalizations.of(context)!;
 
+    return Scaffold(
+      backgroundColor: AppColors.primary,
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          final maxWidth = constraints.maxWidth;
+
+          if (maxWidth < 550) {
+            return mobile(appText);
+          } else {
+            return desktop(appText);
+          }
+        },
+      ),
+    );
+  }
+
+  Widget mobile(AppLocalizations appText) {
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: .start,
+        crossAxisAlignment: .start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(
+              AppSpacing.xl,
+              AppSpacing.xxl,
+              AppSpacing.xl,
+              0,
+            ),
+            child: AvailableHeaderTag(appText: appText),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: AppSpacing.lg,
+              horizontal: AppSpacing.xl,
+            ),
+            child: PageMainText(appText: appText),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xl),
+            child: AppText(
+              appText.aboutDescription,
+              color: AppColors.inversePrimary,
+            ),
+          ),
+
+          Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: AppSpacing.lg,
+              horizontal: AppSpacing.xl,
+            ),
+            child: CentralButtonsRow(appText: appText),
+          ),
+
+          Padding(
+            padding: const EdgeInsets.all(AppSpacing.md),
+            child: Image.asset(ImagesApp.code),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(
+              AppSpacing.lg,
+              AppSpacing.xxl,
+              AppSpacing.lg,
+              AppSpacing.xl,
+            ),
+            child: Center(child: MetricResume()),
+          ),
+
+          Footer(isMobile: true),
+        ],
+      ),
+    );
+  }
+
+  Widget desktop(AppLocalizations appText) {
     return SingleChildScrollView(
       child: Column(
         children: [

@@ -21,25 +21,25 @@ final GoRouter appRouter = GoRouter(
       routes: [
         GoRoute(
           path: Routes.home,
-          pageBuilder: (_, __) => const NoTransitionPage(
+          pageBuilder: (_, _) => const NoTransitionPage(
             child: HomePage(),
           ),
         ),
         GoRoute(
           path: Routes.projects,
-          pageBuilder: (_, __) => const NoTransitionPage(
+          pageBuilder: (_, _) => const NoTransitionPage(
             child: ProjectsPage(),
           ),
         ),
         GoRoute(
           path: Routes.skills,
-          pageBuilder: (_, __) => const NoTransitionPage(
+          pageBuilder: (_, _) => const NoTransitionPage(
             child: SkillsPage(),
           ),
         ),
         GoRoute(
           path: Routes.contact,
-          pageBuilder: (_, __) => const NoTransitionPage(
+          pageBuilder: (_, _) => const NoTransitionPage(
             child: ContactsPage(),
           ),
         ),

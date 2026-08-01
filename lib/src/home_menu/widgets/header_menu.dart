@@ -21,32 +21,32 @@ class HeaderMenu extends ConsumerStatefulWidget {
 }
 
 class _HeaderMenuState extends ConsumerState<HeaderMenu> {
-  int? hoveredIndex;
-  double buttonWidth = 120;
-  double underlineWidth = 60;
+  final OverlayPortalController _controller = OverlayPortalController();
 
-  double iconWidth = 50;
-  double underlineIconWidth = 25;
+  int? hoveredIndex;
+
+  final double buttonWidth = 120;
+  final double underlineWidth = 60;
+
+  final double iconWidth = 50;
+  final double underlineIconWidth = 25;
 
   @override
   Widget build(BuildContext context) {
     final currentRoute = GoRouterState.of(context).uri.path;
 
-    final currentIndex = widget.menuItems.indexWhere(
-      (item) => item.route == currentRoute,
-    );
-
-    final selectedIndex =
-        hoveredIndex ?? (currentIndex == -1 ? 0 : currentIndex);
     final routeIndex = widget.menuItems.indexWhere(
-      (item) => item.route == currentRoute,
+          (item) => item.route == currentRoute,
     );
 
     final activeIndex = routeIndex == -1 ? 0 : routeIndex;
+    final selectedIndex = hoveredIndex ?? activeIndex;
 
     return Row(
       children: [
-        if (widget.screenSize <= 647)
+        if (widget.screenSize < 550)
+          _mobileMenu()
+        else if (widget.screenSize <= 647)
           menuItem(
             selectedIndex: selectedIndex,
             width: iconWidth,
@@ -62,6 +62,96 @@ class _HeaderMenuState extends ConsumerState<HeaderMenu> {
             activeIndex: activeIndex,
           ),
       ],
+    );
+  }
+
+  Widget _mobileMenu() {
+    return OverlayPortal(
+      controller: _controller,
+      overlayChildBuilder: (context) {
+        return Stack(
+          children: [
+            Positioned.fill(
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: _controller.hide,
+                child: Container(
+                  color: Colors.black.withValues(alpha: 0.35),
+                ),
+              ),
+            ),
+
+            Positioned(
+              top: 0,
+              right: 0,
+              bottom: 0,
+              child: Material(
+                color: AppColors.primary,
+                elevation: 12,
+                child: SafeArea(
+                  child: SizedBox(
+                    width: 200,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: IconButton(
+                            tooltip: 'Fechar menu',
+                            onPressed: _controller.hide,
+                            icon: Icon(
+                              Icons.close,
+                              color: AppColors.inversePrimary,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        ...widget.menuItems.map(_mobileMenuItem),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+      child: IconButton(
+        tooltip: 'Abrir menu',
+        onPressed: _controller.toggle,
+        icon: Icon(
+          Icons.menu,
+          color: AppColors.inversePrimary,
+        ),
+      ),
+    );
+  }
+
+  Widget _mobileMenuItem(HeaderMenuModel item) {
+    final currentRoute = GoRouterState.of(context).uri.path;
+    final isActive = currentRoute == item.route;
+
+    return ListTile(
+      leading: Icon(
+        item.icon,
+        color: isActive
+            ? AppColors.secondary
+            : AppColors.inversePrimary,
+      ),
+      title: AppText(
+        item.title,
+        color: isActive
+            ? AppColors.secondary
+            : AppColors.inversePrimary,
+      ),
+      selected: isActive,
+      onTap: () {
+        _controller.hide();
+
+        if (!isActive) {
+          context.go(item.route);
+        }
+      },
     );
   }
 
@@ -94,8 +184,14 @@ class _HeaderMenuState extends ConsumerState<HeaderMenu> {
                     context.go(item.route);
                   },
                   child: showIcon
-                      ? Icon(item.icon, color: AppColors.inversePrimary)
-                      : AppText(item.title, color: AppColors.inversePrimary),
+                      ? Icon(
+                    item.icon,
+                    color: AppColors.inversePrimary,
+                  )
+                      : AppText(
+                    item.title,
+                    color: AppColors.inversePrimary,
+                  ),
                 ),
               ),
             );

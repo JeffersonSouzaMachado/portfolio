@@ -22,9 +22,7 @@ class _HomeMenuPageState extends State<HomeMenuPage> {
   Widget build(BuildContext context) {
     final appText = AppLocalizations.of(context)!;
 
-    final size = MediaQuery
-        .of(context)
-        .size;
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: AppColors.primary,
       body: Center(
@@ -95,7 +93,6 @@ class _HomeMenuPageState extends State<HomeMenuPage> {
                 ),
               ),
               Expanded(child: widget.child),
-             
             ],
           ),
         ),
