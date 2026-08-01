@@ -42,7 +42,6 @@ class ContactsPage extends StatelessWidget {
         children: [
           description(appText: appText, size: size),
 
-
           ContactForm(),
         ],
       ),
@@ -50,14 +49,20 @@ class ContactsPage extends StatelessWidget {
   }
 
   Widget desktop({required AppLocalizations appText, required double size}) {
-    return Row(
-      children: [
-        Expanded(
-          child: description(appText: appText, size: size),
-        ),
-        SizedBox(width: 50),
-        Expanded(child: ContactForm()),
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: description(appText: appText, size: size),
+              ),
+              SizedBox(width: 50),
+              Expanded(child: ContactForm()),
+            ],
+          ),
+        ],
+      ),
     );
   }
 
@@ -81,9 +86,7 @@ class ContactsPage extends StatelessWidget {
             p: AppTypography.headlineXl.copyWith(
               color: AppColors.inversePrimary,
             ),
-            strong: AppTypography.headlineXl.copyWith(
-              color: AppColors.accent,
-            ),
+            strong: AppTypography.headlineXl.copyWith(color: AppColors.accent),
           ),
         ),
         SizedBox(height: AppSpacing.md),
@@ -113,7 +116,7 @@ class ContactsPage extends StatelessWidget {
         ),
 
         Padding(
-          padding:  EdgeInsets.only(bottom: AppSpacing.xl),
+          padding: EdgeInsets.only(bottom: AppSpacing.xl),
           child: GradientContainer(
             width: double.infinity,
             height: size < 550 ? 150 : 87,
@@ -125,9 +128,9 @@ class ContactsPage extends StatelessWidget {
               child: size < 550
                   ? Column(children: scheduleContainer(appText: appText))
                   : Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: scheduleContainer(appText: appText),
-              ),
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: scheduleContainer(appText: appText),
+                    ),
             ),
           ),
         ),

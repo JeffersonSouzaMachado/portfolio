@@ -26,6 +26,8 @@ class ConnectivityWidget extends StatelessWidget {
         icon != null
             ? GradientContainer(
                 isCircle: isCircle,
+                width: 50,
+                height: 50,
                 child: Icon(icon, color: iconColor),
               )
             : SizedBox.shrink(),
