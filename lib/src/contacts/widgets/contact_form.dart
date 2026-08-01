@@ -29,7 +29,6 @@ class ContactForm extends StatelessWidget {
 
     return GradientContainer(
       width: double.infinity,
-      height: 720,
       child: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: AppSpacing.gutter,
@@ -87,12 +86,12 @@ class ContactForm extends StatelessWidget {
                   height: 50,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.onPrimaryContainer
-                          .withValues(alpha: 0.2),
+                      backgroundColor: AppColors.onPrimaryContainer.withValues(
+                        alpha: 0.2,
+                      ),
                     ),
                     onPressed: () async {
-                      final isValid =
-                          formKey.currentState?.validate() ?? false;
+                      final isValid = formKey.currentState?.validate() ?? false;
 
                       if (!isValid) {
                         return;

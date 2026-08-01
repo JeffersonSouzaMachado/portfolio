@@ -17,24 +17,21 @@ class Footer extends StatelessWidget {
   Widget build(BuildContext context) {
     final appText = AppLocalizations.of(context)!;
 
-    return Padding(
-      padding: EdgeInsets.only(top: AppSpacing.xl),
-      child: Container(
-        height: isMobile ? 120 : 80,
-        color: AppColors.outlineVariant.withValues(alpha: 0.01),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: isMobile
-              ? Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  spacing: 10,
-                  children: widget(appText),
-                )
-              : Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: widget(appText)),
-        ),
+    return Container(
+      height: isMobile ? 120 : 80,
+      color: AppColors.outlineVariant.withValues(alpha: 0.01),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: isMobile
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                spacing: 10,
+                children: widget(appText),
+              )
+            : Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: widget(appText)),
       ),
     );
   }

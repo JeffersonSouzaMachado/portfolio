@@ -8,9 +8,11 @@ class SkillsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [Center(child: UnderConstructionWarning())],
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [Center(child: UnderConstructionWarning())],
+      ),
     );
   }
 }

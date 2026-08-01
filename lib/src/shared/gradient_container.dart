@@ -8,19 +8,19 @@ class GradientContainer extends StatelessWidget {
     super.key,
     required this.child,
     this.isCircle = false,
-    this.width = 50,
-    this.height = 50,
+    this.width,
+    this.height,
   });
 
   final Widget child;
   final bool isCircle;
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width,
+      width: width ,
       height: height,
       decoration: BoxDecoration(
         color: AppColors.onTertiary,

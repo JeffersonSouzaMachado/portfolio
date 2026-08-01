@@ -7,6 +7,7 @@ import 'package:portfolio/core/router/routes.dart';
 import 'package:portfolio/l10n/app_localizations.dart';
 import 'package:portfolio/src/home_menu/widgets/header_menu.dart';
 import 'package:portfolio/src/home_menu/widgets/header_menu_model.dart';
+import 'package:portfolio/src/shared/footer.dart';
 
 class HomeMenuPage extends StatefulWidget {
   const HomeMenuPage({super.key, required this.child});
@@ -27,7 +28,7 @@ class _HomeMenuPageState extends State<HomeMenuPage> {
       backgroundColor: AppColors.primary,
       body: Center(
         child: Container(
-          width: 1100,
+          width: double.infinity,
           height: size.height,
           decoration: BoxDecoration(
             color: AppColors.primary,
@@ -93,6 +94,18 @@ class _HomeMenuPageState extends State<HomeMenuPage> {
                 ),
               ),
               Expanded(child: widget.child),
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  final size = constraints.maxWidth;
+                  bool isMobile = false;
+
+                  if (size < 550) {
+                    isMobile = true;
+                  }
+
+                  return Footer(isMobile: isMobile);
+                },
+              ),
             ],
           ),
         ),

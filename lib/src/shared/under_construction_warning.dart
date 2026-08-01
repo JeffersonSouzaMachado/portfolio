@@ -13,6 +13,8 @@ class UnderConstructionWarning extends StatelessWidget {
     final appText = AppLocalizations.of(context)!;
 
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
           appText.underConstruction,
@@ -21,8 +23,9 @@ class UnderConstructionWarning extends StatelessWidget {
           ),
         ),
         SizedBox(
-            height: 400,
-            child: Lottie.asset(LottieAnimations.websiteConstruction))
+          height: 300,
+          child: Lottie.asset(LottieAnimations.websiteConstruction),
+        ),
       ],
     );
   }

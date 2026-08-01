@@ -52,3 +52,4 @@ app.*.map.json
 /firebase.json
 /.firebase/hosting.cHVibGlj.cache
 /.firebase/hosting.YnVpbGRcd2Vi.cache
+/devtools_options.yaml
