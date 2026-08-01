@@ -14,8 +14,15 @@ import 'package:portfolio/src/shared/open_external_url.dart';
 import '../shared/footer.dart';
 import 'widgets/connectivity_widget.dart';
 
-class ContactsPage extends StatelessWidget {
+class ContactsPage extends StatefulWidget {
   const ContactsPage({super.key});
+
+  @override
+  State<ContactsPage> createState() => _ContactsPageState();
+}
+
+class _ContactsPageState extends State<ContactsPage> {
+  bool isMobile = false;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +38,7 @@ class ContactsPage extends StatelessWidget {
                 final size = constraints.maxWidth;
 
                 if (size < 550) {
+                  isMobile = true;
                   return mobile(appText: appText, size: size);
                 }
 
@@ -38,7 +46,7 @@ class ContactsPage extends StatelessWidget {
               },
             ),
           ),
-          Footer(isMobile: true),
+          Footer(isMobile: isMobile),
         ],
       ),
     );
@@ -49,7 +57,7 @@ class ContactsPage extends StatelessWidget {
       children: [
         description(appText: appText, size: size),
 
-        ContactForm(),
+        ContactForm(isMobile: true),
       ],
     );
   }

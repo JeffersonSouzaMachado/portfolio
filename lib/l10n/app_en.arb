@@ -13,7 +13,7 @@
   "highPerformance": "High-Performance",
   "mobileEcosystems": "Mobile Ecosystems",
   "aboutDescription": "Mobile Developer specializing in Flutter and Dart, with a focus on performance, fluid interfaces, and robust software architecture. I build responsive and well-structured experiences for mobile and web applications.",
-  "viewWorks" : "View Works",
+  "viewWorks" : "Works",
   "github" : "Github",
   "labelName": "Name",
   "labelLastName":"Last Name",
@@ -36,5 +36,9 @@
   "readyToJumpIn" : "Ready to jump in?",
   "scheduleAnCall" : "Schedule a 15-min discovery call.",
   "schedule" : "Book",
-  "underConstruction" : "Under Construction"
+  "underConstruction" : "Under Construction",
+  "experienceYears" : "years experience",
+  "appsInProduction" : "production apps",
+  "activeUsers" : "active users",
+  "mergedPrs" : "prs merger/mo"
 }

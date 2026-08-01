@@ -13,7 +13,9 @@ import '../../../core/shared/design/theme/app_text.dart';
 import '../../../l10n/app_localizations.dart';
 
 class ContactForm extends StatelessWidget {
-  ContactForm({super.key});
+  ContactForm({super.key, this.isMobile = false});
+
+  final bool isMobile;
 
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
@@ -41,27 +43,46 @@ class ContactForm extends StatelessWidget {
             child: Column(
               spacing: AppSpacing.lg,
               children: [
-                Row(
-                  spacing: AppSpacing.md,
-                  children: [
-                    Flexible(
-                      child: FormContactField(
+                if (isMobile)
+                  Column(
+                    spacing: 20,
+                    children: [
+                      FormContactField(
                         label: appText.labelName,
                         hintText: "John",
                         controller: _nameController,
                         validator: validateName,
                       ),
-                    ),
-                    Flexible(
-                      child: FormContactField(
+                      FormContactField(
                         label: appText.labelLastName,
                         hintText: "Doe",
                         controller: _lastNameController,
                         validator: validateLastName,
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  )
+                else
+                  Row(
+                    spacing: AppSpacing.md,
+                    children: [
+                      Flexible(
+                        child: FormContactField(
+                          label: appText.labelName,
+                          hintText: "John",
+                          controller: _nameController,
+                          validator: validateName,
+                        ),
+                      ),
+                      Flexible(
+                        child: FormContactField(
+                          label: appText.labelLastName,
+                          hintText: "Doe",
+                          controller: _lastNameController,
+                          validator: validateLastName,
+                        ),
+                      ),
+                    ],
+                  ),
                 FormContactField(
                   label: appText.labelEmail,
                   hintText: "john@company.com",

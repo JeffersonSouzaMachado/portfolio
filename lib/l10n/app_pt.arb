@@ -36,5 +36,9 @@
   "readyToJumpIn" : "Vamos conversar?",
   "scheduleAnCall" : "Agende uma chamada de 15 minutos.",
   "schedule" : "Agendar",
-  "underConstruction" : "Em Construção"
+  "underConstruction" : "Em Construção",
+  "experienceYears" : "anos de experiência",
+  "appsInProduction" : "Apps em produção",
+  "activeUsers" : "usuários ativos",
+  "mergedPrs" : "PRs Mergeados/ME"
 }
