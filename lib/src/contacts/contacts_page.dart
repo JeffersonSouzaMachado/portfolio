@@ -11,6 +11,7 @@ import 'package:portfolio/src/contacts/widgets/contact_form.dart';
 import 'package:portfolio/src/shared/gradient_container.dart';
 import 'package:portfolio/src/shared/open_external_url.dart';
 
+import '../shared/footer.dart';
 import 'widgets/connectivity_widget.dart';
 
 class ContactsPage extends StatelessWidget {
@@ -20,49 +21,52 @@ class ContactsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final appText = AppLocalizations.of(context)!;
 
-    return Padding(
-      padding: EdgeInsets.all(AppSpacing.gutter),
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          final size = constraints.maxWidth;
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.all(AppSpacing.gutter),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final size = constraints.maxWidth;
 
-          if (size < 550) {
-            return mobile(appText: appText, size: size);
-          }
+                if (size < 550) {
+                  return mobile(appText: appText, size: size);
+                }
 
-          return desktop(appText: appText, size: size);
-        },
+                return desktop(appText: appText, size: size);
+              },
+            ),
+          ),
+          Footer(isMobile: true),
+        ],
       ),
     );
   }
 
   Widget mobile({required AppLocalizations appText, required double size}) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          description(appText: appText, size: size),
+    return Column(
+      children: [
+        description(appText: appText, size: size),
 
-          ContactForm(),
-        ],
-      ),
+        ContactForm(),
+      ],
     );
   }
 
   Widget desktop({required AppLocalizations appText, required double size}) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Expanded(
-                child: description(appText: appText, size: size),
-              ),
-              SizedBox(width: 50),
-              Expanded(child: ContactForm()),
-            ],
-          ),
-        ],
-      ),
+    return Column(
+      children: [
+        Row(
+          children: [
+            Expanded(
+              child: description(appText: appText, size: size),
+            ),
+            SizedBox(width: 50),
+            Expanded(child: ContactForm()),
+          ],
+        ),
+      ],
     );
   }
 
@@ -97,19 +101,18 @@ class ContactsPage extends StatelessWidget {
           child: Column(
             spacing: 30,
             children: [
-              //TODO Melhorar esse cara aqui
               ConnectivityWidget(
                 icon: Icons.mail_outline,
-                label: size < 344 ? null : appText.writeToMe,
-                text: size < 344 ? null : email,
-                isCircle: size < 344 ? true : false,
+                label: appText.writeToMe,
+                text: email,
+                isCircle: false,
               ),
 
               ConnectivityWidget(
                 icon: Icons.location_on_sharp,
-                label: size < 344 ? null : appText.operationBase,
-                text: size < 344 ? null : localOperationBase,
-                isCircle: size < 344 ? true : false,
+                label: appText.operationBase,
+                text: localOperationBase,
+                isCircle: false,
               ),
             ],
           ),

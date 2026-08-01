@@ -1,1 +1,1 @@
-const localOperationBase = "São José dos Campos, SP - BR";
+const localOperationBase = "São Paulo - Brasil";

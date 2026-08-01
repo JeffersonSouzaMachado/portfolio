@@ -11,7 +11,6 @@ class AvailableHeaderTag extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 30,
       decoration: BoxDecoration(
         color: AppColors.onSecondaryFixedVariant.withValues(alpha: 0.1),
         borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -25,6 +24,7 @@ class AvailableHeaderTag extends StatelessWidget {
           children: [
             Container(
               width: 10,
+              height: 20,
               decoration: BoxDecoration(
                 color: AppColors.accent,
                 shape: BoxShape.circle,
@@ -34,6 +34,7 @@ class AvailableHeaderTag extends StatelessWidget {
             Flexible(
               child: AppText(
                 appText.availableForProjects,
+                maxLines: 2,
                 color: AppColors.accent,
               ),
             ),

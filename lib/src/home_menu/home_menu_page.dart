@@ -94,18 +94,7 @@ class _HomeMenuPageState extends State<HomeMenuPage> {
                 ),
               ),
               Expanded(child: widget.child),
-              LayoutBuilder(
-                builder: (context, constraints) {
-                  final size = constraints.maxWidth;
-                  bool isMobile = false;
 
-                  if (size < 550) {
-                    isMobile = true;
-                  }
-
-                  return Footer(isMobile: isMobile);
-                },
-              ),
             ],
           ),
         ),

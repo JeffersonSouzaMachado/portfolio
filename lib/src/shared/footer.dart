@@ -18,7 +18,7 @@ class Footer extends StatelessWidget {
     final appText = AppLocalizations.of(context)!;
 
     return Container(
-      height: isMobile ? 120 : 80,
+      height: isMobile ? 130 : 80,
       color: AppColors.outlineVariant.withValues(alpha: 0.01),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -48,8 +48,9 @@ class Footer extends StatelessWidget {
       ),
       Flexible(
         child: Text(
-          '©1989 - 2027 theDevJeff  -  Built for High-Performance',
-          maxLines: 1,
+          '©1989 - 2027 Built for High-Performance',
+          maxLines: 2,
+          textAlign: TextAlign.center,
           style: AppTypography.bodySm.copyWith(color: AppColors.inversePrimary),
         ),
       ),
