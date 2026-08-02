@@ -3,7 +3,6 @@ import 'package:portfolio/core/shared/design/theme/app_colors.dart';
 import 'package:portfolio/core/shared/design/theme/app_radius.dart';
 import 'package:portfolio/core/shared/design/theme/app_spacings.dart';
 import 'package:portfolio/core/shared/design/theme/app_typography.dart';
-import 'package:portfolio/src/home/presentation/widgets/metric_resume_model.dart';
 
 import '../../../../core/shared/const/temp_data_list.dart';
 import '../../../../l10n/app_localizations.dart';

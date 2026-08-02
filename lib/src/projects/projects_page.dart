@@ -113,7 +113,7 @@ class ShowCaseApp extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Text(
-                project.companyName,
+                project.shortCompanyName,
                 style: AppTypography.labelMd.copyWith(
                   color: AppColors.accent,
                   fontSize: 24,
