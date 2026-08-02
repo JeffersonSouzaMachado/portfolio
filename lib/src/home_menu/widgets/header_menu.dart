@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:portfolio/core/router/routes.dart';
 import 'package:portfolio/core/shared/design/theme/app_colors.dart';
 import 'package:portfolio/core/shared/design/theme/app_text.dart';
 
@@ -34,10 +35,15 @@ class _HeaderMenuState extends ConsumerState<HeaderMenu> {
   @override
   Widget build(BuildContext context) {
     final currentRoute = GoRouterState.of(context).uri.path;
+    int routeIndex = 0;
 
-    final routeIndex = widget.menuItems.indexWhere(
-          (item) => item.route == currentRoute,
-    );
+    if (currentRoute == Routes.project) {
+      routeIndex = 1;
+    } else {
+      routeIndex = widget.menuItems.indexWhere(
+        (item) => item.route == currentRoute,
+      );
+    }
 
     final activeIndex = routeIndex == -1 ? 0 : routeIndex;
     final selectedIndex = hoveredIndex ?? activeIndex;
@@ -75,9 +81,7 @@ class _HeaderMenuState extends ConsumerState<HeaderMenu> {
               child: GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 onTap: _controller.hide,
-                child: Container(
-                  color: Colors.black.withValues(alpha: 0.35),
-                ),
+                child: Container(color: Colors.black.withValues(alpha: 0.35)),
               ),
             ),
 
@@ -119,10 +123,7 @@ class _HeaderMenuState extends ConsumerState<HeaderMenu> {
       child: IconButton(
         tooltip: 'Abrir menu',
         onPressed: _controller.toggle,
-        icon: Icon(
-          Icons.menu,
-          color: AppColors.inversePrimary,
-        ),
+        icon: Icon(Icons.menu, color: AppColors.inversePrimary),
       ),
     );
   }
@@ -134,15 +135,11 @@ class _HeaderMenuState extends ConsumerState<HeaderMenu> {
     return ListTile(
       leading: Icon(
         item.icon,
-        color: isActive
-            ? AppColors.secondary
-            : AppColors.inversePrimary,
+        color: isActive ? AppColors.secondary : AppColors.inversePrimary,
       ),
       title: AppText(
         item.title,
-        color: isActive
-            ? AppColors.secondary
-            : AppColors.inversePrimary,
+        color: isActive ? AppColors.secondary : AppColors.inversePrimary,
       ),
       selected: isActive,
       onTap: () {
@@ -184,14 +181,8 @@ class _HeaderMenuState extends ConsumerState<HeaderMenu> {
                     context.go(item.route);
                   },
                   child: showIcon
-                      ? Icon(
-                    item.icon,
-                    color: AppColors.inversePrimary,
-                  )
-                      : AppText(
-                    item.title,
-                    color: AppColors.inversePrimary,
-                  ),
+                      ? Icon(item.icon, color: AppColors.inversePrimary)
+                      : AppText(item.title, color: AppColors.inversePrimary),
                 ),
               ),
             );

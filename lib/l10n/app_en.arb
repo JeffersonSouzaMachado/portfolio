@@ -40,5 +40,5 @@
   "experienceYears" : "years experience",
   "appsInProduction" : "production apps",
   "activeUsers" : "active users",
-  "mergedPrs" : "prs merger/mo"
+  "mergedPrs" : "prs merged/mo"
 }

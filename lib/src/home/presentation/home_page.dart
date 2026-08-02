@@ -86,7 +86,7 @@ class HomePage extends StatelessWidget {
             child: Center(child: MetricResume()),
           ),
 
-          Footer(isMobile: true),
+          Footer(),
         ],
       ),
     );

@@ -5,6 +5,7 @@ import 'package:portfolio/core/shared/design/theme/app_spacings.dart';
 import 'package:portfolio/core/shared/design/theme/app_typography.dart';
 import 'package:portfolio/src/home/presentation/widgets/metric_resume_model.dart';
 
+import '../../../../core/shared/const/temp_data_list.dart';
 import '../../../../l10n/app_localizations.dart';
 
 class MetricResume extends StatelessWidget {
@@ -82,29 +83,4 @@ class MetricResume extends StatelessWidget {
       }).toList(),
     );
   }
-}
-
-List<MetricResumeModel> getMetricResume(AppLocalizations appText) {
-  return [
-    MetricResumeModel(
-      title: "04+",
-      text: appText.experienceYears,
-      color: AppColors.accent,
-    ),
-    MetricResumeModel(
-      title: "14",
-      text: appText.appsInProduction,
-      color: AppColors.secondary,
-    ),
-    MetricResumeModel(
-      title: "5.6M",
-      text: appText.activeUsers,
-      color: AppColors.errorContainer,
-    ),
-    MetricResumeModel(
-      title: "110+",
-      text: appText.mergedPrs,
-      color: AppColors.secondaryFixedDim,
-    ),
-  ];
 }

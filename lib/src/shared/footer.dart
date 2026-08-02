@@ -5,38 +5,55 @@ import 'package:portfolio/l10n/app_localizations.dart';
 import 'package:portfolio/src/shared/open_external_url.dart';
 
 import '../../core/shared/design/theme/app_colors.dart';
-import '../../core/shared/design/theme/app_spacings.dart';
 import '../../core/shared/design/theme/app_text.dart';
 
-class Footer extends StatelessWidget {
-  const Footer({super.key, this.isMobile = false});
+class Footer extends StatefulWidget {
+  const Footer({super.key});
 
-  final bool isMobile;
+  @override
+  State<Footer> createState() => _FooterState();
+}
+
+class _FooterState extends State<Footer> {
+  bool isMobile = false;
 
   @override
   Widget build(BuildContext context) {
     final appText = AppLocalizations.of(context)!;
 
-    return Container(
-      height: isMobile ? 130 : 80,
-      color: AppColors.outlineVariant.withValues(alpha: 0.01),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: isMobile
-            ? Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                spacing: 10,
-                children: widget(appText),
-              )
-            : Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: widget(appText)),
-      ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final size = constraints.maxWidth;
+
+        if (size < 550) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            setState(() => isMobile = true);
+          });
+        }
+
+        return Container(
+          height: isMobile ? 130 : 80,
+          color: AppColors.outlineVariant.withValues(alpha: 0.01),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: isMobile
+                ? Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    spacing: 10,
+                    children: widgetBar(appText),
+                  )
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: widgetBar(appText),
+                  ),
+          ),
+        );
+      },
     );
   }
 
-  List<Widget> widget(AppLocalizations appText) {
+  List<Widget> widgetBar(AppLocalizations appText) {
     return [
       Flexible(
         child: AppText(
@@ -56,7 +73,9 @@ class Footer extends StatelessWidget {
       ),
 
       Row(
-         mainAxisAlignment: isMobile ? MainAxisAlignment.center : MainAxisAlignment.start,
+        mainAxisAlignment: isMobile
+            ? MainAxisAlignment.center
+            : MainAxisAlignment.start,
         children: [
           TextButton(
             onPressed: () {

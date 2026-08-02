@@ -3,4 +3,5 @@ class Routes {
   static const projects = '/projects';
   static const skills = '/skills';
   static const contact = '/contact';
+  static const project = '/project';
 }
