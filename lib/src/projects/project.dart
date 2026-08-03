@@ -3,8 +3,8 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:portfolio/core/shared/design/icons/images_app.dart';
 import 'package:portfolio/core/shared/design/theme/app_colors.dart';
 import 'package:portfolio/core/shared/design/theme/app_typography.dart';
+import 'package:portfolio/l10n/app_localizations.dart';
 import 'package:portfolio/src/projects/widgets/app_mockup.dart';
-import 'package:portfolio/src/projects/widgets/custom_container.dart';
 import 'package:portfolio/src/projects/widgets/dynamic_container.dart';
 import 'package:portfolio/src/projects/widgets/project_model.dart';
 import 'package:portfolio/src/projects/widgets/section_header.dart';
@@ -18,6 +18,8 @@ class Project extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appText = AppLocalizations.of(context)!;
+
     return Column(
       children: [
         Expanded(
@@ -94,7 +96,7 @@ class Project extends StatelessWidget {
                             crossAxisAlignment: .start,
                             children: [
                               ...sectionHeader(
-                                title: 'Overview',
+                                title: appText.appOverview,
                                 text: project.appOverview,
                                 icon: Icons.info_outline_rounded,
                               ),
@@ -113,7 +115,7 @@ class Project extends StatelessWidget {
                                       width: 345,
                                       height: 190,
                                       icon: LucideIcons.puzzle,
-                                      title: 'O Desafio',
+                                      title: appText.appChallenge,
                                       text: project.appChallenge,
                                     ),
 
@@ -121,7 +123,7 @@ class Project extends StatelessWidget {
                                       width: 345,
                                       height: 190,
                                       icon: LucideIcons.wandSparkles,
-                                      title: 'A Solução',
+                                      title: appText.appSolution,
                                       text: project.appSolution,
                                     ),
                                   ],
@@ -138,8 +140,11 @@ class Project extends StatelessWidget {
                       ],
                     ),
                   ),
-
-                 AppMockups(appMockupsList: project.appMockups,)
+                  AppMockups(
+                    headTitle: appText.projectMockups,
+                    icon: LucideIcons.images,
+                    appMockupsList: project.appMockups,
+                  ),
                 ],
               ),
             ),

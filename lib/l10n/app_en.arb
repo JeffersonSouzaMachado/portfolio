@@ -40,5 +40,17 @@
   "experienceYears" : "years experience",
   "appsInProduction" : "production apps",
   "activeUsers" : "active users",
-  "mergedPrs" : "prs merged/mo"
+  "mergedPrs" : "prs merged/mo",
+  "projectMockups" : "Project Mockups",
+  "appOverview" : "Overview",
+  "appChallenge" : "The Challenge",
+  "appSolution" : "The Solution",
+  "showcaseHeadTitle" : "Engineering Excelence",
+  "showcaseHeadText" :"A curated showcase of high-performance mobile applications, ranging from fintech solutions to real-time communication platforms. Built with precision and optimized for the modern edge.",
+  "seeMore" : "See more",
+  "helpneiShortDescription": "Helpnei is a social impact platform that connects sponsoring companies with people facing economic vulnerability.",
+  "helpneiCompanyDescription": "Helpnei is a social impact platform that connects sponsoring companies with people in situations of economic vulnerability who want to become entrepreneurs. Through a monthly subscription model, companies sponsor the training of new entrepreneurs, who receive coaching, ongoing support, and access to an online store integrated with major partner brands such as Magalu, Natura, Avon, and Shopee.",
+  "helpneiOverview": "I worked on the app's development from the prototyping stage, taking part in the entire process — from creative conception to deployment on the Apple App Store and Play Store. I was involved from the very first screen, with designs and flows created in Miro and Figma. In development, I implemented authentication, database, and storage using Firebase (Auth, Firestore, and Database), as well as features like automatic PDF generation and email delivery, and geolocation. I also integrated Sentry for error monitoring and implemented the payment method via Stark Bank. I later led the migration of the infrastructure to a proprietary backend.",
+  "helpneiChallenge": "During registration, with the user's authorization, we collected geolocation data and building/condominium information, storing it in a table for later use on the platform. As the user base grew, the number of calls to the Google Maps API (used to look up location and site data) increased proportionally, significantly raising operational costs and highlighting the need to rethink this integration strategy.",
+  "helpneiResolution": "I restructured the lookup flow into two steps: for each new registration, we would fetch only the user's latitude and longitude (free of charge). Using those coordinates, we would query a cache table of buildings/condominiums already mapped in the region. If data already existed for that point, no new call was made. Otherwise, we would search for buildings within a 10 km radius — a query that already returned in a single call — and store the result in the cache for reuse in future registrations in the same area."
 }

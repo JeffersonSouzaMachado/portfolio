@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:portfolio/src/projects/widgets/section_header.dart';
 
 class AppMockups extends StatelessWidget {
-  const AppMockups({super.key, required this.appMockupsList});
+  const AppMockups({super.key, required this.appMockupsList, required this.headTitle, required this.icon});
 
   final List<String> appMockupsList;
+  final String headTitle;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ...sectionHeader(title: 'Imagens do Projeto', icon: LucideIcons.images),
+        ...sectionHeader(title: headTitle, icon: icon),
         Row(
           children: appMockupsList.map((item) {
             return Padding(
