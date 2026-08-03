@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/src/projects/widgets/section_header.dart';
 
 class AppMockups extends StatelessWidget {
-  const AppMockups({super.key, required this.appMockupsList, required this.headTitle, required this.icon});
+  const AppMockups({
+    super.key,
+    required this.appMockupsList,
+    required this.headTitle,
+    required this.icon,
+  });
 
   final List<String> appMockupsList;
   final String headTitle;
@@ -13,19 +18,27 @@ class AppMockups extends StatelessWidget {
     return Column(
       children: [
         ...sectionHeader(title: headTitle, icon: icon),
-        Row(
-          children: appMockupsList.map((item) {
-            return Padding(
-              padding: const EdgeInsets.all(10),
-              child: SizedBox(
-                width: 220,
-                child: ClipRRect(
-                  borderRadius: BorderRadiusGeometry.circular(20),
-                  child: Image.asset(item),
+        SizedBox(
+          height: 390,
+          child: ListView.builder(
+
+            scrollDirection: Axis.horizontal,
+            itemCount: appMockupsList.length,
+            itemBuilder: (context, index) {
+              final item = appMockupsList[index];
+
+              return Padding(
+                padding: const EdgeInsets.all(10),
+                child: SizedBox(
+                  width: 220,
+                  child: ClipRRect(
+                    borderRadius: BorderRadiusGeometry.circular(20),
+                    child: Image.asset(item),
+                  ),
                 ),
-              ),
-            );
-          }).toList(),
+              );
+            },
+          ),
         ),
       ],
     );

@@ -20,140 +20,202 @@ class Project extends StatelessWidget {
   Widget build(BuildContext context) {
     final appText = AppLocalizations.of(context)!;
 
-    return Column(
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isMobile = constraints.maxWidth < 550;
+
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Stack(
+                  children: [
+                    SizedBox(
+                      width: double.infinity,
+                      height: isMobile ? 240 : null,
+                      child: Image.asset(
+                        ImagesApp.helpneiMainLogo,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Positioned(
+                      top: isMobile ? 160 : 420,
+                      left: 0,
+                      right: 0,
+                      child: Container(
+                        width: double.infinity,
+                        height: isMobile ? 100 : 200,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [Colors.transparent, AppColors.primary],
+                            stops: const [0.0, 0.5],
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    Positioned(
+                      top: isMobile ? 170 : 500,
+                      left: 20,
+                      right: 20,
+                      child: Text(
+                        project.companyFullName,
+                        maxLines: 2,
+                        style: isMobile
+                            ? AppTypography.headlineLgMobile.copyWith(
+                                color: AppColors.tertiaryContainer,
+                              )
+                            : AppTypography.headlineLg.copyWith(
+                                color: AppColors.tertiaryContainer,
+                              ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  children: [
+                    Text(
+                      project.companyDescription,
+                      style: AppTypography.bodyMd.copyWith(
+                        color: AppColors.inversePrimary,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              if (isMobile)
+                mobile(
+                  sectionTitle: appText.appOverview,
+                  project: project,
+                  appText: appText,
+                )
+              else
+                desktop(appText: appText, project: project),
+
+              Footer(),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}
+
+Widget mobile({
+  required String sectionTitle,
+  required ProjectModel project,
+  required AppLocalizations appText,
+}) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+    child: Column(
+      children: [
+        ...sectionHeader(
+          title: sectionTitle,
+          text: project.appOverview,
+          icon: Icons.info_outline_rounded,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 30),
+          child: TechStackContainer(stack: project.techStack, isMobile: true),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 30, bottom: 30),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: .start,
+            spacing: 30,
+            children: [
+              DynamicContainer(
+                width: double.infinity,
+                height: 190,
+                icon: LucideIcons.puzzle,
+                title: appText.appChallenge,
+                text: project.appChallenge,
+              ),
+
+              DynamicContainer(
+                width: double.infinity,
+                height: 190,
+                icon: LucideIcons.wandSparkles,
+                title: appText.appSolution,
+                text: project.appSolution,
+              ),
+            ],
+          ),
+        ),
+        AppMockups(
+          headTitle: appText.projectMockups,
+          icon: LucideIcons.images,
+          appMockupsList: project.appMockups,
+        ),
+      ],
+    ),
+  );
+}
+
+Widget desktop({
+  required AppLocalizations appText,
+  required ProjectModel project,
+}) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 25),
+    child: Row(
+      crossAxisAlignment: .start,
+
       children: [
         Expanded(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 500,
-                    width: double.infinity,
-                    child: Stack(
-                      children: [
-                        SizedBox(
-                          width: double.infinity,
-                          child: Image.asset(
-                            ImagesApp.helpneiMainLogo,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Positioned(
-                          top: 300,
-                          left: 0,
-                          right: 0,
-                          child: Container(
-                            width: double.infinity,
-                            height: 300,
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [Colors.transparent, AppColors.primary],
-                                stops: const [0.0, 0.5],
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          top: 340,
-                          left: 20,
-                          right: 120,
-
-                          child: Column(
-                            mainAxisAlignment: .start,
-                            crossAxisAlignment: .start,
-                            spacing: 20,
-                            children: [
-                              Text(
-                                project.companyFullName,
-                                style: AppTypography.headlineLg.copyWith(
-                                  color: AppColors.tertiaryContainer,
-                                ),
-                              ),
-                              Text(
-                                project.companyDescription,
-                                style: AppTypography.bodyMd.copyWith(
-                                  color: AppColors.inversePrimary,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 50),
-                    child: Row(
-                      crossAxisAlignment: .start,
-
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: .start,
-                            children: [
-                              ...sectionHeader(
-                                title: appText.appOverview,
-                                text: project.appOverview,
-                                icon: Icons.info_outline_rounded,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 0,
-                                  right: 30,
-                                  top: 30,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: .start,
-                                  children: [
-                                    DynamicContainer(
-                                      width: 345,
-                                      height: 190,
-                                      icon: LucideIcons.puzzle,
-                                      title: appText.appChallenge,
-                                      text: project.appChallenge,
-                                    ),
-
-                                    DynamicContainer(
-                                      width: 345,
-                                      height: 190,
-                                      icon: LucideIcons.wandSparkles,
-                                      title: appText.appSolution,
-                                      text: project.appSolution,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10),
-                          child: TechStackContainer(stack: project.techStack),
-                        ),
-                      ],
-                    ),
-                  ),
-                  AppMockups(
-                    headTitle: appText.projectMockups,
-                    icon: LucideIcons.images,
-                    appMockupsList: project.appMockups,
-                  ),
-                ],
+          flex: 3,
+          child: Column(
+            crossAxisAlignment: .start,
+            children: [
+              ...sectionHeader(
+                title: appText.appOverview,
+                text: project.appOverview,
+                icon: Icons.info_outline_rounded,
               ),
-            ),
+              Padding(
+                padding: const EdgeInsets.only(left: 0, right: 30, top: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: .start,
+                  children: [
+                    DynamicContainer(
+                      width: 345,
+                      height: 190,
+                      icon: LucideIcons.puzzle,
+                      title: appText.appChallenge,
+                      text: project.appChallenge,
+                    ),
+
+                    DynamicContainer(
+                      width: 345,
+                      height: 190,
+                      icon: LucideIcons.wandSparkles,
+                      title: appText.appSolution,
+                      text: project.appSolution,
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
 
-        SizedBox(height: 30),
-        Footer(),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 10),
+            child: TechStackContainer(stack: project.techStack),
+          ),
+        ),
       ],
-    );
-  }
+    ),
+  );
 }

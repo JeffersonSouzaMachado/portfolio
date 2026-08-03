@@ -5,15 +5,67 @@ import 'package:portfolio/src/projects/widgets/custom_container.dart';
 import 'package:portfolio/src/projects/widgets/tech_stack_model.dart';
 
 class TechStackContainer extends StatelessWidget {
-  const TechStackContainer({super.key, required this.stack});
+  const TechStackContainer({
+    super.key,
+    required this.stack,
+    this.isMobile = false,
+  });
 
   final List<TechStackModel> stack;
+  final bool isMobile;
 
   @override
   Widget build(BuildContext context) {
+    if (isMobile) {
+      return Column(
+        crossAxisAlignment: .start,
+        children: [
+          Text(
+            'Tech Stack',
+            style: AppTypography.bodyMd.copyWith(color: AppColors.accent),
+          ),
+          SizedBox(height: 20),
+          GridView.builder(
+            shrinkWrap: true,
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 100,
+              mainAxisExtent: 80,
+              crossAxisSpacing: 15,
+              mainAxisSpacing: 15,
+            ),
+            itemCount: stack.length,
+            itemBuilder: (context, index) {
+              final item = stack[index];
+
+              return CustomContainer(
+                radius: 10,
+                child: Padding(
+                  padding: const EdgeInsets.all(6),
+                  child: Column(
+                    mainAxisAlignment: .center,
+                    spacing: 10,
+                    children: [
+                      Icon(item.icon, color: AppColors.inversePrimary),
+                      Text(
+                        item.stack,
+                        textAlign: TextAlign.center,
+                        maxLines: 2,
+                        style: AppTypography.labelMd.copyWith(
+                          color: AppColors.inversePrimary,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        ],
+      );
+    }
+
     return CustomContainer(
-      width: 300,
-      height: 400,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
         child: Column(
@@ -23,45 +75,44 @@ class TechStackContainer extends StatelessWidget {
               'Tech Stack',
               style: AppTypography.bodyMd.copyWith(color: AppColors.accent),
             ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                child: ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: stack.length,
-                  itemBuilder: (context, index) {
-                    final item = stack[index];
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              child: ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: stack.length,
+                itemBuilder: (context, index) {
+                  final item = stack[index];
 
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 5),
-                      child: Row(
-                        children: [
-                          Container(
-                            width: 30,
-                            height: 30,
-                            decoration: BoxDecoration(
-                              color: AppColors.primary,
-                              shape: BoxShape.circle,
-                            ),
-                            child: Icon(
-                              item.icon,
-                              color: AppColors.inversePrimary,
-                              size: 15,
-                            ),
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 5),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 30,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            color: AppColors.primary,
+                            shape: BoxShape.circle,
                           ),
-                          SizedBox(width: 10,),
-                          Text(
-                            item.stack,
-                            style: AppTypography.labelMd.copyWith(
-                              color: AppColors.inversePrimary,
-                              fontSize: 18
-                            ),
+                          child: Icon(
+                            item.icon,
+                            color: AppColors.inversePrimary,
+                            size: 15,
                           ),
-                        ],
-                      ),
-                    );
-                  },
-                ),
+                        ),
+                        SizedBox(width: 10),
+                        Text(
+                          item.stack,
+                          style: AppTypography.labelMd.copyWith(
+                            color: AppColors.inversePrimary,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
             ),
           ],
