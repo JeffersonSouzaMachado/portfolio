@@ -1,7 +1,9 @@
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:portfolio/core/shared/design/icons/images_app.dart';
 import 'package:portfolio/core/shared/design/theme/app_colors.dart';
 import 'package:portfolio/src/home/presentation/widgets/metric_resume_model.dart';
 import 'package:portfolio/src/projects/widgets/project_model.dart';
+import 'package:portfolio/src/projects/widgets/tech_stack_model.dart';
 
 import '../../../l10n/app_localizations.dart';
 
@@ -58,8 +60,21 @@ List<ProjectModel> getDataProject(AppLocalizations appText) {
           'Caso já existissem dados para aquele ponto, nenhuma nova chamada era feita. Caso contrário, buscávamos os condomínios num '
           'raio de 10 km — dado que já retornava em uma única chamada — e armazenávamos o resultado no cache para reutilização em '
           'cadastros futuros na mesma área.',
-      techStack: ['techStack'],
-      appMockups: ['appMockups'],
+      techStack: [
+        TechStackModel(icon: LucideIcons.code, stack: 'Flutter/Dart'),
+        TechStackModel(icon: LucideIcons.database, stack: 'Firebase'),
+        TechStackModel(icon: LucideIcons.mapPin, stack: 'Geo Location'),
+        TechStackModel(icon: LucideIcons.gitGraph, stack: 'Github'),
+        TechStackModel(icon: LucideIcons.bug, stack: 'Sentry'),
+        TechStackModel(icon: LucideIcons.cloudUpload, stack: 'Codemagic'),
+        TechStackModel(icon: LucideIcons.notepadText, stack: 'Jira'),
+        TechStackModel(icon: LucideIcons.penTool, stack: 'Miro'),
+      ],
+      appMockups: [
+        'assets/images/1.webp',
+        'assets/images/2.webp',
+        'assets/images/3.webp',
+      ],
     ),
   ];
 }

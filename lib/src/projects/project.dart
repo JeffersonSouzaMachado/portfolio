@@ -3,8 +3,12 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:portfolio/core/shared/design/icons/images_app.dart';
 import 'package:portfolio/core/shared/design/theme/app_colors.dart';
 import 'package:portfolio/core/shared/design/theme/app_typography.dart';
+import 'package:portfolio/src/projects/widgets/app_mockup.dart';
+import 'package:portfolio/src/projects/widgets/custom_container.dart';
 import 'package:portfolio/src/projects/widgets/dynamic_container.dart';
 import 'package:portfolio/src/projects/widgets/project_model.dart';
+import 'package:portfolio/src/projects/widgets/section_header.dart';
+import 'package:portfolio/src/projects/widgets/tech_stack_container.dart';
 import 'package:portfolio/src/shared/footer.dart';
 
 class Project extends StatelessWidget {
@@ -89,7 +93,7 @@ class Project extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: .start,
                             children: [
-                              ...sectionTitle(
+                              ...sectionHeader(
                                 title: 'Overview',
                                 text: project.appOverview,
                                 icon: Icons.info_outline_rounded,
@@ -129,99 +133,22 @@ class Project extends StatelessWidget {
 
                         Padding(
                           padding: const EdgeInsets.only(top: 10),
-                          child: customContainer(
-                            width: 300,
-                            height: 400,
-                            child: Icon(Icons.safety_divider),
-                          ),
+                          child: TechStackContainer(stack: project.techStack),
                         ),
                       ],
                     ),
                   ),
 
-                  Column(
-                    children: [
-                      ...sectionTitle(
-                        title: 'Imagens do Projeto',
-                        icon: LucideIcons.images,
-                      ),
-                      Row(
-                        spacing: 20,
-                        children: [
-                          SizedBox(
-                            width: 300,
-                            child: ClipRRect(
-                              borderRadius: BorderRadiusGeometry.circular(20),
-                              child: Image.asset('assets/images/1.webp'),
-                            ),
-                          ), SizedBox(
-                            width: 300,
-                            child: ClipRRect(
-                              borderRadius: BorderRadiusGeometry.circular(20),
-                              child: Image.asset('assets/images/2.webp'),
-                            ),
-                          ), SizedBox(
-                            width: 300,
-                            child: ClipRRect(
-                              borderRadius: BorderRadiusGeometry.circular(20),
-                              child: Image.asset('assets/images/3.webp'),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                 AppMockups(appMockupsList: project.appMockups,)
                 ],
               ),
             ),
           ),
         ),
 
+        SizedBox(height: 30),
         Footer(),
       ],
     );
   }
-}
-
-List<Widget> sectionTitle({
-  required String title,
-  String? text,
-  required IconData icon,
-}) {
-  return [
-    Row(
-      spacing: 10,
-      children: [
-        Icon(icon, color: AppColors.accent),
-        Text(
-          title,
-          style: AppTypography.headlineLgMobile.copyWith(
-            color: AppColors.inversePrimary,
-          ),
-        ),
-      ],
-    ),
-    SizedBox(height: 20),
-    if (text != null)
-      Padding(
-        padding: const EdgeInsets.only(right: 30),
-        child: Text(
-          text,
-          style: AppTypography.bodySm.copyWith(color: AppColors.inversePrimary),
-        ),
-      ),
-  ];
-}
-
-Widget customContainer({double? width, double? height, required Widget child}) {
-  return Container(
-    width: width,
-    height: height,
-    decoration: BoxDecoration(
-      color: AppColors.primaryContainer,
-      borderRadius: BorderRadius.all(Radius.circular(20)),
-      border: Border.all(color: AppColors.accent.withValues(alpha: 0.1)),
-    ),
-    child: child,
-  );
 }

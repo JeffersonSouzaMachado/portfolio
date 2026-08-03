@@ -1,3 +1,5 @@
+import 'package:portfolio/src/projects/widgets/tech_stack_model.dart';
+
 class ProjectModel {
   ProjectModel({
     required this.cardImage,
@@ -20,6 +22,6 @@ class ProjectModel {
   final String appOverview;
   final String appChallenge;
   final String appSolution;
-  final List<String> techStack;
+  final List<TechStackModel> techStack;
   final List<String> appMockups;
 }

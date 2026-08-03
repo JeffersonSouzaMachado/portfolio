@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:portfolio/src/projects/widgets/custom_container.dart';
 
 import '../../../core/shared/design/theme/app_colors.dart';
 import '../../../core/shared/design/theme/app_typography.dart';
@@ -18,8 +19,8 @@ class DynamicContainer extends StatefulWidget {
   final IconData icon;
   final String title;
   final String text;
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
   final bool isMobile;
 
   @override
@@ -44,14 +45,9 @@ class _DynamicContainerState extends State<DynamicContainer> {
         duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
         alignment: Alignment.topCenter,
-        child: Container(
+        child: CustomContainer(
           width: widget.width,
           height: isExpand ? null : widget.height,
-          decoration: BoxDecoration(
-            color: AppColors.primaryContainer,
-            borderRadius: BorderRadius.all(Radius.circular(20)),
-            border: Border.all(color: AppColors.accent.withValues(alpha: 0.1)),
-          ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
             child: Column(
