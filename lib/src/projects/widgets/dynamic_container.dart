@@ -11,7 +11,6 @@ class DynamicContainer extends StatefulWidget {
     required this.icon,
     required this.title,
     required this.text,
-    required this.width,
     required this.height,
     this.isMobile = false,
   });
@@ -19,7 +18,6 @@ class DynamicContainer extends StatefulWidget {
   final IconData icon;
   final String title;
   final String text;
-  final double? width;
   final double? height;
   final bool isMobile;
 
@@ -46,7 +44,6 @@ class _DynamicContainerState extends State<DynamicContainer> {
         curve: Curves.easeInOut,
         alignment: Alignment.topCenter,
         child: CustomContainer(
-          width: widget.width,
           height: isExpand ? null : widget.height,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
@@ -57,10 +54,13 @@ class _DynamicContainerState extends State<DynamicContainer> {
                   spacing: 10,
                   children: [
                     Icon(widget.icon, color: AppColors.accent),
-                    Text(
-                      widget.title,
-                      style: AppTypography.headlineLgMobile.copyWith(
-                        color: AppColors.accent,
+                    Expanded(
+                      child: Text(
+                        widget.title,
+                        maxLines: 1,
+                        style: AppTypography.headlineLgMobile.copyWith(
+                          color: AppColors.accent,
+                        ),
                       ),
                     ),
 

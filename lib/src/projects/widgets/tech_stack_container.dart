@@ -3,6 +3,7 @@ import 'package:portfolio/core/shared/design/theme/app_colors.dart';
 import 'package:portfolio/core/shared/design/theme/app_typography.dart';
 import 'package:portfolio/src/projects/widgets/custom_container.dart';
 import 'package:portfolio/src/projects/widgets/tech_stack_model.dart';
+import 'package:portfolio/src/shared/build_icon.dart';
 
 class TechStackContainer extends StatelessWidget {
   const TechStackContainer({
@@ -45,11 +46,12 @@ class TechStackContainer extends StatelessWidget {
                     mainAxisAlignment: .center,
                     spacing: 10,
                     children: [
-                      Icon(item.icon, color: AppColors.inversePrimary),
+                      buildIcon(item.icon, color: AppColors.inversePrimary),
+
                       Text(
                         item.stack,
                         textAlign: TextAlign.center,
-                        maxLines: 2,
+                        maxLines: isMobile ? 2 : 1,
                         style: AppTypography.labelMd.copyWith(
                           color: AppColors.inversePrimary,
                           fontSize: 12,
@@ -90,23 +92,25 @@ class TechStackContainer extends StatelessWidget {
                       children: [
                         Container(
                           width: 30,
-                          height: 30,
                           decoration: BoxDecoration(
                             color: AppColors.primary,
                             shape: BoxShape.circle,
                           ),
-                          child: Icon(
+                          child: buildIcon(
                             item.icon,
                             color: AppColors.inversePrimary,
-                            size: 15,
                           ),
                         ),
                         SizedBox(width: 10),
-                        Text(
-                          item.stack,
-                          style: AppTypography.labelMd.copyWith(
-                            color: AppColors.inversePrimary,
-                            fontSize: 18,
+                        Expanded(
+                          child: Text(
+                            item.stack,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: AppTypography.labelMd.copyWith(
+                              color: AppColors.inversePrimary,
+                              fontSize: 18,
+                            ),
                           ),
                         ),
                       ],

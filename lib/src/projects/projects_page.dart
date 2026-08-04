@@ -15,64 +15,70 @@ class ProjectsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final appText = AppLocalizations.of(context)!;
 
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Padding(
+    return Column(
+      children: [
+        Expanded(
+          child: Padding(
             padding: EdgeInsets.symmetric(
               vertical: AppSpacing.lg,
               horizontal: AppSpacing.xl,
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: 20,
-              children: [
-                Text(
-                  appText.showcaseHeadTitle,
-                  style: AppTypography.headlineLg.copyWith(
-                    color: AppColors.accent,
-                  ),
-                ),
-
-                SizedBox(
-                  width: 650,
-                  child: Text(
-                    appText.showcaseHeadText,
-                    style: AppTypography.bodyLg.copyWith(
-                      color: AppColors.inversePrimary,
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 20,
+                children: [
+                  Text(
+                    appText.showcaseHeadTitle,
+                    style: AppTypography.headlineLg.copyWith(
+                      color: AppColors.accent,
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 30),
-                  child: GridView.builder(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    gridDelegate:
-                        const SliverGridDelegateWithMaxCrossAxisExtent(
-                          maxCrossAxisExtent: 310,
-                          mainAxisExtent: 380,
-                          crossAxisSpacing: 30,
-                          mainAxisSpacing: 30,
-                        ),
-                    itemCount: getDataProject(appText).length,
-                    itemBuilder: (context, index) {
-                      return ShowCaseApp(
-                        project: getDataProject(appText)[index],
-                      );
-                    },
+
+                  SizedBox(
+                    width: 650,
+                    child: Text(
+                      appText.showcaseHeadText,
+                      style: AppTypography.bodyLg.copyWith(
+                        color: AppColors.inversePrimary,
+                      ),
+                    ),
                   ),
-                ),
-              ],
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30),
+                    child: GridView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      gridDelegate:
+                          const SliverGridDelegateWithMaxCrossAxisExtent(
+                            maxCrossAxisExtent: 310,
+                            mainAxisExtent: 380,
+                            crossAxisSpacing: 30,
+                            mainAxisSpacing: 30,
+                          ),
+                      itemCount: getDataProject(appText).length,
+                      itemBuilder: (context, index) {
+                        return ShowCaseApp(
+                          project: getDataProject(appText)[index],
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-          SizedBox(height: 50),
-          Footer(),
-        ],
-      ),
+        ),
+
+        LayoutBuilder(
+          builder: (context, constraints) {
+            final isMobile = constraints.maxWidth < 550;
+
+            return Footer(isMobile: isMobile);
+          },
+        ),
+      ],
     );
   }
 }
-
-

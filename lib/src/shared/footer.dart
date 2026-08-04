@@ -7,49 +7,32 @@ import 'package:portfolio/src/shared/open_external_url.dart';
 import '../../core/shared/design/theme/app_colors.dart';
 import '../../core/shared/design/theme/app_text.dart';
 
-class Footer extends StatefulWidget {
-  const Footer({super.key});
+class Footer extends StatelessWidget {
+  const Footer({super.key, this.isMobile = false});
 
-  @override
-  State<Footer> createState() => _FooterState();
-}
-
-class _FooterState extends State<Footer> {
-  bool isMobile = false;
+  final bool isMobile;
 
   @override
   Widget build(BuildContext context) {
     final appText = AppLocalizations.of(context)!;
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final size = constraints.maxWidth;
-
-        if (size < 550) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            setState(() => isMobile = true);
-          });
-        }
-
-        return Container(
-          height: isMobile ? 130 : 80,
-          color: AppColors.outlineVariant.withValues(alpha: 0.01),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: isMobile
-                ? Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    spacing: 10,
-                    children: widgetBar(appText),
-                  )
-                : Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: widgetBar(appText),
-                  ),
-          ),
-        );
-      },
+    return Container(
+      height: isMobile ? 130 : 80,
+      color: AppColors.outlineVariant.withValues(alpha: 0.01),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: isMobile
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                spacing: 10,
+                children: widgetBar(appText),
+              )
+            : Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: widgetBar(appText),
+              ),
+      ),
     );
   }
 

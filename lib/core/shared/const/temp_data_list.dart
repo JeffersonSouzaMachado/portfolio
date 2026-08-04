@@ -1,5 +1,6 @@
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:portfolio/core/shared/design/icons/images_app.dart';
+import 'package:portfolio/core/shared/design/icons/svg_app.dart';
 import 'package:portfolio/core/shared/design/theme/app_colors.dart';
 import 'package:portfolio/src/home/presentation/widgets/metric_resume_model.dart';
 import 'package:portfolio/src/projects/widgets/project_model.dart';
@@ -52,6 +53,8 @@ List<ProjectModel> getDataProject(AppLocalizations appText) {
         TechStackModel(icon: LucideIcons.cloudUpload, stack: 'Codemagic'),
         TechStackModel(icon: LucideIcons.notepadText, stack: 'Jira'),
         TechStackModel(icon: LucideIcons.penTool, stack: 'Miro'),
+        TechStackModel(icon: SvgApp.playStore, stack: 'Play Store'),
+        TechStackModel(icon: SvgApp.appleStore, stack: 'App Store'),
       ],
       appMockups: [
         'assets/images/1.webp',

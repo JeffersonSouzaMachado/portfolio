@@ -99,7 +99,7 @@ class Project extends StatelessWidget {
               else
                 desktop(appText: appText, project: project),
 
-              Footer(),
+              Footer(isMobile: isMobile,),
             ],
           ),
         );
@@ -134,7 +134,6 @@ Widget mobile({
             spacing: 30,
             children: [
               DynamicContainer(
-                width: double.infinity,
                 height: 190,
                 icon: LucideIcons.puzzle,
                 title: appText.appChallenge,
@@ -142,7 +141,6 @@ Widget mobile({
               ),
 
               DynamicContainer(
-                width: double.infinity,
                 height: 190,
                 icon: LucideIcons.wandSparkles,
                 title: appText.appSolution,
@@ -184,25 +182,35 @@ Widget desktop({
               Padding(
                 padding: const EdgeInsets.only(left: 0, right: 30, top: 30),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: .start,
+                  mainAxisAlignment: .center,spacing: 30,
                   children: [
-                    DynamicContainer(
-                      width: 345,
-                      height: 190,
-                      icon: LucideIcons.puzzle,
-                      title: appText.appChallenge,
-                      text: project.appChallenge,
+                    Expanded(
+                      child: DynamicContainer(
+                        height: 190,
+                        icon: LucideIcons.puzzle,
+                        title: appText.appChallenge,
+                        text: project.appChallenge,
+                      ),
                     ),
 
-                    DynamicContainer(
-                      width: 345,
-                      height: 190,
-                      icon: LucideIcons.wandSparkles,
-                      title: appText.appSolution,
-                      text: project.appSolution,
+                    Expanded(
+                      child: DynamicContainer(
+
+                        height: 190,
+                        icon: LucideIcons.wandSparkles,
+                        title: appText.appSolution,
+                        text: project.appSolution,
+                      ),
                     ),
                   ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 30),
+                child: AppMockups(
+                  headTitle: appText.projectMockups,
+                  icon: LucideIcons.images,
+                  appMockupsList: project.appMockups,
                 ),
               ),
             ],
@@ -215,6 +223,7 @@ Widget desktop({
             child: TechStackContainer(stack: project.techStack),
           ),
         ),
+
       ],
     ),
   );
