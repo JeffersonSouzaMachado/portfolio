@@ -4,7 +4,6 @@ import 'package:portfolio/core/shared/design/theme/app_radius.dart';
 import 'package:portfolio/core/shared/design/theme/app_spacings.dart';
 import 'package:portfolio/core/shared/design/theme/app_typography.dart';
 
-import '../../../../core/shared/const/temp_data_list.dart';
 import '../../../../l10n/app_localizations.dart';
 
 class MetricResume extends StatelessWidget {
@@ -13,7 +12,7 @@ class MetricResume extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appText = AppLocalizations.of(context)!;
-    final resumeMetrics = getMetricResume(appText);
+    final resumeMetrics = [];
     return Wrap(
       spacing: AppSpacing.xl,
       children: resumeMetrics.map((item) {

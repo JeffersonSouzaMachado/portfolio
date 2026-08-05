@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/shared/const/external_urls_const.dart';
 import 'package:portfolio/core/shared/design/theme/app_typography.dart';
-import 'package:portfolio/core/validators/form_validator.dart';
 import 'package:portfolio/src/contacts/widgets/form_contact_field.dart';
 import 'package:portfolio/src/contacts/widgets/prepare_whatsapp_messge.dart';
 import 'package:portfolio/src/shared/gradient_container.dart';
@@ -11,6 +10,7 @@ import '../../../core/shared/design/theme/app_colors.dart';
 import '../../../core/shared/design/theme/app_spacings.dart';
 import '../../../core/shared/design/theme/app_text.dart';
 import '../../../l10n/app_localizations.dart';
+import '../../shared/validators/form_validator.dart';
 
 class ContactForm extends StatelessWidget {
   ContactForm({super.key, this.isMobile = false});
@@ -51,7 +51,7 @@ class ContactForm extends StatelessWidget {
                         label: appText.labelName,
                         hintText: "John",
                         controller: _nameController,
-                        validator: validateName,
+                        validator:  validateName,
                       ),
                       FormContactField(
                         label: appText.labelLastName,

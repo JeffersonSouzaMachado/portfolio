@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/shared/const/temp_data_list.dart';
 import 'package:portfolio/core/shared/design/theme/app_colors.dart';
 import 'package:portfolio/core/shared/design/theme/app_spacings.dart';
 import 'package:portfolio/core/shared/design/theme/app_typography.dart';
@@ -57,10 +56,10 @@ class ProjectsPage extends StatelessWidget {
                             crossAxisSpacing: 30,
                             mainAxisSpacing: 30,
                           ),
-                      itemCount: getDataProject(appText).length,
+                      itemCount: [].length,
                       itemBuilder: (context, index) {
                         return ShowCaseApp(
-                          project: getDataProject(appText)[index],
+                          project: [][index],
                         );
                       },
                     ),
