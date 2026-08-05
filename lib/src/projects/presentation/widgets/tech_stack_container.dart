@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/shared/design/theme/app_colors.dart';
 import 'package:portfolio/core/shared/design/theme/app_typography.dart';
-import 'package:portfolio/src/projects/widgets/custom_container.dart';
-import 'package:portfolio/src/projects/widgets/tech_stack_model.dart';
+
 import 'package:portfolio/src/shared/build_icon.dart';
+
+import '../../data/models/tech_stack_model.dart';
+import 'custom_container.dart';
 
 class TechStackContainer extends StatelessWidget {
   const TechStackContainer({

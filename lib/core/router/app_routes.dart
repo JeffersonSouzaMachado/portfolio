@@ -4,10 +4,11 @@ import 'package:portfolio/src/contacts/contacts_page.dart';
 import 'package:portfolio/src/home/presentation/home_page.dart';
 import 'package:portfolio/src/home_menu/home_menu_page.dart';
 import 'package:portfolio/src/language_selector/language_selector_page.dart';
-import 'package:portfolio/src/projects/projects_page.dart';
-import 'package:portfolio/src/projects/project.dart';
-import 'package:portfolio/src/projects/widgets/project_model.dart';
+import 'package:portfolio/src/projects/presentation/projects_page.dart';
+import 'package:portfolio/src/projects/presentation/project.dart';
 import 'package:portfolio/src/skills/skills_page.dart';
+
+import '../../src/projects/presentation/widgets/project_model.dart';
 
 final GoRouter appRouter = GoRouter(
   routes: [

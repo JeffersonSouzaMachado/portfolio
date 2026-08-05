@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/src/projects/widgets/section_header.dart';
+
+import 'section_header.dart';
 
 class AppMockups extends StatelessWidget {
   const AppMockups({

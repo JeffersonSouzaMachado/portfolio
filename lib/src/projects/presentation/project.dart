@@ -4,12 +4,14 @@ import 'package:portfolio/core/shared/design/icons/images_app.dart';
 import 'package:portfolio/core/shared/design/theme/app_colors.dart';
 import 'package:portfolio/core/shared/design/theme/app_typography.dart';
 import 'package:portfolio/l10n/app_localizations.dart';
-import 'package:portfolio/src/projects/widgets/app_mockup.dart';
-import 'package:portfolio/src/projects/widgets/dynamic_container.dart';
-import 'package:portfolio/src/projects/widgets/project_model.dart';
-import 'package:portfolio/src/projects/widgets/section_header.dart';
-import 'package:portfolio/src/projects/widgets/tech_stack_container.dart';
+import 'package:portfolio/src/projects/presentation/widgets/app_mockup.dart';
+import 'package:portfolio/src/projects/presentation/widgets/dynamic_container.dart';
+import 'package:portfolio/src/projects/presentation/widgets/section_header.dart';
+import 'package:portfolio/src/projects/presentation/widgets/tech_stack_container.dart';
+
 import 'package:portfolio/src/shared/footer.dart';
+
+import '../data/models/project_model.dart';
 
 class Project extends StatelessWidget {
   const Project({super.key, required this.project});

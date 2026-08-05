@@ -1,8 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:portfolio/core/network/api_constants.dart';
+import 'package:portfolio/src/projects/data/models/project_model.dart';
 
 abstract interface class ProjectsRemoteDatasource {
-  Future<List<Map<String, dynamic>>> getProjects({required String language});
+  Future<List<ProjectModel>> getProjects({required String language});
 }
 
 class ProjectsRemoteDatasourceImpl implements ProjectsRemoteDatasource {
@@ -11,9 +12,7 @@ class ProjectsRemoteDatasourceImpl implements ProjectsRemoteDatasource {
   final Dio _dio;
 
   @override
-  Future<List<Map<String, dynamic>>> getProjects({
-    required String language,
-  }) async {
+  Future<List<ProjectModel>> getProjects({required String language}) async {
     final response = await _dio.get<List<dynamic>>(
       ApiConstants.projects,
       queryParameters: {'lang': language},
@@ -24,6 +23,11 @@ class ProjectsRemoteDatasourceImpl implements ProjectsRemoteDatasource {
       return [];
     }
 
-    return data.map((item) => Map<String, dynamic>.from(item as Map)).toList();
+    return data
+        .map(
+          (item) =>
+              ProjectModel.fromJson(Map<String, dynamic>.from(item as Map)),
+        )
+        .toList();
   }
 }

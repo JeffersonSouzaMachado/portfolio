@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/core/shared/design/theme/app_colors.dart';
 import 'package:portfolio/core/shared/design/theme/app_spacings.dart';
 import 'package:portfolio/core/shared/design/theme/app_typography.dart';
-import 'package:portfolio/src/projects/widgets/showcase_app.dart';
+import 'package:portfolio/src/projects/presentation/widgets/showcase_app.dart';
 
-import '../../l10n/app_localizations.dart';
-import '../shared/footer.dart';
+import '../../../l10n/app_localizations.dart';
+import '../../shared/footer.dart';
 
 class ProjectsPage extends StatelessWidget {
   const ProjectsPage({super.key});

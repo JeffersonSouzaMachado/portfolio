@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/shared/design/theme/app_typography.dart';
 
-import '../../../core/shared/design/theme/app_colors.dart';
+import '../../../../core/shared/design/theme/app_colors.dart';
+
 
 List<Widget> sectionHeader({
   required String title,

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
-import 'package:portfolio/src/projects/widgets/custom_container.dart';
 
-import '../../../core/shared/design/theme/app_colors.dart';
-import '../../../core/shared/design/theme/app_typography.dart';
+import '../../../../core/shared/design/theme/app_colors.dart';
+import '../../../../core/shared/design/theme/app_typography.dart';
+import 'custom_container.dart';
+
 
 class DynamicContainer extends StatefulWidget {
   const DynamicContainer({

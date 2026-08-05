@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:portfolio/src/projects/widgets/project_model.dart';
 
-import '../../../core/shared/design/theme/app_colors.dart';
-import '../../../core/shared/design/theme/app_typography.dart';
-import '../../../l10n/app_localizations.dart';
+import '../../../../core/shared/design/theme/app_colors.dart';
+import '../../../../core/shared/design/theme/app_typography.dart';
+import '../../../../l10n/app_localizations.dart';
+import '../../data/models/project_model.dart';
+
 
 class ShowCaseApp extends StatelessWidget {
   const ShowCaseApp({super.key, required this.project});
