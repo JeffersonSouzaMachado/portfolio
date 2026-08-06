@@ -13,11 +13,20 @@ class ProjectsRemoteDatasourceImpl implements ProjectsRemoteDatasource {
 
   @override
   Future<List<ProjectModel>> getProjects({required String language}) async {
+
+
     final response = await _dio.get<List<dynamic>>(
       ApiConstants.projects,
       queryParameters: {'lang': language},
     );
+
+    print('STATUS: ${response.statusCode}');
+    print('DATA: ${response.data}');
+    print('TIPO: ${response.data.runtimeType}');
+
     final data = response.data;
+
+
 
     if (data == null) {
       return [];

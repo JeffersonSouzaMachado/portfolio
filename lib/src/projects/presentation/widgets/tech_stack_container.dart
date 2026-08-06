@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/shared/design/theme/app_colors.dart';
 import 'package:portfolio/core/shared/design/theme/app_typography.dart';
+import 'package:portfolio/src/projects/domain/entities/tech_stack_entity.dart';
 
 import 'package:portfolio/src/shared/build_icon.dart';
 
@@ -14,7 +15,7 @@ class TechStackContainer extends StatelessWidget {
     this.isMobile = false,
   });
 
-  final List<TechStackModel> stack;
+  final List<TechStackEntity> stack;
   final bool isMobile;
 
   @override

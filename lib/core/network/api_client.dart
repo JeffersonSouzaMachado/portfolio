@@ -8,10 +8,10 @@ class ApiClient {
           baseUrl: ApiConstants.baseUrl,
           connectTimeout: const Duration(seconds: 15),
           receiveTimeout: const Duration(seconds: 15),
-          sendTimeout: const Duration(seconds: 15),
+          // sendTimeout: const Duration(seconds: 15), //Util para POST
           headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json',
+            // 'Content-Type': 'application/json',
           },
         ),
       );

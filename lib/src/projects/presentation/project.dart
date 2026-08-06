@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
-import 'package:portfolio/core/shared/design/icons/images_app.dart';
 import 'package:portfolio/core/shared/design/theme/app_colors.dart';
 import 'package:portfolio/core/shared/design/theme/app_typography.dart';
 import 'package:portfolio/l10n/app_localizations.dart';
+import 'package:portfolio/src/projects/presentation/mappers/project_asset_mapper.dart';
 import 'package:portfolio/src/projects/presentation/widgets/app_mockup.dart';
 import 'package:portfolio/src/projects/presentation/widgets/dynamic_container.dart';
 import 'package:portfolio/src/projects/presentation/widgets/section_header.dart';
@@ -37,7 +37,7 @@ class Project extends StatelessWidget {
                       width: double.infinity,
                       height: isMobile ? 240 : null,
                       child: Image.asset(
-                        ImagesApp.helpneiMainLogo,
+                        ProjectAssetMapper.image(project.cardImage),
                         fit: BoxFit.cover,
                       ),
                     ),

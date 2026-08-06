@@ -8,7 +8,7 @@ import 'package:portfolio/src/projects/presentation/projects_page.dart';
 import 'package:portfolio/src/projects/presentation/project.dart';
 import 'package:portfolio/src/skills/skills_page.dart';
 
-import '../../src/projects/presentation/widgets/project_model.dart';
+import '../../src/projects/data/models/project_model.dart';
 
 final GoRouter appRouter = GoRouter(
   routes: [
