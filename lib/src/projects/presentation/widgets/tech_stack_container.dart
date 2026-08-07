@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/core/shared/design/theme/app_colors.dart';
 import 'package:portfolio/core/shared/design/theme/app_typography.dart';
-import 'package:portfolio/src/projects/widgets/custom_container.dart';
-import 'package:portfolio/src/projects/widgets/tech_stack_model.dart';
+import 'package:portfolio/src/projects/domain/entities/tech_stack_entity.dart';
+
 import 'package:portfolio/src/shared/build_icon.dart';
+
+import '../../data/models/tech_stack_model.dart';
+import 'custom_container.dart';
 
 class TechStackContainer extends StatelessWidget {
   const TechStackContainer({
@@ -12,7 +15,7 @@ class TechStackContainer extends StatelessWidget {
     this.isMobile = false,
   });
 
-  final List<TechStackModel> stack;
+  final List<TechStackEntity> stack;
   final bool isMobile;
 
   @override
@@ -46,7 +49,11 @@ class TechStackContainer extends StatelessWidget {
                     mainAxisAlignment: .center,
                     spacing: 10,
                     children: [
-                      buildIcon(item.icon, color: AppColors.inversePrimary),
+                      buildIcon(
+                        icon: item.icon,
+                        assetType: item.assetType,
+                        color: AppColors.inversePrimary,
+                      ),
 
                       Text(
                         item.stack,
@@ -97,7 +104,8 @@ class TechStackContainer extends StatelessWidget {
                             shape: BoxShape.circle,
                           ),
                           child: buildIcon(
-                            item.icon,
+                            icon: item.icon,
+                            assetType: item.assetType,
                             color: AppColors.inversePrimary,
                           ),
                         ),

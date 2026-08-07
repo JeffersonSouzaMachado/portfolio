@@ -1,7 +1,8 @@
-import 'package:portfolio/src/projects/widgets/tech_stack_model.dart';
+import 'tech_stack_entity.dart';
 
-class ProjectModel {
-  ProjectModel({
+class ProjectEntity {
+  const ProjectEntity({
+    required this.id,
     required this.cardImage,
     required this.shortCompanyName,
     required this.shortDescription,
@@ -14,6 +15,7 @@ class ProjectModel {
     required this.appMockups,
   });
 
+  final int id;
   final String cardImage;
   final String shortCompanyName;
   final String shortDescription;
@@ -22,6 +24,6 @@ class ProjectModel {
   final String appOverview;
   final String appChallenge;
   final String appSolution;
-  final List<TechStackModel> techStack;
+  final List<TechStackEntity> techStack;
   final List<String> appMockups;
 }

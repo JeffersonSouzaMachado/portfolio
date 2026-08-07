@@ -1,34 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:portfolio/core/shared/asset_type.dart';
+import 'package:portfolio/src/projects/presentation/mappers/project_asset_mapper.dart';
 
-Widget buildIcon(
-    Object icon, {
-      double size = 24,
-      Color? color,
-    }) {
-  if (icon is IconData) {
-    return Icon(
-      icon,
-      size: size,
-      color: color,
-    );
+Widget buildIcon({
+  required String icon,
+  required AssetType assetType,
+  double size = 24,
+  Color? color,
+}) {
+  if (assetType == AssetType.icon) {
+    return Icon(ProjectAssetMapper.icon(icon), size: size, color: color);
   }
 
-  if (icon is String) {
+  if (assetType == AssetType.svg) {
     return SvgPicture.asset(
-      icon,
+      ProjectAssetMapper.svg(icon),
       width: size,
       height: size,
       colorFilter: color == null
           ? null
-          : ColorFilter.mode(
-        color,
-        BlendMode.srcIn,
-      ),
+          : ColorFilter.mode(color, BlendMode.srcIn),
     );
   }
 
-  throw ArgumentError(
-    'Tipo de ícone não suportado: ${icon.runtimeType}',
-  );
+  throw ArgumentError('Tipo de ícone não suportado: ${icon.runtimeType}');
 }
