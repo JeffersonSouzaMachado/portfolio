@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:portfolio/core/network/api_constants.dart';
 import 'package:portfolio/src/projects/data/models/project_model.dart';
 
@@ -23,8 +24,6 @@ class ProjectsRemoteDatasourceImpl implements ProjectsRemoteDatasource {
         queryParameters: {'lang': language},
       );
 
-      print('STATUS: ${response.statusCode}');
-      print('DATA: ${response.data}');
 
       return (response.data ?? [])
           .map(
@@ -34,8 +33,8 @@ class ProjectsRemoteDatasourceImpl implements ProjectsRemoteDatasource {
       )
           .toList();
     } on DioException catch (error) {
-      print('DIO ERROR: ${error.message}');
-      print('RESPONSE: ${error.response?.data}');
+      debugPrint('DIO ERROR: ${error.message}');
+      debugPrint('RESPONSE: ${error.response?.data}');
       rethrow;
     }
   }
