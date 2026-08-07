@@ -49,7 +49,11 @@ class TechStackContainer extends StatelessWidget {
                     mainAxisAlignment: .center,
                     spacing: 10,
                     children: [
-                      buildIcon(item.icon, color: AppColors.inversePrimary),
+                      buildIcon(
+                        icon: item.icon,
+                        assetType: item.assetType,
+                        color: AppColors.inversePrimary,
+                      ),
 
                       Text(
                         item.stack,
@@ -100,7 +104,8 @@ class TechStackContainer extends StatelessWidget {
                             shape: BoxShape.circle,
                           ),
                           child: buildIcon(
-                            item.icon,
+                            icon: item.icon,
+                            assetType: item.assetType,
                             color: AppColors.inversePrimary,
                           ),
                         ),

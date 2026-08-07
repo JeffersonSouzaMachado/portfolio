@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:portfolio/src/projects/domain/entities/project_entity.dart';
+import 'package:portfolio/src/projects/presentation/mappers/project_asset_mapper.dart';
 
 import '../../../../core/shared/design/theme/app_colors.dart';
 import '../../../../core/shared/design/theme/app_typography.dart';
@@ -10,7 +12,7 @@ import '../../data/models/project_model.dart';
 class ShowCaseApp extends StatelessWidget {
   const ShowCaseApp({super.key, required this.project});
 
-  final ProjectModel project;
+  final ProjectEntity project;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class ShowCaseApp extends StatelessWidget {
                 topLeft: Radius.circular(20),
                 topRight: Radius.circular(20),
               ),
-              child: Image.asset(project.cardImage),
+              child: Image.asset(ProjectAssetMapper.image(project.cardImage)),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),

@@ -77,9 +77,9 @@ class ProjectsPage extends ConsumerWidget {
                               crossAxisSpacing: 30,
                               mainAxisSpacing: 30,
                             ),
-                            itemCount: [].length,
+                            itemCount: projects.length,
                             itemBuilder: (context, index) {
-                              return ShowCaseApp(project: [][index]);
+                              return ShowCaseApp(project: projects[index]);
                             },
                           ),
                         ),

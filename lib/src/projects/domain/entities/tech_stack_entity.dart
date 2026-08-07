@@ -1,3 +1,5 @@
+import 'package:portfolio/core/shared/asset_type.dart';
+
 class TechStackEntity {
   TechStackEntity({
     required this.icon,
@@ -5,7 +7,7 @@ class TechStackEntity {
     required this.assetType,
   });
 
-  final Object icon;
+  final String icon;
   final String stack;
-  final String assetType;
+  final AssetType assetType;
 }

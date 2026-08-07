@@ -1,3 +1,4 @@
+import 'package:portfolio/core/shared/asset_type.dart';
 import 'package:portfolio/src/projects/domain/entities/tech_stack_entity.dart';
 
 class TechStackModel extends TechStackEntity {
@@ -11,7 +12,11 @@ class TechStackModel extends TechStackEntity {
     return TechStackModel(
       icon: json['icon'],
       stack: json['stack'],
-      assetType: json['assetType'],
+      // assetType: AssetType.values.byName(json['assetType'] as String), // Mais direto, mas precisa que seja garantido que os nomes sejam identicos.
+      assetType: AssetType.values.firstWhere(
+        (type) => type.name == json['assetType'],
+        orElse: () => AssetType.icon,
+      ),
     );
   }
 }

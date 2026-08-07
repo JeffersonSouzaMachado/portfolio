@@ -12,31 +12,32 @@ class ProjectsRemoteDatasourceImpl implements ProjectsRemoteDatasource {
   final Dio _dio;
 
   @override
-  Future<List<ProjectModel>> getProjects({required String language}) async {
+  Future<List<ProjectModel>> getProjects({
+    required String language,
+  }) async {
+    print('Chamando getProjects: language=$language');
 
+    try {
+      final response = await _dio.get<List<dynamic>>(
+        ApiConstants.projects,
+        queryParameters: {'lang': language},
+      );
 
-    final response = await _dio.get<List<dynamic>>(
-      ApiConstants.projects,
-      queryParameters: {'lang': language},
-    );
+      print('STATUS: ${response.statusCode}');
+      print('DATA: ${response.data}');
 
-    print('STATUS: ${response.statusCode}');
-    print('DATA: ${response.data}');
-    print('TIPO: ${response.data.runtimeType}');
-
-    final data = response.data;
-
-
-
-    if (data == null) {
-      return [];
+      return (response.data ?? [])
+          .map(
+            (item) => ProjectModel.fromJson(
+          Map<String, dynamic>.from(item as Map),
+        ),
+      )
+          .toList();
+    } on DioException catch (error) {
+      print('DIO ERROR: ${error.message}');
+      print('RESPONSE: ${error.response?.data}');
+      rethrow;
     }
-
-    return data
-        .map(
-          (item) =>
-              ProjectModel.fromJson(Map<String, dynamic>.from(item as Map)),
-        )
-        .toList();
   }
+
 }

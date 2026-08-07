@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../mappers/project_asset_mapper.dart';
 import 'section_header.dart';
 
 class AppMockups extends StatelessWidget {
@@ -34,7 +35,7 @@ class AppMockups extends StatelessWidget {
                   width: 220,
                   child: ClipRRect(
                     borderRadius: BorderRadiusGeometry.circular(20),
-                    child: Image.asset(item),
+                    child: Image.asset(ProjectAssetMapper.image(item)),
                   ),
                 ),
               );
