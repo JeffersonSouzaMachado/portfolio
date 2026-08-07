@@ -28,12 +28,12 @@ class ProjectsPage extends ConsumerWidget {
         );
       },
       loading: () {
-        return const Center(
-          child: CircularProgressIndicator(),
+        return  Center(
+          child: CircularProgressIndicator(color: AppColors.inversePrimary,),
         );
       },
         data: (projects){
-        print('PROJECTS: $projects');
+
 
           return Column(
             children: [
