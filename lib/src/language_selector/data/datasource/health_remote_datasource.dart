@@ -1,0 +1,26 @@
+import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
+import 'package:portfolio/core/network/api_constants.dart';
+
+abstract interface class HealthRemoteDatasource {
+  Future<void> wakeup();
+}
+
+class HealthRemoteDatasourceImpl implements HealthRemoteDatasource {
+  HealthRemoteDatasourceImpl({required this._dio});
+
+  final Dio _dio;
+
+  @override
+  Future<void> wakeup() async {
+    try {
+      final response = await _dio.get(ApiConstants.health);
+
+      debugPrint('HEALTH: $response');
+
+    } on DioException catch (error) {
+      debugPrint('DIO ERROR: ${error.message}');
+      debugPrint('RESPONSE: ${error.response?.data}');
+    }
+  }
+}

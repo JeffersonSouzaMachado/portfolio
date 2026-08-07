@@ -3,7 +3,7 @@ import 'package:portfolio/core/router/routes.dart';
 import 'package:portfolio/src/contacts/contacts_page.dart';
 import 'package:portfolio/src/home/presentation/home_page.dart';
 import 'package:portfolio/src/home_menu/home_menu_page.dart';
-import 'package:portfolio/src/language_selector/language_selector_page.dart';
+import 'package:portfolio/src/language_selector/presentation/language_selector_page.dart';
 import 'package:portfolio/src/projects/presentation/projects_page.dart';
 import 'package:portfolio/src/projects/presentation/project.dart';
 import 'package:portfolio/src/skills/skills_page.dart';
