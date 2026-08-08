@@ -23,6 +23,6 @@ final projectProvider = FutureProvider.family<List<ProjectEntity>, String>(
         (ref, language) async {
       final repository = ref.watch(projectsRepositoryProvider);
 
-      return repository.getProjects(language: language);
+      return repository.getProjects();
     }
 );

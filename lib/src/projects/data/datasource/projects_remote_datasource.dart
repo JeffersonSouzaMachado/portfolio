@@ -1,10 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:portfolio/core/network/api_constants.dart';
 import 'package:portfolio/src/projects/data/models/project_model.dart';
 
 abstract interface class ProjectsRemoteDatasource {
-  Future<List<ProjectModel>> getProjects({required String language});
+  Future<List<ProjectModel>> getProjects();
 }
 
 class ProjectsRemoteDatasourceImpl implements ProjectsRemoteDatasource {
@@ -13,30 +12,19 @@ class ProjectsRemoteDatasourceImpl implements ProjectsRemoteDatasource {
   final Dio _dio;
 
   @override
-  Future<List<ProjectModel>> getProjects({
-    required String language,
-  }) async {
-    print('Chamando getProjects: language=$language');
-
+  Future<List<ProjectModel>> getProjects() async {
     try {
-      final response = await _dio.get<List<dynamic>>(
-        ApiConstants.projects,
-        queryParameters: {'lang': language},
-      );
-
+      final response = await _dio.get<List<dynamic>>(ApiConstants.projects);
 
       return (response.data ?? [])
           .map(
-            (item) => ProjectModel.fromJson(
-          Map<String, dynamic>.from(item as Map),
-        ),
-      )
+            (item) =>
+                ProjectModel.fromJson(Map<String, dynamic>.from(item as Map)),
+          )
           .toList();
     } on DioException catch (error) {
-      debugPrint('DIO ERROR: ${error.message}');
-      debugPrint('RESPONSE: ${error.response?.data}');
+      //TODO Insert error handling
       rethrow;
     }
   }
-
 }

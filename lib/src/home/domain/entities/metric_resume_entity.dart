@@ -1,11 +1,9 @@
-import 'package:flutter/cupertino.dart';
-
-class MetricResumeModel {
+class MetricResumeEntity {
   final String title;
   final String text;
-  final Color color;
+  final String color;
 
-  MetricResumeModel({
+  MetricResumeEntity({
     required this.title,
     required this.text,
     required this.color,

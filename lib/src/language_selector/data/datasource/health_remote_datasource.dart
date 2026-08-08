@@ -14,13 +14,13 @@ class HealthRemoteDatasourceImpl implements HealthRemoteDatasource {
   @override
   Future<void> wakeup() async {
     try {
-      final response = await _dio.get(ApiConstants.health);
+     await _dio.get(ApiConstants.health);
 
-      debugPrint('HEALTH: $response');
+
 
     } on DioException catch (error) {
-      debugPrint('DIO ERROR: ${error.message}');
-      debugPrint('RESPONSE: ${error.response?.data}');
+      //TODO insert erro handling
+      rethrow;
     }
   }
 }
