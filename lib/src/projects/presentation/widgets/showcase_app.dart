@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/src/projects/domain/entities/project_entity.dart';
-import 'package:portfolio/src/projects/presentation/mappers/project_asset_mapper.dart';
+import 'package:portfolio/core/mappers/project_asset_mapper.dart';
 
 import '../../../../core/shared/design/theme/app_colors.dart';
 import '../../../../core/shared/design/theme/app_typography.dart';
@@ -38,7 +38,10 @@ class ShowCaseApp extends StatelessWidget {
                 topLeft: Radius.circular(20),
                 topRight: Radius.circular(20),
               ),
-              child: Image.asset(ProjectAssetMapper.image(project.cardImage)),
+              child: SizedBox(
+                  height: 200,
+                  width: double.infinity,
+                  child: Image.asset(ProjectAssetMapper.image(project.cardImage), fit: BoxFit.cover,)),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -55,7 +58,7 @@ class ShowCaseApp extends StatelessWidget {
               child: Text(
                 project.shortDescription,
                 overflow: TextOverflow.ellipsis,
-                maxLines: 4,
+                maxLines: 3,
                 style: AppTypography.bodySm.copyWith(
                   color: AppColors.inversePrimary,
                 ),

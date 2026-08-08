@@ -1,6 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
-import '../mappers/project_asset_mapper.dart';
+import '../../../../core/mappers/project_asset_mapper.dart';
 import 'section_header.dart';
 
 class AppMockups extends StatelessWidget {
@@ -22,24 +24,33 @@ class AppMockups extends StatelessWidget {
         ...sectionHeader(title: headTitle, icon: icon),
         SizedBox(
           height: 390,
-          child: ListView.builder(
+          child: ScrollConfiguration(
+            behavior: ScrollConfiguration.of(context).copyWith(
+              dragDevices: {
+                PointerDeviceKind.touch,
+                PointerDeviceKind.mouse,
+                PointerDeviceKind.trackpad,
+              },
+            ),
+            child: ListView.builder(
 
-            scrollDirection: Axis.horizontal,
-            itemCount: appMockupsList.length,
-            itemBuilder: (context, index) {
-              final item = appMockupsList[index];
+              scrollDirection: Axis.horizontal,
+              itemCount: appMockupsList.length,
+              itemBuilder: (context, index) {
+                final item = appMockupsList[index];
 
-              return Padding(
-                padding: const EdgeInsets.all(10),
-                child: SizedBox(
-                  width: 220,
-                  child: ClipRRect(
-                    borderRadius: BorderRadiusGeometry.circular(20),
-                    child: Image.asset(ProjectAssetMapper.image(item)),
+                return Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: SizedBox(
+                    width: 220,
+                    child: ClipRRect(
+                      borderRadius: BorderRadiusGeometry.circular(20),
+                      child: Image.asset(ProjectAssetMapper.image(item)),
+                    ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
         ),
       ],

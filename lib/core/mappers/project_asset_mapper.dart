@@ -12,6 +12,13 @@ abstract final class ProjectAssetMapper {
       'helpnei_1' => ImagesApp.mockupHelpnei1,
       'helpnei_2' => ImagesApp.mockupHelpnei2,
       'helpnei_3' => ImagesApp.mockupHelpnei3,
+
+      'pulsetrip_main' => ImagesApp.wConnectMainLogo,
+      'pulsetrip_1' => ImagesApp.mockupWconnect1,
+      'pulsetrip_2' => ImagesApp.mockupWconnect2,
+      'pulsetrip_3' => ImagesApp.mockupWconnect3,
+      'pulsetrip_4' => ImagesApp.mockupWconnect4,
+
       _ => ImagesApp.code,
     };
   }
@@ -26,6 +33,7 @@ abstract final class ProjectAssetMapper {
       'cloudUpload' => LucideIcons.cloudUpload,
       'notepadText' => LucideIcons.notepadText,
       'penTool' => LucideIcons.penTool,
+      'globeCheck' => LucideIcons.globeCheck,
       _ => LucideIcons.aLargeSmallDir,
     };
   }
