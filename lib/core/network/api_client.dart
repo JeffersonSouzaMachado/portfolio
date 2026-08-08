@@ -1,20 +1,31 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/core/network/api_constants.dart';
 
-class ApiClient {
-  ApiClient()
-    : dio = Dio(
-        BaseOptions(
-          baseUrl: ApiConstants.baseUrl,
-          connectTimeout: const Duration(seconds: 15),
-          receiveTimeout: const Duration(seconds: 15),
-          // sendTimeout: const Duration(seconds: 15), //Util para POST
-          headers: {
-            'Accept': 'application/json',
-            // 'Content-Type': 'application/json',
-          },
-        ),
-      );
+import '../shared/localization/locale_provider.dart';
 
-  final Dio dio;
+class ApiClient {
+  ApiClient({required Ref ref}) {
+    dio = Dio(BaseOptions(baseUrl: ApiConstants.baseUrl));
+
+    dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) {
+          final locale = ref.read(localeProvider);
+          final language = locale?.languageCode;
+
+          if (language != null) {
+            options.queryParameters.putIfAbsent(
+              'lang',
+              () => locale?.languageCode,
+            );
+          }
+
+          handler.next(options);
+        },
+      ),
+    );
+  }
+
+  late final Dio dio;
 }

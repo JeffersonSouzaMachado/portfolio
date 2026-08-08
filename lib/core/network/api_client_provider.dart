@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/core/network/api_client.dart';
 
 final apiClientProvider = Provider<ApiClient>((ref){
-  return ApiClient();
+  return ApiClient(ref: ref);
 });
 
 final dioProvider = Provider<Dio>((ref){
