@@ -10,34 +10,82 @@ class ErrorMessage extends StatelessWidget {
 
   final Object error;
 
+  Widget errorText({required BuildContext context, bool isTitle = false}) {
+    final appText = AppLocalizations.of(context)!;
+
+    if (isTitle) {
+      return Text(
+        appText.errorLoadingMessage,
+        textAlign: TextAlign.center,
+        softWrap: true,
+        style: AppTypography.bodyLg.copyWith(color: AppColors.errorContainer),
+      );
+    } else {
+      return Text(
+        appText.backAgainLater,
+        textAlign: TextAlign.center,
+        softWrap: true,
+        style: AppTypography.headlineMd.copyWith(
+          color: AppColors.inversePrimary,
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final appText = AppLocalizations.of(context)!;
-    return Row(
-      mainAxisAlignment: .center,
-      crossAxisAlignment: .center,
-      children: [
-        Icon(LucideIcons.circleX, color: AppColors.errorContainer),
-        SizedBox(width: 20),
-        Column(
-          mainAxisAlignment: .start,
-          mainAxisSize: .min,
-          children: [
-            Text(
-              appText.errorLoadingMessage,
-              style: AppTypography.bodyLg.copyWith(
-                color: AppColors.errorContainer,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isCompact = constraints.maxWidth < 360;
+
+        return Center(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: constraints.hasBoundedWidth
+                    ? constraints.maxWidth
+                    : 560,
               ),
+              child: isCompact
+                  ? Column(
+                      mainAxisSize: MainAxisSize.min,
+                      spacing: 12,
+                      children: [
+                        Icon(
+                          LucideIcons.circleX,
+                          color: AppColors.errorContainer,
+                        ),
+                        errorText(context: context, isTitle: true),
+                        errorText(context: context),
+                      ],
+                    )
+                  : Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Icon(
+                          LucideIcons.circleX,
+                          color: AppColors.errorContainer,
+                        ),
+                        const SizedBox(width: 20),
+                        Flexible(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              errorText(context: context, isTitle: true),
+                              errorText(context: context),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
             ),
-            Text(
-              appText.backAgainLater,
-              style: AppTypography.headlineMd.copyWith(
-                color: AppColors.inversePrimary,
-              ),
-            ),
-          ],
-        ),
-      ],
+          ),
+        );
+      },
     );
   }
 }

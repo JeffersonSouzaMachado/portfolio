@@ -17,10 +17,13 @@ class LoadingMessage extends StatelessWidget {
         children: [
           CircularProgressIndicator(color: AppColors.inversePrimary),
           SizedBox(height: 30),
-          Text(
-           appText.loadingPleaseWait ,
-            style: AppTypography.headlineMd.copyWith(
-              color: AppColors.inversePrimary,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Text(
+             appText.loadingPleaseWait,textAlign: TextAlign.center,
+              style: AppTypography.headlineMd.copyWith(
+                color: AppColors.inversePrimary,
+              ),
             ),
           ),
         ],
