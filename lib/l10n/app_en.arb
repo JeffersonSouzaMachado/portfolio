@@ -43,5 +43,8 @@
   "appSolution" : "Solution",
   "showcaseHeadTitle" : "Engineering Excelence",
   "showcaseHeadText" :"A curated showcase of high-performance mobile applications, ranging from fintech solutions to real-time communication platforms. Built with precision and optimized for the modern edge.",
-  "seeMore" : "See more"
+  "seeMore" : "See more",
+  "errorLoadingMessage" : "Oh No, Something went wrong here, but we're going to fix it!",
+   "backAgainLater" : "Come back later.",
+   "loadingPleaseWait" : "Loading, please wait..."
 }

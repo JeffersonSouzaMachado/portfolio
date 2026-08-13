@@ -43,5 +43,8 @@
   "appSolution" : "Solução",
   "showcaseHeadTitle": "Excelência em Engenharia",
   "showcaseHeadText": "Uma seleção de aplicativos móveis de alta performance, abrangendo desde soluções fintech até plataformas de comunicação em tempo real. Desenvolvidos com precisão e otimizados para o que há de mais moderno.",
-   "seeMore" : "Ver mais"
+   "seeMore" : "Ver mais",
+   "errorLoadingMessage": "Oh No, Alguma coisa deu errado aqui, mas já vamos corrigir!",
+   "backAgainLater" : "Volte novamente mais tarde.",
+   "loadingPleaseWait" : "Carregando, por favor aguarde..."
 }

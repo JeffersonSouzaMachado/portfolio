@@ -19,6 +19,12 @@ abstract final class ProjectAssetMapper {
       'pulsetrip_3' => ImagesApp.mockupWconnect3,
       'pulsetrip_4' => ImagesApp.mockupWconnect4,
 
+      'wattio_main' => ImagesApp.wattioMainLogo,
+      'wattio_1' => ImagesApp.mockupWattio1,
+      'wattio_2' => ImagesApp.mockupWattio2,
+      'wattio_3' => ImagesApp.mockupWattio3,
+      'wattio_4' => ImagesApp.mockupWattio4,
+
       _ => ImagesApp.code,
     };
   }
@@ -34,6 +40,9 @@ abstract final class ProjectAssetMapper {
       'notepadText' => LucideIcons.notepadText,
       'penTool' => LucideIcons.penTool,
       'globeCheck' => LucideIcons.globeCheck,
+      'globeOff' => LucideIcons.globeOff,
+      'calendarSync' => LucideIcons.calendarSync,
+      'bookCopy' => LucideIcons.bookCopy,
       _ => LucideIcons.aLargeSmallDir,
     };
   }
