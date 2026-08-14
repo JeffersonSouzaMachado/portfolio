@@ -8,7 +8,6 @@ import '../../../../core/shared/design/theme/app_typography.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../data/models/project_model.dart';
 
-
 class ShowCaseApp extends StatelessWidget {
   const ShowCaseApp({super.key, required this.project});
 
@@ -29,22 +28,29 @@ class ShowCaseApp extends StatelessWidget {
           border: Border.all(color: AppColors.accent.withValues(alpha: 0.1)),
         ),
         child: Column(
-          spacing: 15,
+
           mainAxisAlignment: .start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadiusGeometry.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
+            Align(
+              alignment: AlignmentGeometry.center,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: ClipRRect(
+                  borderRadius: BorderRadiusGeometry.all(Radius.circular(20)),
+                  child: SizedBox(
+                    height: 200,
+                    width: 200,
+                    child: Image.asset(
+                      ProjectAssetMapper.image(project.cardImage),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
               ),
-              child: SizedBox(
-                  height: 200,
-                  width: double.infinity,
-                  child: Image.asset(ProjectAssetMapper.image(project.cardImage), fit: BoxFit.cover,)),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               child: Text(
                 project.shortCompanyName,
                 style: AppTypography.labelMd.copyWith(
@@ -66,7 +72,7 @@ class ShowCaseApp extends StatelessWidget {
             ),
 
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               child: Row(
                 mainAxisAlignment: .end,
                 children: [

@@ -1,7 +1,7 @@
 class ImagesApp {
   static const code = 'assets/images/code.png';
 
-  static const helpneiMainLogo = 'assets/images/helpnei.png';
+  static const helpneiMainLogo = 'assets/images/helpnei_main.jpg';
   static const mockupHelpnei1 = 'assets/images/helpnei_1.webp';
   static const mockupHelpnei2 = 'assets/images/helpnei_2.webp';
   static const mockupHelpnei3 = 'assets/images/helpnei_3.webp';

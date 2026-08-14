@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:dio/dio.dart';
 import 'package:portfolio/core/network/api_constants.dart';
 import 'package:portfolio/src/projects/data/models/project_model.dart';
@@ -23,7 +25,7 @@ class ProjectsRemoteDatasourceImpl implements ProjectsRemoteDatasource {
           )
           .toList();
     } on DioException catch (error) {
-      //TODO Insert error handling
+      print('Error on get Projects: $error');
       rethrow;
     }
   }

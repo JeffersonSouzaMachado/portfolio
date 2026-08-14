@@ -1,3 +1,4 @@
+import 'package:portfolio/src/projects/data/models/project_info_model.dart';
 import 'package:portfolio/src/projects/data/models/tech_stack_model.dart';
 import 'package:portfolio/src/projects/domain/entities/project_entity.dart';
 
@@ -14,11 +15,13 @@ class ProjectModel extends ProjectEntity {
     required super.appSolution,
     required super.techStack,
     required super.appMockups,
+    required super.projectInfo,
   });
 
   factory ProjectModel.fromJson(Map<String, dynamic> json) {
     final techStackJson = json['techStack'] as List<dynamic>? ?? [];
     final appMockupsJson = json['appMockups'] as List<dynamic>? ?? [];
+    final projectInfoJson = json['projectInfo'] as Map;
 
     return ProjectModel(
       id: json['id'],
@@ -37,6 +40,9 @@ class ProjectModel extends ProjectEntity {
           )
           .toList(),
       appMockups: appMockupsJson.map((item) => item.toString()).toList(),
+      projectInfo: ProjectInfoModel.fromJson(
+        Map<String, dynamic>.from(projectInfoJson),
+      ),
     );
   }
 }

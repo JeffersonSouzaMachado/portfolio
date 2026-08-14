@@ -1,3 +1,5 @@
+import 'package:portfolio/src/projects/domain/entities/project_info_entity.dart';
+
 import 'tech_stack_entity.dart';
 
 class ProjectEntity {
@@ -13,6 +15,7 @@ class ProjectEntity {
     required this.appSolution,
     required this.techStack,
     required this.appMockups,
+    required this.projectInfo,
   });
 
   final int id;
@@ -26,4 +29,5 @@ class ProjectEntity {
   final String appSolution;
   final List<TechStackEntity> techStack;
   final List<String> appMockups;
+  final ProjectInfoEntity projectInfo;
 }
