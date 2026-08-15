@@ -18,4 +18,10 @@ class ImagesApp {
   static const mockupWattio2 = 'assets/images/wattio_2.webp';
   static const mockupWattio3 = 'assets/images/wattio_3.webp';
   static const mockupWattio4 = 'assets/images/wattio_4.webp';
+
+  static const copelMainLogo = 'assets/images/copel_main.webp';
+  static const mockupCopel1 = 'assets/images/copel_1.webp';
+  static const mockupCopel2 = 'assets/images/copel_2.webp';
+  static const mockupCopel3 = 'assets/images/copel_3.webp';
+  static const mockupCopel4 = 'assets/images/copel_4.webp';
 }

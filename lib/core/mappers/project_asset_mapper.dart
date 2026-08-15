@@ -25,6 +25,12 @@ abstract final class ProjectAssetMapper {
       'wattio_3' => ImagesApp.mockupWattio3,
       'wattio_4' => ImagesApp.mockupWattio4,
 
+      'copel_main_logo' => ImagesApp.copelMainLogo,
+      'copel_1' => ImagesApp.mockupCopel1,
+      'copel_2' => ImagesApp.mockupCopel2,
+      'copel_3' => ImagesApp.mockupCopel3,
+      'copel_4' => ImagesApp.mockupCopel4,
+
       _ => ImagesApp.code,
     };
   }
