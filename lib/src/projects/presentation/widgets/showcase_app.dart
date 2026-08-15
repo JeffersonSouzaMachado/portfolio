@@ -9,9 +9,10 @@ import '../../../../l10n/app_localizations.dart';
 import '../../data/models/project_model.dart';
 
 class ShowCaseApp extends StatelessWidget {
-  const ShowCaseApp({super.key, required this.project});
+  const ShowCaseApp({super.key, required this.project, this.isMobile = false});
 
   final ProjectEntity project;
+  final bool isMobile;
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +29,13 @@ class ShowCaseApp extends StatelessWidget {
           border: Border.all(color: AppColors.accent.withValues(alpha: 0.1)),
         ),
         child: Column(
-
           mainAxisAlignment: .start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Align(
               alignment: AlignmentGeometry.center,
               child: Padding(
-                padding: const EdgeInsets.only(top: 20),
+                padding: EdgeInsets.only(top: isMobile ? 0 : 20),
                 child: ClipRRect(
                   borderRadius: BorderRadiusGeometry.all(Radius.circular(20)),
                   child: SizedBox(

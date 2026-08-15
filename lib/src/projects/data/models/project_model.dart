@@ -4,7 +4,7 @@ import 'package:portfolio/src/projects/domain/entities/project_entity.dart';
 
 class ProjectModel extends ProjectEntity {
   ProjectModel({
-    required super.id,
+
     required super.cardImage,
     required super.shortCompanyName,
     required super.shortDescription,
@@ -24,7 +24,6 @@ class ProjectModel extends ProjectEntity {
     final projectInfoJson = json['projectInfo'] as Map;
 
     return ProjectModel(
-      id: json['id'],
       cardImage: json['cardImage'],
       shortCompanyName: json['shortCompanyName'],
       shortDescription: json['shortDescription'],
@@ -36,8 +35,8 @@ class ProjectModel extends ProjectEntity {
       techStack: techStackJson
           .map(
             (item) =>
-                TechStackModel.fromJson(Map<String, dynamic>.from(item as Map)),
-          )
+            TechStackModel.fromJson(Map<String, dynamic>.from(item as Map)),
+      )
           .toList(),
       appMockups: appMockupsJson.map((item) => item.toString()).toList(),
       projectInfo: ProjectInfoModel.fromJson(

@@ -15,7 +15,8 @@ class MetricResume extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final metrics = ref.watch(metricProvider);
+    final language = Localizations.localeOf(context).languageCode;
+    final metrics = ref.watch(metricProvider(language));
 
     return metrics.when(
       error: (error, stackTrace) {

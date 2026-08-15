@@ -4,7 +4,7 @@ import 'tech_stack_entity.dart';
 
 class ProjectEntity {
   const ProjectEntity({
-    required this.id,
+
     required this.cardImage,
     required this.shortCompanyName,
     required this.shortDescription,
@@ -18,7 +18,7 @@ class ProjectEntity {
     required this.projectInfo,
   });
 
-  final int id;
+
   final String cardImage;
   final String shortCompanyName;
   final String shortDescription;

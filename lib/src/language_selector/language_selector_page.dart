@@ -7,9 +7,8 @@ import 'package:portfolio/core/shared/design/theme/app_text.dart';
 import 'package:portfolio/core/shared/design/theme/app_typography.dart';
 import 'package:portfolio/core/router/routes.dart';
 import 'package:portfolio/l10n/app_localizations.dart';
-import 'package:portfolio/src/language_selector/presentation/providers/health_provider.dart';
-import '../../../core/shared/localization/locale_enum.dart';
-import '../../../core/shared/localization/locale_provider.dart';
+import '../../core/shared/localization/locale_enum.dart';
+import '../../core/shared/localization/locale_provider.dart';
 
 class LanguageSelectorPage extends ConsumerStatefulWidget {
   const LanguageSelectorPage({super.key});
@@ -39,8 +38,6 @@ class _LanguageSelectorPageState extends ConsumerState<LanguageSelectorPage> {
 
   @override
   Widget build(BuildContext context) {
-    ref.watch(healthProvider);
-
     return Scaffold(
       backgroundColor: AppColors.primary,
       body: LayoutBuilder(

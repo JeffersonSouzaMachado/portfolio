@@ -1,32 +1,68 @@
-import 'dart:math';
-
-import 'package:dio/dio.dart';
-import 'package:portfolio/core/network/api_constants.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:portfolio/src/projects/data/models/project_model.dart';
 
 abstract interface class ProjectsRemoteDatasource {
-  Future<List<ProjectModel>> getProjects();
+  Future<List<ProjectModel>> getProjects(String language);
 }
 
 class ProjectsRemoteDatasourceImpl implements ProjectsRemoteDatasource {
-  ProjectsRemoteDatasourceImpl({required this._dio});
+  ProjectsRemoteDatasourceImpl({required FirebaseFirestore firestore})
+      : _firestore = firestore;
 
-  final Dio _dio;
+  final FirebaseFirestore _firestore;
 
   @override
-  Future<List<ProjectModel>> getProjects() async {
+  Future<List<ProjectModel>> getProjects(String language) async {
     try {
-      final response = await _dio.get<List<dynamic>>(ApiConstants.projects);
+      final snapshot = await _firestore.collection('projects').get();
+      final languageKey = _getLanguageKey(language);
 
-      return (response.data ?? [])
-          .map(
-            (item) =>
-                ProjectModel.fromJson(Map<String, dynamic>.from(item as Map)),
-          )
-          .toList();
-    } on DioException catch (error) {
-      print('Error on get Projects: $error');
+      return snapshot.docs.expand((document) {
+        final data = document.data();
+        final localizedContent = data[languageKey];
+
+        if (localizedContent == null) {
+          throw Exception(
+            'Project ${document.id} does not have $languageKey content',
+          );
+        }
+
+        if (localizedContent is List) {
+          return localizedContent.map((project) {
+            final projectJson = Map<String, dynamic>.from(project as Map);
+
+            return ProjectModel.fromJson({
+              ...projectJson,
+              'id': projectJson['id'] ?? document.id,
+            });
+          });
+        }
+
+        if (localizedContent is Map) {
+          return [
+            ProjectModel.fromJson({
+              ...Map<String, dynamic>.from(localizedContent),
+              'id': document.id,
+            }),
+          ];
+        }
+
+        throw Exception(
+          'Project ${document.id} has invalid $languageKey content',
+        );
+      }).toList();
+    } on FirebaseException catch (error) {
+      throw Exception('Error on get Projects: ${error.message}');
+    } catch (error) {
       rethrow;
     }
+  }
+
+  String _getLanguageKey(String language) {
+    return switch (language) {
+      'pt' => 'portuguese',
+      'en' => 'english',
+      _ => 'english',
+    };
   }
 }
