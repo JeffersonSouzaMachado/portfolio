@@ -4,7 +4,7 @@ import 'package:portfolio/src/projects/domain/entities/project_entity.dart';
 
 class ProjectModel extends ProjectEntity {
   ProjectModel({
-
+    required super.order,
     required super.cardImage,
     required super.shortCompanyName,
     required super.shortDescription,
@@ -24,24 +24,38 @@ class ProjectModel extends ProjectEntity {
     final projectInfoJson = json['projectInfo'] as Map;
 
     return ProjectModel(
-      cardImage: json['cardImage'],
-      shortCompanyName: json['shortCompanyName'],
-      shortDescription: json['shortDescription'],
-      companyFullName: json['companyFullName'],
-      companyDescription: json['companyDescription'],
-      appOverview: json['appOverview'],
-      appChallenge: json['appChallenge'],
-      appSolution: json['appSolution'],
+      order: _parseOrder(json['order']),
+      cardImage: json['cardImage']?.toString() ?? '',
+      shortCompanyName: json['shortCompanyName']?.toString() ?? '',
+      shortDescription: json['shortDescription']?.toString() ?? '',
+      companyFullName: json['companyFullName']?.toString() ?? '',
+      companyDescription: json['companyDescription']?.toString() ?? '',
+      appOverview: json['appOverview']?.toString() ?? '',
+      appChallenge: json['appChallenge']?.toString() ?? '',
+      appSolution: json['appSolution']?.toString() ?? '',
       techStack: techStackJson
           .map(
-            (item) =>
-            TechStackModel.fromJson(Map<String, dynamic>.from(item as Map)),
-      )
+            (item) => TechStackModel.fromJson(
+              Map<String, dynamic>.from(item as Map),
+            ),
+          )
           .toList(),
       appMockups: appMockupsJson.map((item) => item.toString()).toList(),
       projectInfo: ProjectInfoModel.fromJson(
         Map<String, dynamic>.from(projectInfoJson),
       ),
     );
+  }
+
+  static int _parseOrder(dynamic value) {
+    if (value is int) {
+      return value;
+    }
+
+    if (value is num) {
+      return value.toInt();
+    }
+
+    return int.tryParse(value?.toString() ?? '') ?? 0;
   }
 }

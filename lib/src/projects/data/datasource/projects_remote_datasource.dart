@@ -17,7 +17,7 @@ class ProjectsRemoteDatasourceImpl implements ProjectsRemoteDatasource {
       final snapshot = await _firestore.collection('projects').get();
       final languageKey = _getLanguageKey(language);
 
-      return snapshot.docs.expand((document) {
+      final projects = snapshot.docs.expand((document) {
         final data = document.data();
         final localizedContent = data[languageKey];
 
@@ -33,15 +33,19 @@ class ProjectsRemoteDatasourceImpl implements ProjectsRemoteDatasource {
 
             return ProjectModel.fromJson({
               ...projectJson,
+              'order': projectJson['order'] ?? data['order'],
               'id': projectJson['id'] ?? document.id,
             });
           });
         }
 
         if (localizedContent is Map) {
+          final projectJson = Map<String, dynamic>.from(localizedContent);
+
           return [
             ProjectModel.fromJson({
-              ...Map<String, dynamic>.from(localizedContent),
+              ...projectJson,
+              'order': projectJson['order'] ?? data['order'],
               'id': document.id,
             }),
           ];
@@ -51,6 +55,10 @@ class ProjectsRemoteDatasourceImpl implements ProjectsRemoteDatasource {
           'Project ${document.id} has invalid $languageKey content',
         );
       }).toList();
+
+      projects.sort((a, b) => a.order.compareTo(b.order));
+
+      return projects;
     } on FirebaseException catch (error) {
       throw Exception('Error on get Projects: ${error.message}');
     } catch (error) {
