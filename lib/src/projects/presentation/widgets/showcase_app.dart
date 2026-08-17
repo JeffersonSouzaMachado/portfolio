@@ -35,7 +35,7 @@ class ShowCaseApp extends StatelessWidget {
             Align(
               alignment: AlignmentGeometry.center,
               child: Padding(
-                padding: EdgeInsets.only(top: isMobile ? 0 : 20),
+                padding: EdgeInsets.only(top: 20),
                 child: ClipRRect(
                   borderRadius: BorderRadiusGeometry.all(Radius.circular(20)),
                   child: SizedBox(
