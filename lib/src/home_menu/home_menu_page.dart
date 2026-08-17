@@ -57,7 +57,7 @@ class _HomeMenuPageState extends State<HomeMenuPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         AppText(
-                          'theDevJeff',
+                          'Jefferson Machado',
                           color: AppColors.inversePrimary,
                           fontSize: 28,
                           fontWeight: FontWeight.bold,
