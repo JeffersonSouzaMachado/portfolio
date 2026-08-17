@@ -11,12 +11,12 @@ Widget experienceWidget({
   required String text,
 }) {
   return GradientContainer(
-    height: 180,
+    height: 200,
     width: double.infinity,
     child: Padding(
       padding: EdgeInsets.symmetric(
         horizontal: AppSpacing.md,
-        vertical: AppSpacing.sm,
+        // vertical: AppSpacing.sm,
       ),
       child: Column(
         mainAxisAlignment: .center,
