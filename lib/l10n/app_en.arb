@@ -46,5 +46,9 @@
   "seeMore" : "See more",
   "errorLoadingMessage" : "Oh No, Something went wrong here, but we're going to fix it!",
    "backAgainLater" : "Come back later.",
-   "loadingPleaseWait" : "Loading, please wait..."
+   "loadingPleaseWait" : "Loading, please wait...",
+   "skillsPageTitle" : "Technical Mastery & Professional Path",
+   "skillsPageDescription" : "A comprehensive overview of my core competencies, architectural expertise, and the evolution of my professional career in high-performance systems",
+   "technicalProwess" : "Technical Prowess",
+   "professionalJourney" : "Professional Journey"
 }
