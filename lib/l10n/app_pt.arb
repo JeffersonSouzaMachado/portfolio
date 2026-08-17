@@ -46,5 +46,9 @@
    "seeMore" : "Ver mais",
    "errorLoadingMessage": "Oh No, Alguma coisa deu errado aqui, mas já vamos corrigir!",
    "backAgainLater" : "Volte novamente mais tarde.",
-   "loadingPleaseWait" : "Carregando, por favor aguarde..."
+   "loadingPleaseWait" : "Carregando, por favor aguarde...",
+   "skillsPageTitle" : "Domínio Técnico e Jornada Profissional",
+   "skillsPageDescription" : "Uma visão completa das minhas principais competências, experiência em arquitetura e evolução da minha carreira profissional em sistemas de alta performance",
+   "technicalProwess" : "Competências Técnicas",
+   "professionalJourney" : "Jornada Profissional"
 }
