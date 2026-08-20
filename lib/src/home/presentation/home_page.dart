@@ -8,11 +8,70 @@ import 'package:portfolio/src/home/presentation/widgets/available_header_tag.dar
 import 'package:portfolio/src/home/presentation/widgets/central_buttons_row.dart';
 import 'package:portfolio/src/home/presentation/widgets/gradient_circle_background.dart';
 import 'package:portfolio/src/home/presentation/widgets/metric_resume.dart';
+import 'package:portfolio/src/home/presentation/widgets/youtube_video.dart';
 import 'package:portfolio/src/shared/page_main_text.dart';
 import 'package:portfolio/src/shared/footer.dart';
 
-class HomePage extends StatelessWidget {
+import '../../../core/shared/const/external_urls_const.dart';
+
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  static const videoLanguages = ['en', 'pt', 'es'];
+
+  String selectedVideoId = englishIntroductionVideo;
+  bool didSetInitialVideo = false;
+  String selectedVideoLanguage = 'en';
+
+  void setVideoId({required String language}) {
+    final normalizedLanguage = normalizeVideoLanguage(language);
+    final videoId = videoIdForLanguage(normalizedLanguage);
+
+    if (selectedVideoLanguage == normalizedLanguage) return;
+
+    setState(() {
+      selectedVideoLanguage = normalizedLanguage;
+      selectedVideoId = videoId;
+    });
+  }
+
+  String normalizeVideoLanguage(String language) {
+    return videoLanguages.contains(language) ? language : 'en';
+  }
+
+  String videoIdForLanguage(String language) {
+    return switch (language) {
+      'pt' => portugueseIntroductionVideo,
+      'es' => spanishIntroductionVideo,
+      _ => englishIntroductionVideo,
+    };
+  }
+
+  String videoButtonText(String language) {
+    return switch (language) {
+      'pt' => 'Veja em Português',
+      'es' => 'Ver en Español',
+      _ => 'See in English',
+    };
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    if (didSetInitialVideo) return;
+
+    selectedVideoLanguage = normalizeVideoLanguage(
+      Localizations.localeOf(context).languageCode,
+    );
+    selectedVideoId = videoIdForLanguage(selectedVideoLanguage);
+    didSetInitialVideo = true;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +145,7 @@ class HomePage extends StatelessWidget {
             child: Center(child: MetricResume()),
           ),
 
-          Footer(isMobile: true,),
+          Footer(isMobile: true),
         ],
       ),
     );
@@ -136,9 +195,28 @@ class HomePage extends StatelessWidget {
                     ),
                     Expanded(
                       flex: 5,
-                      child: Padding(
-                        padding: const EdgeInsets.all(AppSpacing.md),
-                        child: Image.asset(ImagesApp.code),
+                      child: Column(
+                        mainAxisSize: .max,
+                        children: [
+                          YoutubeVideo(videoId: selectedVideoId),
+                          SizedBox(height: 20),
+                          Row(
+                            mainAxisAlignment: .center,
+                            children: [
+                              for (final language in videoLanguages)
+                                if (language != selectedVideoLanguage)
+                                  TextButton(
+                                    onPressed: () {
+                                      setVideoId(language: language);
+                                    },
+                                    child: AppText(
+                                      videoButtonText(language),
+                                      color: AppColors.inversePrimary,
+                                    ),
+                                  ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ],
