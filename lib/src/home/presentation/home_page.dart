@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/core/shared/design/icons/images_app.dart';
 import 'package:portfolio/core/shared/design/theme/app_colors.dart';
 import 'package:portfolio/core/shared/design/theme/app_spacings.dart';
 import 'package:portfolio/core/shared/design/theme/app_text.dart';
@@ -132,8 +131,10 @@ class _HomePageState extends State<HomePage> {
           ),
 
           Padding(
-            padding: const EdgeInsets.all(AppSpacing.md),
-            child: Image.asset(ImagesApp.code),
+            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
+            child: Center(
+              child: videoPresentation(maxVideoWidth: 360),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(
@@ -198,24 +199,7 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         mainAxisSize: .max,
                         children: [
-                          YoutubeVideo(videoId: selectedVideoId),
-                          SizedBox(height: 20),
-                          Row(
-                            mainAxisAlignment: .center,
-                            children: [
-                              for (final language in videoLanguages)
-                                if (language != selectedVideoLanguage)
-                                  TextButton(
-                                    onPressed: () {
-                                      setVideoId(language: language);
-                                    },
-                                    child: AppText(
-                                      videoButtonText(language),
-                                      color: AppColors.inversePrimary,
-                                    ),
-                                  ),
-                            ],
-                          ),
+                          videoPresentation(),
                         ],
                       ),
                     ),
@@ -236,6 +220,37 @@ class _HomePageState extends State<HomePage> {
           Footer(),
         ],
       ),
+    );
+  }
+
+  Widget videoPresentation({double maxVideoWidth = 400}) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        YoutubeVideo(
+          videoId: selectedVideoId,
+          maxWidth: maxVideoWidth,
+        ),
+        SizedBox(height: AppSpacing.md),
+        Wrap(
+          alignment: WrapAlignment.center,
+          spacing: AppSpacing.sm,
+          runSpacing: AppSpacing.xs,
+          children: [
+            for (final language in videoLanguages)
+              if (language != selectedVideoLanguage)
+                TextButton(
+                  onPressed: () {
+                    setVideoId(language: language);
+                  },
+                  child: AppText(
+                    videoButtonText(language),
+                    color: AppColors.inversePrimary,
+                  ),
+                ),
+          ],
+        ),
+      ],
     );
   }
 }

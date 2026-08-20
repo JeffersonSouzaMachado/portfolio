@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
 class YoutubeVideo extends StatefulWidget {
-  const YoutubeVideo({super.key, required this.videoId});
+  const YoutubeVideo({
+    super.key,
+    required this.videoId,
+    this.maxWidth = 400,
+  });
 
   final String videoId;
+  final double maxWidth;
 
   @override
   State<YoutubeVideo> createState() => _YoutubeVideoState();
@@ -21,7 +26,7 @@ class _YoutubeVideoState extends State<YoutubeVideo> {
       videoId: widget.videoId,
       autoPlay: false,
       params: const YoutubePlayerParams(
-        showControls: true,
+        showControls: false,
         showFullscreenButton: true,
       ),
     );
@@ -44,12 +49,20 @@ class _YoutubeVideoState extends State<YoutubeVideo> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 400,
-      child: AspectRatio(
-        aspectRatio: 3 / 4,
-        child: YoutubePlayer(controller: controller),
-      ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final width = constraints.maxWidth.isFinite
+            ? constraints.maxWidth.clamp(0.0, widget.maxWidth).toDouble()
+            : widget.maxWidth;
+
+        return SizedBox(
+          width: width,
+          child: AspectRatio(
+            aspectRatio: 3 / 4,
+            child: YoutubePlayer(controller: controller),
+          ),
+        );
+      },
     );
   }
 }
