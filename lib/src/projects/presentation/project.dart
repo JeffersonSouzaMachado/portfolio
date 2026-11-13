@@ -156,7 +156,11 @@ List<Widget> mobile({
       ),
       child: Column(
         spacing: AppSpacing.lg,
-        children: buttons(project: project, width: double.infinity),
+        children: buttons(
+          project: project,
+          width: double.infinity,
+          appText: appText,
+        ),
       ),
     ),
     Padding(
@@ -209,6 +213,7 @@ List<Widget> mobile({
 List<Widget> desktop({
   required AppLocalizations appText,
   required ProjectModel project,
+
 }) {
   return [
     Padding(
@@ -293,7 +298,7 @@ List<Widget> desktop({
               ),
               Row(
                 spacing: AppSpacing.lg,
-                children: buttons(project: project),
+                children: buttons(project: project, appText: appText),
               ),
             ],
           ),
@@ -381,39 +386,47 @@ List<Widget> desktop({
 }
 
 List<Widget> buttons({
+  required AppLocalizations appText,
   required ProjectEntity project,
   double height = 50,
   double width = 200,
 }) {
   return [
-    SizedBox(
-      height: height,
-      width: width,
-      child: PrimaryButton.filled(
-        label: 'Ver na Play Store',
-        onPressed: () {
-          openExternalURL(
-            url: project.projectInfo.playStoreUrl,
-            error: "Não foi possivel abrir",
-          );
-        },
-        labelColor: AppColors.inversePrimary,
-        backgroundColor: AppColors.onPrimaryContainer.withValues(alpha: 0.2),
-      ),
-    ),
-    SizedBox(
-      height: height,
-      width: width,
-      child: PrimaryButton.outlined(
-        label: 'Ver na App Store',
-        onPressed: () {
-          openExternalURL(
-            url: project.projectInfo.appStoreUrl,
-            error: "Não foi possivel abrir",
-          );
-        },
-        labelColor: AppColors.inversePrimary,
-      ),
-    ),
+    project.projectInfo.playStoreUrl.isNotEmpty
+        ? SizedBox(
+            height: height,
+            width: width,
+            child: PrimaryButton.filled(
+              label: appText.viewOnPlayStore,
+              onPressed: () {
+                openExternalURL(
+                  url: project.projectInfo.playStoreUrl,
+                  error: "Não foi possivel abrir",
+                );
+              },
+              labelColor: AppColors.inversePrimary,
+              backgroundColor: AppColors.onPrimaryContainer.withValues(
+                alpha: 0.2,
+              ),
+            ),
+          )
+        : SizedBox.shrink(),
+
+    project.projectInfo.appStoreUrl.isNotEmpty
+        ? SizedBox(
+            height: height,
+            width: width,
+            child: PrimaryButton.outlined(
+              label: appText.viewOnAppStore,
+              onPressed: () {
+                openExternalURL(
+                  url: project.projectInfo.appStoreUrl,
+                  error: "Não foi possivel abrir",
+                );
+              },
+              labelColor: AppColors.inversePrimary,
+            ),
+          )
+        : SizedBox.shrink(),
   ];
 }

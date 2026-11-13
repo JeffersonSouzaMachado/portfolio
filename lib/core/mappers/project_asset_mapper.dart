@@ -31,6 +31,13 @@ abstract final class ProjectAssetMapper {
       'copel_3' => ImagesApp.mockupCopel3,
       'copel_4' => ImagesApp.mockupCopel4,
 
+      'teleprompterMainLogo' => ImagesApp.teleprompterMainLogo,
+      'teleprompter_1' => ImagesApp.mockupTeleprompter1,
+      'teleprompter_2' => ImagesApp.mockupTeleprompter2,
+      'teleprompter_3' => ImagesApp.mockupTeleprompter3,
+      'teleprompter_4' => ImagesApp.mockupTeleprompter4,
+      'teleprompter_5' => ImagesApp.mockupTeleprompter5,
+
       _ => ImagesApp.code,
     };
   }
@@ -49,6 +56,12 @@ abstract final class ProjectAssetMapper {
       'globeOff' => LucideIcons.globeOff,
       'calendarSync' => LucideIcons.calendarSync,
       'bookCopy' => LucideIcons.bookCopy,
+      'microphone' => LucideIcons.mic,
+      'video' => LucideIcons.video,
+      'folder' => LucideIcons.folderPen,
+      'translate' => LucideIcons.languages,
+      'monitorPlay' => LucideIcons.monitorPlay,
+
       _ => LucideIcons.aLargeSmallDir,
     };
   }

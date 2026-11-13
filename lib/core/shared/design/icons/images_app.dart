@@ -12,7 +12,6 @@ class ImagesApp {
   static const mockupWconnect3 = 'assets/images/pulsetrip_3.webp';
   static const mockupWconnect4 = 'assets/images/pulsetrip_4.webp';
 
-
   static const wattioMainLogo = 'assets/images/wattio_main.webp';
   static const mockupWattio1 = 'assets/images/wattio_1.webp';
   static const mockupWattio2 = 'assets/images/wattio_2.webp';
@@ -24,4 +23,11 @@ class ImagesApp {
   static const mockupCopel2 = 'assets/images/copel_2.webp';
   static const mockupCopel3 = 'assets/images/copel_3.webp';
   static const mockupCopel4 = 'assets/images/copel_4.webp';
+
+  static const teleprompterMainLogo = 'assets/images/teleprompterMainLogo.webp';
+  static const mockupTeleprompter1 = 'assets/images/teleprompter_1.webp';
+  static const mockupTeleprompter2 = 'assets/images/teleprompter_2.webp';
+  static const mockupTeleprompter3 = 'assets/images/teleprompter_3.webp';
+  static const mockupTeleprompter4 = 'assets/images/teleprompter_4.webp';
+  static const mockupTeleprompter5 = 'assets/images/teleprompter_5.webp';
 }
