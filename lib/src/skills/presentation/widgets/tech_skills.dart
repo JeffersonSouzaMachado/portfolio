@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:portfolio/l10n/app_localizations.dart';
 import 'package:portfolio/src/skills/presentation/widgets/professional_journey/journey_tag.dart';
 import 'package:portfolio/src/skills/presentation/widgets/tech_item_list.dart';

@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:portfolio/core/shared/design/theme/app_colors.dart';
 import 'package:portfolio/core/shared/design/theme/app_spacings.dart';
 import 'package:portfolio/core/shared/design/theme/app_text.dart';
@@ -27,7 +27,7 @@ class _HomeMenuPageState extends State<HomeMenuPage> {
       backgroundColor: AppColors.primary,
       body: Center(
         child: Container(
-          width: 1100,
+          width: 1500,
           height: size.height,
           decoration: BoxDecoration(
             color: AppColors.primary,

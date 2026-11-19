@@ -53,7 +53,10 @@ dependencies:
   cloud_firestore: ^6.8.0
   youtube_player_iframe: ^6.0.2
   web: ^1.1.1
+  material_ui: ^1.11.1
 
+
+  cupertino_ui: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

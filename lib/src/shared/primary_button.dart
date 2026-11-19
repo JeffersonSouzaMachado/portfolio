@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 import '../../core/shared/design/theme/app_colors.dart';
 import '../../core/shared/design/theme/app_text.dart';

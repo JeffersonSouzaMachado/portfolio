@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/core/shared/design/theme/app_colors.dart';
@@ -6,9 +6,9 @@ import 'package:portfolio/core/shared/design/theme/app_spacings.dart';
 import 'package:portfolio/core/shared/design/theme/app_text.dart';
 import 'package:portfolio/core/shared/design/theme/app_typography.dart';
 import 'package:portfolio/core/router/routes.dart';
+import 'package:portfolio/core/shared/localization/locale_enum.dart';
 import 'package:portfolio/l10n/app_localizations.dart';
-import '../../core/shared/localization/locale_enum.dart';
-import '../../core/shared/localization/locale_provider.dart';
+import 'package:portfolio/src/language_selector/locale_provider.dart';
 
 class LanguageSelectorPage extends ConsumerStatefulWidget {
   const LanguageSelectorPage({super.key});
@@ -20,21 +20,6 @@ class LanguageSelectorPage extends ConsumerStatefulWidget {
 
 class _LanguageSelectorPageState extends ConsumerState<LanguageSelectorPage> {
   int? hoveredIndex;
-  final languageLocales = const [Locale('pt'), Locale('en')];
-
-  void setAppLanguage(int index) {
-    final locale = languageLocales[index];
-
-    ref.read(localeProvider.notifier).state = locale;
-  }
-
-  String languageTextByLocale(Locale locale) {
-    final localizations = lookupAppLocalizations(locale);
-
-    return locale.languageCode == AppLocale.pt.name
-        ? localizations.portuguese
-        : localizations.english;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -116,8 +101,8 @@ class _LanguageSelectorPageState extends ConsumerState<LanguageSelectorPage> {
   }
 
   List<Widget> languageList() {
-    return List.generate(languageLocales.length, (index) {
-      final item = languageTextByLocale(languageLocales[index]);
+    return List.generate(AppLocale.values.length, (index) {
+      final item = AppLocale.values[index];
       final isHovered = hoveredIndex == index;
 
       return Padding(
@@ -132,10 +117,10 @@ class _LanguageSelectorPageState extends ConsumerState<LanguageSelectorPage> {
               setState(() {
                 hoveredIndex = isHovering ? index : null;
               });
-              setAppLanguage(index);
+              ref.read(localeProvider.notifier).setLocale(item.locale);
             },
             onPressed: () {
-              setAppLanguage(index);
+              ref.read(localeProvider.notifier).setLocale(item.locale);
               context.go(Routes.home);
             },
             style: ElevatedButton.styleFrom(
@@ -151,7 +136,7 @@ class _LanguageSelectorPageState extends ConsumerState<LanguageSelectorPage> {
                 fontWeight: isHovered ? FontWeight.bold : FontWeight.normal,
                 fontSize: isHovered ? 20 : 16,
               ),
-              child: AppText(item, color: AppColors.inversePrimary),
+              child: AppText(item.name, color: AppColors.inversePrimary),
             ),
           ),
         ),

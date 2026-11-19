@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:portfolio/src/skills/presentation/widgets/professional_journey/professional_journey.dart';
 import 'package:portfolio/src/skills/presentation/widgets/skills_content.dart';
 

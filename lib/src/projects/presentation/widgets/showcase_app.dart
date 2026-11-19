@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/src/projects/domain/entities/project_entity.dart';
 import 'package:portfolio/core/mappers/project_asset_mapper.dart';
