@@ -4,7 +4,7 @@ import 'package:portfolio/core/shared/design/theme/app_colors.dart';
 class GradientCircleBackground extends StatelessWidget {
   const GradientCircleBackground({super.key});
 
-  final double gradientCircleSize = 620;
+  final double gradientCircleSize = 520;
 
   @override
   Widget build(BuildContext context) {

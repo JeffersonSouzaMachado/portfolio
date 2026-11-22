@@ -1,14 +1,15 @@
-import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:portfolio/core/router/routes.dart';
 import 'package:portfolio/core/shared/design/theme/app_colors.dart';
 import 'package:portfolio/core/shared/design/theme/app_spacings.dart';
 import 'package:portfolio/core/shared/design/theme/app_text.dart';
 import 'package:portfolio/core/shared/design/theme/app_typography.dart';
-import 'package:portfolio/core/router/routes.dart';
 import 'package:portfolio/core/shared/localization/locale_enum.dart';
 import 'package:portfolio/l10n/app_localizations.dart';
 import 'package:portfolio/src/language_selector/locale_provider.dart';
+import 'package:portfolio/src/shared/header_name.dart';
 
 class LanguageSelectorPage extends ConsumerStatefulWidget {
   const LanguageSelectorPage({super.key});
@@ -24,17 +25,72 @@ class _LanguageSelectorPageState extends ConsumerState<LanguageSelectorPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.primary,
       body: LayoutBuilder(
         builder: (context, constraints) {
           final maxWidth = constraints.maxWidth;
+          final maxHeight = constraints.maxHeight;
 
-          if (maxWidth < 550) {
-            return mobile();
-          } else {
-            return desktop();
-          }
+          return Center(
+            child: SizedBox(
+              width: 1500,
+              child: Column(
+                mainAxisAlignment: .center,
+                children: [
+                  HeaderName(),
+
+                  Expanded(
+                    child: Stack(
+                      children: [
+                        buildCircle(
+                          top: maxHeight * 0.0,
+                          left: maxWidth * 0.20,
+                        ),
+                        // buildCircle(top: maxHeight * 0.15, left: maxWidth * 0.50),
+                        buildCircle(
+                          top: maxHeight * 0.55,
+                          left: maxWidth * 0.55,
+                        ),
+
+                        if (maxWidth < 550) mobile() else desktop(),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
         },
+      ),
+    );
+  }
+
+  Widget buildCircle({
+    double? top,
+    double? bottom,
+    double? left,
+    double? right,
+  }) {
+    return Positioned(
+      top: top,
+      left: left,
+      right: right,
+      bottom: bottom,
+      child: Container(
+        width: 450,
+        height: 450,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          gradient: RadialGradient(
+            center: Alignment.center,
+            radius: 0.5,
+            colors: [
+              AppColors.secondary.withValues(alpha: 0.1), // Centro
+
+              Colors.transparent, // Bordas
+            ],
+            stops: [0.0, 1.0],
+          ),
+        ),
       ),
     );
   }
@@ -110,8 +166,8 @@ class _LanguageSelectorPageState extends ConsumerState<LanguageSelectorPage> {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 250),
           curve: Curves.easeOut,
-          width: hoveredIndex == index ? 220 : 180,
-          height: hoveredIndex == index ? 60 : 50,
+          width: hoveredIndex == index ? 220 : 200,
+          height: hoveredIndex == index ? 70 : 60,
           child: ElevatedButton(
             onHover: (isHovering) {
               setState(() {
@@ -128,7 +184,15 @@ class _LanguageSelectorPageState extends ConsumerState<LanguageSelectorPage> {
                 alpha: isHovered ? 0.2 : 0.1,
               ),
               elevation: isHovered ? 8 : 2,
+              side: BorderSide(
+                color: AppColors.secondary.withValues(alpha: 0.1),
+                width: 2,
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadiusGeometry.circular(18),
+              ),
             ),
+
             child: AnimatedDefaultTextStyle(
               duration: const Duration(milliseconds: 200),
               curve: Curves.easeOut,
@@ -136,11 +200,19 @@ class _LanguageSelectorPageState extends ConsumerState<LanguageSelectorPage> {
                 fontWeight: isHovered ? FontWeight.bold : FontWeight.normal,
                 fontSize: isHovered ? 20 : 16,
               ),
-              child: AppText(item.name, color: AppColors.inversePrimary),
+              child: AppText(
+                item.name,
+                color: AppColors.inversePrimary,
+                fontSize: isHovered ? 20 : 16,
+              ),
             ),
           ),
         ),
       );
     });
+  }
+
+  Widget styledButton() {
+    return ElevatedButton(onPressed: () {}, child: null);
   }
 }

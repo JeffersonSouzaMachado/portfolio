@@ -131,11 +131,11 @@ abstract class AppLocalizations {
   /// **'Projects'**
   String get projects;
 
-  /// No description provided for @skills.
+  /// No description provided for @experience.
   ///
   /// In en, this message translates to:
-  /// **'Skills'**
-  String get skills;
+  /// **'Experience'**
+  String get experience;
 
   /// No description provided for @contact.
   ///
@@ -155,23 +155,17 @@ abstract class AppLocalizations {
   /// **'Available for new projects'**
   String get availableForProjects;
 
-  /// No description provided for @architecting.
+  /// No description provided for @homeDeveloperRole.
   ///
   /// In en, this message translates to:
-  /// **'Architecting'**
-  String get architecting;
+  /// **'Software Engineer  |  Flutter & Mobile Developer'**
+  String get homeDeveloperRole;
 
-  /// No description provided for @highPerformance.
+  /// No description provided for @homeHeadline.
   ///
   /// In en, this message translates to:
-  /// **'High-Performance'**
-  String get highPerformance;
-
-  /// No description provided for @mobileEcosystems.
-  ///
-  /// In en, this message translates to:
-  /// **'Mobile Ecosystems'**
-  String get mobileEcosystems;
+  /// **'Turning complex challenges into **scalable mobile** applications'**
+  String get homeHeadline;
 
   /// No description provided for @aboutDescription.
   ///
@@ -182,7 +176,7 @@ abstract class AppLocalizations {
   /// No description provided for @viewWorks.
   ///
   /// In en, this message translates to:
-  /// **'Works'**
+  /// **'Explore projects'**
   String get viewWorks;
 
   /// No description provided for @github.

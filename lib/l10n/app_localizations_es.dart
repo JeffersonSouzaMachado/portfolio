@@ -27,7 +27,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get projects => 'Proyectos';
 
   @override
-  String get skills => 'Habilidades';
+  String get experience => 'Experiencia';
 
   @override
   String get contact => 'Contacto';
@@ -39,19 +39,16 @@ class AppLocalizationsEs extends AppLocalizations {
   String get availableForProjects => 'Disponible para nuevos proyectos';
 
   @override
-  String get architecting => 'Creando';
+  String get homeDeveloperRole => 'Ingeniero de software  |  Desarrollador móvil con Flutter';
 
   @override
-  String get highPerformance => 'ecosistemas móviles';
-
-  @override
-  String get mobileEcosystems => 'de alto rendimiento';
+  String get homeHeadline => 'Transformando desafíos complejos en aplicaciones **móviles escalables**';
 
   @override
   String get aboutDescription => 'Desarrollador móvil especializado en Flutter y Dart, con énfasis en el rendimiento, las interfaces fluidas y la arquitectura de software robusta. Desarrollo experiencias adaptables y bien estructuradas para aplicaciones móviles y web.';
 
   @override
-  String get viewWorks => 'Proyectos';
+  String get viewWorks => 'Explorar proyectos';
 
   @override
   String get github => 'GitHub';

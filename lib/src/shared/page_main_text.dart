@@ -1,6 +1,6 @@
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:portfolio/core/shared/design/theme/app_colors.dart';
-import 'package:portfolio/core/shared/design/theme/app_text.dart';
 import 'package:portfolio/core/shared/design/theme/app_typography.dart';
 import 'package:portfolio/l10n/app_localizations.dart';
 
@@ -11,27 +11,16 @@ class PageMainText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppTextSpan(
-      spans: [
-        TextSpan(
-          text: '${appText.architecting} ',
-          style: AppTypography.headlineXl.copyWith(
-            color: AppColors.onSecondaryContainer,
-          ),
+    return MarkdownBody(
+      data: appText.homeHeadline,
+      styleSheet: MarkdownStyleSheet(
+        p: AppTypography.headlineXl.copyWith(
+          color: AppColors.onSecondaryContainer,
         ),
-        TextSpan(
-          text: appText.highPerformance,
-          style: AppTypography.headlineXl.copyWith(
-            color: AppColors.inversePrimary,
-          ),
+        strong: AppTypography.headlineXl.copyWith(
+          color: AppColors.secondary,
         ),
-        TextSpan(
-          text: ' ${appText.mobileEcosystems}',
-          style: AppTypography.headlineXl.copyWith(
-            color: AppColors.onSecondaryContainer,
-          ),
-        ),
-      ],
+      ),
     );
   }
 }

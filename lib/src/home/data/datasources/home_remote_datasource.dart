@@ -7,7 +7,7 @@ abstract interface class HomeRemoteDatasource {
 
 class HomeRemoteDatasourceImpl implements HomeRemoteDatasource {
   HomeRemoteDatasourceImpl({required FirebaseFirestore firestore})
-      : _firestore = firestore;
+    : _firestore = firestore;
 
   final FirebaseFirestore _firestore;
 
@@ -36,9 +36,11 @@ class HomeRemoteDatasourceImpl implements HomeRemoteDatasource {
 
     if (rawMetrics is List) {
       return rawMetrics
-          .map((item) => MetricResumeModel.fromJson(
-                Map<String, dynamic>.from(item as Map),
-              ))
+          .map(
+            (item) => MetricResumeModel.fromJson(
+              Map<String, dynamic>.from(item as Map),
+            ),
+          )
           .toList();
     }
 
@@ -48,9 +50,9 @@ class HomeRemoteDatasourceImpl implements HomeRemoteDatasource {
 
     return data.values
         .whereType<Map>()
-        .map((item) => MetricResumeModel.fromJson(
-              Map<String, dynamic>.from(item),
-            ))
+        .map(
+          (item) => MetricResumeModel.fromJson(Map<String, dynamic>.from(item)),
+        )
         .toList();
   }
 
@@ -58,6 +60,7 @@ class HomeRemoteDatasourceImpl implements HomeRemoteDatasource {
     return switch (language) {
       'pt' => 'portuguese',
       'en' => 'english',
+      'es' => 'spanish',
       _ => 'english',
     };
   }

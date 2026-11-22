@@ -85,7 +85,7 @@ class PrimaryButton extends StatelessWidget {
           Icon(prefixIcon, color: iconColor),
           const SizedBox(width: 8),
         ],
-        Flexible(child: AppText(label, maxLines: 1, color: labelColor)),
+        Flexible(child: AppText(label, maxLines: 1, color: labelColor, fontSize: 18,fontWeight: .w600,)),
         if (suffixIcon != null) ...[
           const SizedBox(width: 8),
           Icon(suffixIcon, color: iconColor),
@@ -95,7 +95,7 @@ class PrimaryButton extends StatelessWidget {
 
     return switch (type) {
       PrimaryButtonType.filled => ElevatedButton(
-        style: ElevatedButton.styleFrom(backgroundColor: backgroundColor),
+        style: ElevatedButton.styleFrom(backgroundColor: backgroundColor, shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(16))),
         onPressed: onPressed,
         child: child,
       ),
@@ -107,6 +107,7 @@ class PrimaryButton extends StatelessWidget {
                 ? borderColor!
                 : AppColors.inversePrimary,
           ),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(16))
         ),
         onPressed: onPressed,
         child: child,

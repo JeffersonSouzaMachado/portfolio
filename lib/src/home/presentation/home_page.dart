@@ -1,4 +1,6 @@
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:portfolio/core/shared/design/icons/svg_app.dart';
 import 'package:portfolio/core/shared/design/theme/app_colors.dart';
 import 'package:portfolio/core/shared/design/theme/app_spacings.dart';
 import 'package:portfolio/core/shared/design/theme/app_text.dart';
@@ -7,7 +9,6 @@ import 'package:portfolio/src/home/presentation/widgets/available_header_tag.dar
 import 'package:portfolio/src/home/presentation/widgets/central_buttons_row.dart';
 import 'package:portfolio/src/home/presentation/widgets/gradient_circle_background.dart';
 import 'package:portfolio/src/home/presentation/widgets/metric_resume.dart';
-import 'package:portfolio/src/home/presentation/widgets/youtube_video.dart';
 import 'package:portfolio/src/shared/page_main_text.dart';
 import 'package:portfolio/src/shared/footer.dart';
 
@@ -131,12 +132,6 @@ class _HomePageState extends State<HomePage> {
           ),
 
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.md),
-            child: Center(
-              child: videoPresentation(maxVideoWidth: 360),
-            ),
-          ),
-          Padding(
             padding: const EdgeInsets.fromLTRB(
               AppSpacing.lg,
               AppSpacing.xxl,
@@ -156,58 +151,84 @@ class _HomePageState extends State<HomePage> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Stack(
-            children: [
-              Positioned(right: 0, top: 10, child: GradientCircleBackground()),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(
-                  AppSpacing.xl,
-                  AppSpacing.xxl,
-                  AppSpacing.xl,
-                  0,
+          Padding(
+            padding: const EdgeInsets.fromLTRB(
+              AppSpacing.xl,
+              AppSpacing.xxl,
+              AppSpacing.xl,
+              0,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              spacing: 100,
+              children: [
+                Expanded(
+                  flex: 2,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AvailableHeaderTag(appText: appText),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 30),
+                        child: PageMainText(appText: appText),
+                      ),
+
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 30),
+                        child: AppText(
+                          appText.aboutDescription,
+                          color: AppColors.inversePrimary,
+                        ),
+                      ),
+
+                      Row(
+                        mainAxisAlignment: .start,
+                        spacing: 20,
+                        children: [
+                          techTag(
+                            icon: SvgApp.cleanArch,
+                            technology: "Clean Arch",
+                          ),
+                          techTag(
+                            icon: SvgApp.infinitySymbol,
+                            technology: "CI/CD",
+                            color: AppColors.secondary,
+                          ),
+                          techTag(
+                            icon: SvgApp.firebaseLogo,
+                            technology: "Firebase",
+                          ),
+                          techTag(
+                            icon: SvgApp.scalableSymbol,
+                            technology: "Scalability",
+                            color: AppColors.secondary,
+                          ),
+                        ],
+                      ),
+
+                      Padding(
+                        padding: EdgeInsets.symmetric(vertical: 50),
+                        child: CentralButtonsRow(appText: appText),
+                      ),
+                    ],
+                  ),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  spacing: 50,
+
+                Stack(
+                  alignment: AlignmentDirectional.center,
                   children: [
-                    Expanded(
-                      flex: 4,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          AvailableHeaderTag(appText: appText),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 30),
-                            child: PageMainText(appText: appText),
-                          ),
-
-                          AppText(
-                            appText.aboutDescription,
-                            color: AppColors.inversePrimary,
-                          ),
-
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 30),
-                            child: CentralButtonsRow(appText: appText),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      flex: 5,
-                      child: Column(
-                        mainAxisSize: .max,
-                        children: [
-                          videoPresentation(),
-                        ],
-                      ),
+                    GradientCircleBackground(),
+                    SizedBox(
+                      width: 500,
+                      child: Image.asset("assets/images/flutter.png"),
                     ),
                   ],
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
+
           Padding(
             padding: const EdgeInsets.fromLTRB(
               AppSpacing.lg,
@@ -223,34 +244,27 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget videoPresentation({double maxVideoWidth = 400}) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        YoutubeVideo(
-          videoId: selectedVideoId,
-          maxWidth: maxVideoWidth,
-        ),
-        SizedBox(height: AppSpacing.md),
-        Wrap(
-          alignment: WrapAlignment.center,
-          spacing: AppSpacing.sm,
-          runSpacing: AppSpacing.xs,
+  Widget techTag({
+    required String icon,
+    required String technology,
+    Color? color,
+  }) {
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.secondary.withValues(alpha: 0.1),
+        border: Border.all(color: AppColors.accent.withValues(alpha: 0.1)),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+        child: Row(
+          spacing: 10,
           children: [
-            for (final language in videoLanguages)
-              if (language != selectedVideoLanguage)
-                TextButton(
-                  onPressed: () {
-                    setVideoId(language: language);
-                  },
-                  child: AppText(
-                    videoButtonText(language),
-                    color: AppColors.inversePrimary,
-                  ),
-                ),
+            SizedBox(height: 26, child: SvgPicture.asset(icon, color: color)),
+            AppText(technology, color: AppColors.inversePrimary, fontSize: 18),
           ],
         ),
-      ],
+      ),
     );
   }
 }

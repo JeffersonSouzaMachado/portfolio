@@ -101,7 +101,6 @@ class _HeaderMenuState extends ConsumerState<HeaderMenu> {
                         Align(
                           alignment: Alignment.centerRight,
                           child: IconButton(
-                            tooltip: 'Fechar menu',
                             onPressed: _controller.hide,
                             icon: Icon(
                               Icons.close,
@@ -121,7 +120,6 @@ class _HeaderMenuState extends ConsumerState<HeaderMenu> {
         );
       },
       child: IconButton(
-        tooltip: 'Abrir menu',
         onPressed: _controller.toggle,
         icon: Icon(Icons.menu, color: AppColors.inversePrimary),
       ),
@@ -182,7 +180,7 @@ class _HeaderMenuState extends ConsumerState<HeaderMenu> {
                   },
                   child: showIcon
                       ? Icon(item.icon, color: AppColors.inversePrimary)
-                      : AppText(item.title, color: AppColors.inversePrimary),
+                      : AppText(item.title, color: AppColors.inversePrimary, fontWeight: .w500,),
                 ),
               ),
             );

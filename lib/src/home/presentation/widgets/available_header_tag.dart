@@ -13,27 +13,18 @@ class AvailableHeaderTag extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: AppColors.onSecondaryFixedVariant.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.all(Radius.circular(15)),
+        borderRadius: BorderRadius.all(Radius.circular(20)),
         border: Border.all(color: AppColors.accent),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
         child: Row(
           mainAxisAlignment: .center,
           mainAxisSize: .min,
           children: [
-            Container(
-              width: 10,
-              height: 20,
-              decoration: BoxDecoration(
-                color: AppColors.accent,
-                shape: BoxShape.circle,
-              ),
-            ),
-            SizedBox(width: 10),
             Flexible(
               child: AppText(
-                appText.availableForProjects,
+                appText.homeDeveloperRole,
                 maxLines: 2,
                 color: AppColors.accent,
               ),
