@@ -8,35 +8,43 @@ import '../../core/shared/design/theme/app_colors.dart';
 import '../../core/shared/design/theme/app_text.dart';
 
 class Footer extends StatelessWidget {
-  const Footer({super.key, this.isMobile = false});
+  const Footer({super.key});
 
-  final bool isMobile;
+
 
   @override
   Widget build(BuildContext context) {
     final appText = AppLocalizations.of(context)!;
 
-    return Container(
-      height: isMobile ? 130 : 80,
-      color: AppColors.outlineVariant.withValues(alpha: 0.01),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: isMobile
-            ? Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                spacing: 10,
-                children: widgetBar(appText),
-              )
-            : Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: widgetBar(appText),
-              ),
-      ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final size = constraints.maxWidth;
+        final isMobile = size < 500;
+
+
+        return Container(
+          height: isMobile ? 130 : 80,
+          color: AppColors.outlineVariant.withValues(alpha: 0.01),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: isMobile
+                ? Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    spacing: 10,
+                    children: widgetBar(appText, isMobile),
+                  )
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: widgetBar(appText, isMobile),
+                  ),
+          ),
+        );
+      }
     );
   }
 
-  List<Widget> widgetBar(AppLocalizations appText) {
+  List<Widget> widgetBar(AppLocalizations appText, bool isMobile) {
     return [
       Flexible(
         child: AppText(

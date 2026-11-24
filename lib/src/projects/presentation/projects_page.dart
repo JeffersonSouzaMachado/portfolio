@@ -83,7 +83,6 @@ class ProjectsPage extends ConsumerWidget {
                       ],
                     ),
                   ),
-                  Footer(isMobile: isMobile),
                 ],
               ),
             );

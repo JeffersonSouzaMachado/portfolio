@@ -47,7 +47,6 @@ class _ContactsPageState extends State<ContactsPage> {
               ],
             ),
           ),
-          Footer(isMobile: true),
         ],
       ),
     );

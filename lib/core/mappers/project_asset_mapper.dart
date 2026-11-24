@@ -61,6 +61,10 @@ abstract final class ProjectAssetMapper {
       'folder' => LucideIcons.folderPen,
       'translate' => LucideIcons.languages,
       'monitorPlay' => LucideIcons.monitorPlay,
+      'calendar' => LucideIcons.calendar,
+      'slash_code' => LucideIcons.codeXml,
+      'person' => LucideIcons.users,
+      'rocket' => LucideIcons.rocket,
 
       _ => LucideIcons.aLargeSmallDir,
     };

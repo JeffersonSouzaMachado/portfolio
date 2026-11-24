@@ -14,7 +14,6 @@ import 'package:portfolio/src/projects/presentation/widgets/tech_stack_container
 import 'package:portfolio/src/shared/footer.dart';
 import 'package:portfolio/src/shared/primary_button.dart';
 
-import '../../../core/shared/design/theme/app_text.dart';
 import '../../shared/open_external_url.dart';
 import '../data/models/project_model.dart';
 
@@ -40,7 +39,6 @@ class Project extends StatelessWidget {
                       project: project,
                       appText: appText,
                     ),
-                    Footer(isMobile: isMobile),
                   ]
                 : [...desktop(appText: appText, project: project), Footer()],
           ),

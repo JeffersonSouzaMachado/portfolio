@@ -112,7 +112,6 @@ class SkillsPage extends ConsumerWidget {
                 ),
               ),
             ),
-            Footer(isMobile: isMobile),
           ],
         );
       },

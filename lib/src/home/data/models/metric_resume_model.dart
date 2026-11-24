@@ -5,6 +5,7 @@ class MetricResumeModel extends MetricResumeEntity {
     required super.title,
     required super.text,
     required super.color,
+    required super.icon
   });
 
   factory MetricResumeModel.fromJson(Map<String, dynamic> json) {
@@ -12,6 +13,7 @@ class MetricResumeModel extends MetricResumeEntity {
       title: json['title'] ?? '',
       text: json['text'] ?? '',
       color: json['color'] ?? '',
+      icon: json['icon'] ?? '',
     );
   }
 }
